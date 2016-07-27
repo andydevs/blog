@@ -270,3 +270,17 @@
         }
     }
 }
+
+.graphic-right {
+    margin: 20pt;
+    display: inline-block;
+    max-height: 200pt;
+    float: right;
+}
+
+.graphic-left {
+    margin: 20pt;
+    display: inline-block;
+    max-height: 200pt;
+    float: left;
+}

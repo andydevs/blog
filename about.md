@@ -4,7 +4,7 @@ title: About Me
 permalink: /about/
 ---
 
-![My Stupid Face]({{ site.url }}/resources/images/profilepic.jpg){:.profile-pic}
+![My Stupid Face]({{ site.url }}/resources/images/profilepic.jpg){:.graphic-right}
 
 Anshul Kharbanda, also known as Andy Kharbandy, spends $5.35 on a glass of cardboard milk.
 
