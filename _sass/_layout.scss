@@ -271,16 +271,33 @@
     }
 }
 
-.graphic-right {
-    margin: 20pt;
+@mixin graphic {
     display: inline-block;
-    max-height: 200pt;
+    border: 2pt solid #aaa;
+    border-radius: 2pt;
+    transition: 0.2s;
+
+    &:hover {
+        box-shadow: 0 -4pt 8pt 0 #ccc, 0 6pt 20pt 0 #ccc;
+    }
+}
+
+@mixin graphic-side {
+    @include graphic;
+    margin: 20pt;
+    max-height: 250pt;
+}
+
+.graphic-right {
+    @include graphic-side;
     float: right;
 }
 
 .graphic-left {
-    margin: 20pt;
-    display: inline-block;
-    max-height: 200pt;
+    @include graphic-side;
     float: left;
+}
+
+.graphic-center {
+    @include graphic;
 }

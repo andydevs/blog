@@ -142,6 +142,7 @@ code {
 pre {
     padding: 8px 12px;
     overflow-x: auto;
+    background-color: lighten($brand-color, 40%);
 
     > code {
         border: 0;
