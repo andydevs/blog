@@ -7,16 +7,7 @@ categories: education
 
 Most people count by using their fingers as a reference. You start with (usually) your left index finger, and add more fingers as you count up. This is how we've all learned how to count this way, and we all learned the words for each amount we can count on our fingers:
 
-One,
-Two,
-Three,
-Four,
-Five,
-Six,
-Seven,
-Eight,
-Nine,
-Ten.
+One, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten.
 
 But now you come accross a problem: you only have ten fingers, so how are you going to count beyond ten? Do you start counting your toes? 
 

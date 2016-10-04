@@ -1,0 +1,36 @@
+$box-shadow: 0 -4pt 8pt 0 #ccc, 0 6pt 20pt 0 #ccc;
+
+@mixin graphic {
+    display: inline-block;
+    border: 2pt solid #aaa;
+    border-radius: 2pt;
+    transition: 0.2s;
+
+    &:hover {
+        box-shadow: $box-shadow;
+    }
+}
+
+@mixin graphic-side {
+    @include graphic;
+    margin: 20pt;
+    max-height: 250pt;
+}
+
+.graphic-right {
+    @include graphic-side;
+    float: right;
+}
+
+.caption-right {
+    float: right;
+}
+
+.graphic-left {
+    @include graphic-side;
+    float: left;
+}
+
+.graphic-center {
+    @include graphic;
+}
