@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Optimization"
-date:       9 - 18 - 2016
+date:       2016-9-18
 categories: education
 ---
 

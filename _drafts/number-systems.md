@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Number Systems"
-date:       9 - 21 - 2016
+date:       2016-9-21
 categories: education
 ---
 

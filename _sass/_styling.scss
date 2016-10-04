@@ -4,11 +4,7 @@ $box-shadow: 0 -4pt 8pt 0 #ccc, 0 6pt 20pt 0 #ccc;
     display: inline-block;
     border: 2pt solid #aaa;
     border-radius: 2pt;
-    transition: 0.2s;
-
-    &:hover {
-        box-shadow: $box-shadow;
-    }
+    box-shadow: $box-shadow;
 }
 
 @mixin graphic-side {
