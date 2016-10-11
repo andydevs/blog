@@ -9,8 +9,9 @@
 title: Andydevs
 email: andydevs1@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  My website where I update your faces on the projects I'm working on
-  along with things that I've learned and/or have interest in.
+  My website where I update your faces on the projects I'm working on.
+  I also talk about things that I've learned and/or have interest in at the time
+  (which is mostly computer related).
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://andydevs.github.io" # the base hostname & protocol for your site
 twitter_username: andydevs1
