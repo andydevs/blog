@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Primer and Other Time Travel Movies"
+title:      Primer and Other Time Travel Movies
 date:       2016-10-4
 categories: popculture
 ---

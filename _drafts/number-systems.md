@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Number Systems"
+title:      Number Systems
 date:       2016-9-21
 categories: education
 ---
