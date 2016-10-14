@@ -19,9 +19,7 @@ Five Nights at Freddy's takes this basis and shoves it straight into an empty an
 
 What Five Nights at Freddy's does instead is tell a second narrative on top of the one presented to you, not directly, not linearly, but sporadically and through hidden, disconnected clues spread throguhout the installments. These need to be actively sought out, disected by loyal fans (and [avid game theorists](https://www.youtube.com/playlist?list=PLOl4b517qn8jl4Lw8H8cDrDkGwf1FtC7I)), and even sometimes coupled with real world facts to make sense of (like using minimum wage calculations and the payment on the check at the end of each game to determine the year that that game takes place in).
 
-This is the true appeal of this game. It doesn't have much in terms of gameplay. If you look at any playthrough of the game, you notice the reactions to the jumpscares quickly fading from absolute horror to just frustration.
-
-But the story and the mystery behind every single little detail in (and even outside) the game.
+This is the true appeal of this game. It doesn't have much in terms of gameplay. If you look at any playthrough of the game, you notice the reactions to the jumpscares quickly fading from absolute horror to just frustration. But the story and the mystery behind every single little detail in and outside the game. The clues extend beyond the game and into promo images and the source code of the website (the _source code_).
 
 ## The Fear of Uncertainty
 
