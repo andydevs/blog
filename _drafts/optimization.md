@@ -29,7 +29,7 @@ Most people know how to find the derivative of a function, if they know what the
 
 ## Gradient Descent
 
-Gradient descent is the algorithm described above, and one of the simpler algorithms to implement:
+Gradient descent is the algorithm described at the beginning of the post, and one of the simpler algorithms to implement:
 
 	x := random
 	until f'(x) <= EPSILON
@@ -45,7 +45,7 @@ Newton's Method for Minima, invented by Isaac Newton, is a bit more clever than 
 
 ### Finding Zeros
 
-The way most people learn to find the zeros of a function (places where the function equals 0) is through functional analysis. We've learned how to find the zeros of a polynomial by factoring. For example, you can rewrite the function `x^2 + 5x + 6` as `(x + 3)*(x + 2)`. The zeros of this function are then -3 and -2 (taken from the factored coefficients). You also know that the one zero of `ln(x)` is 1, the zeros of `sin(x)` are all integer multiples of pi, and `1/x` has no zeros. We can use simple rules like these to find the zeros of a function through analysis.
+The way most people learn to find the zeros of a function is through functional analysis. We've learned how to find the zeros of a polynomial by factoring. We also know that the one zero of `ln(x)` is 1, the zeros of `sin(x)` are all integer multiples of pi, and `1/x` has no zeros. We can use simple rules like these to find the zeros of a function through analysis.
 
 However, this process of finding zeros is tedious to do by hand, and doesn't generalize well, especially in computational programming, where you may need to find the zeros of a function or model that you can't really write down (like a neural network). There is a more general algorithm to discover a zero, or get close to one, using linear approximation and some computation.
 
