@@ -17,15 +17,19 @@ Aside from altitude on a mountain, there are other things that you would want to
 
 We need a function with one output and one or more inputs. Let's call our input vector `x`, and our function `f(x)`. It can be your altitude on a mountain based on your location, the revenue from a product for selling at a particular price, or the cost of fencing based on how much fencing you buy. Your function needs to at least be continuous (within the interval you're checking), so it cant have any breaks or gaps (like an inverse or step function).
 
-### Computing Gradients
+We will be using this function with 1 input
 
-Most people know how to find the derivative of a function, if they know what the function is. However, in many cases (like machine learning), your function may be too complex to model classically or determine a gradient function for. Since we have computers, the simpler way to determine the gradient at a point for any function is to just do it manually. The general gradient formula (for one dimension) is `f'(x) = (f(x + h) - f(x)) / h`. You can just pick the smallest value of h that your computer can represent, and find the slope using this formula. You can do this for every single input value individually for a function of many inputs and generate a vector of gradients (denoted as `f'(x)`). The i'th value of the gradient is the partial derivative of the function vs. the i'th value of x.
+	f(x) = 0.50 + 0.30*x + 0.24*x^2 - 1.52*x^3 - 0.11*x^4 + 0.69*x^5 - 0.17*x^6
 
-	x := given
-	h := given
-	f'(x) := zero vector of length == x
-	for the i'th value in x
-		f'(x)[i] = (f(x[i] + h) - f(x[i]))/h
+It creates this nice graph:
+
+![Function to Optimize]({{ site.url }}/resources/images/optimization/function_to_optimize.png){:.graphic-center}
+
+Looking at the graph, we know that the minimum is somewhere near 1.6 and 1.8. Let's see if the computer can figure it out.
+
+## Calculating Slope on a Computer
+
+Most people know how to find the derivative of a function, if they know what the function is. However, in many cases (like machine learning), your function may be too complex to find the derivative for. Since we have computers, the simpler way to determine the slope at a point for any function is to just do it manually. The general gradient formula (for one dimension) is `f'(x) = (f(x + h) - f(x)) / h`. You can just pick the smallest value of h that your computer can represent, and find the slope using this formula.
 
 ## Gradient Descent
 
@@ -35,7 +39,21 @@ Gradient descent is the algorithm described at the beginning of the post, and on
 	until f'(x) <= EPSILON
     	x := x - ALPHA*f'(x)
 
+This graphic visually represents what gradient descent does. The black dot is the current location in each iteration, and the green dot is the calculated next location (using the slope at that point)
+
+![Gradient Descent]({{ site.url }}/resources/images/optimization/gradient_descent.gif){:.graphic-center}
+
 To prevent the code from running forever, the value of `EPSILON` determines what is considered a "zero" slope. Any `delta` value less than or equal to `EPSILON` is considered 0. The value `ALPHA` is the step size, or learning rate. It determines how long of a step the computer takes in any given iteration. If the computer takes a big step, it may miss the minimum, or could get stuck bouncing back and forth above the minimum without ever reaching it. If the step size is small, the algorithm may take way too long to reach the minimum and could even stop moving altogether. There's no proper tweak to these numbers that works for all occasions, and they could be provided as function parameters.
+
+### Computing Slopes in Multiple Dimensions: The Gradient Vector
+
+So now we may want to try a function of more than one variable. How do we do that? Going back to the mountain example, if we step in one direction (say towards the peak), we may ascend very quickly, but if we go in another direction, like across the mountain, we may not ascend that far at all. So our slope is based on direction. It turns out, there are mathematical objects that can represent directions: vectors!
+
+	x := given
+	h := given
+	f'(x) := zero vector of length == x
+	for the i'th value in x
+		f'(x)[i] = (f(x[i] + h) - f(x[i]))/h
 
 There is however, more information that we can obtain from a function at a point aside from a gradient (various forms of the second derivative, the gradient convergence etc.). Could we use this information to take bigger, more precise steps, compared to gradient descent? What other kinds of algorithms can we implement with this new information?
 
@@ -55,17 +73,29 @@ The formula for a linear approximation is `L(x) = f(x0) + f'(x0)*(x - x0)`, wher
 	until f(x) <= EPSILON
 		x := x - ALPHA*f(x)/f'(x)
 
+Again, this can be graphically represented. In this animation, the yellow line represents the linear approximation at each iteration, and the yellow dot represents the approximated zero point.
+
+![Newton's Method for Zeros]({{ site.url }}/resources/images/optimization/newtons_method_for_zeros.gif){:.graphic-center}
+
 In this algorithm, `EPSILON` is what is considered close enough to zero, and `ALPHA` is the step size to travel in, all to prevent the program from potentially running forever.
 
 ### Finding Minima
 
 Now that we know how to use Newton's method to find the zeros of a function, we can extend this algorithm to minima. Instead of taking a linear approximation, we use a _quadratic_ approximation, which involves the second derivative. The formula for a quadratic approximation is `Q(x) = f(x0) + f'(x0)*(x - x0) + 1/2*f''(x0)*(x - x0)^2`. If you take the derivative of this function, you get `Q'(x) = f'(x0) - f''(x0)*(x - x0)`. The minimum is then simply the zero of this derivative. Again, doing some algebra, we get `x = x0 - f'(x0)/f''(x0)`. We use this formula to travel to the minimum of the approximation, then we take the quadratic approximation the function, take the derivative of the approximation, and find the next minimum using the formula.
 
-But this function uses the second derivative. How do we calculate that?
+In this graphic, the blue curve is representing the quadratic approximation, and it ends at the approximated minima in each iteration.
+
+![Newton's Method for Minima]({{ site.url }}/resources/images/optimization/newtons_method_for_minimization.gif){:.graphic-center}
+
+Side Note on This Algorithm: it not only finds the minumum, it also finds maximum and saddle points, since all of these have a derivative of 0. Basically, it will converge to the nearest critical point depending on where you start. This is an example of the algorithm finding a maximum.
+
+![Newton's Method for Maxima]({{ site.url }}/resources/images/optimization/newtons_method_for_maximization.gif){:.graphic-center}
+
+So now we want to figure out how to do this in multiple variables. But this function uses the second derivative. How do we calculate that in multiple variables?
 
 ### The Hessian Matrix
 
-The Hessian is a representation of the second derivative of a function. Each ij element of the matrix is the mixed partial derivative of the function with respect to the i'th value of x and the j'th value of x. You can take the inverse of this matrix and multiply this inverse with the gradient vector to get the vector form of `f'(x)/f''(x)`, or more specifically `f'(x)*f''(x)^'1`.
+The Hessian is a representation of the second derivative of a function. Each ij element of the matrix is the mixed partial derivative of the function with respect to the i'th value of x and the j'th value of x. You can take the inverse of this matrix and multiply this inverse with the gradient vector to get the vector form of `f'(x)/f''(x)`, or more specifically `f''(x)^1*f'(x)`.
 
 ### Creating the Optimization Algorithm
 
@@ -73,36 +103,35 @@ Now that we know how to calculate the minima of a quadratic approximation of a f
 
 	x := random
 	until f'(x) <= EPSILON
-		x := x - ALPHA*f'(x)*f''(x)^-1
+		x := x - ALPHA*f''(x)^-1*f'(x)
 
 ## Dealing with Large Input Sets
 
-A common limitation of these classical optimization algorithms is that, because of how they're implemented, they become painfully slow when they're computing functions of larger input sets. Nowdays, we may need to calculate functions of hundereds or even thousands of variables. For example, we may be processing 1920x1080 images to determine if they contain a bird or not. A function to calculate these images have about 2 million different variables.
+A common limitation of these classical optimization algorithms is that, because of how they're implemented, they become painfully slow when they're computing functions of larger input sets. Nowdays, we may need to calculate functions of hundereds or even thousands of variables. For example, we may be processing 1920x1080 images to determine if they contain a bird or not. A function that represents these images can have about 2 million different variables.
 
-There are modifications to these algorithms which work more effectively with larger variable sets.
+Fortunately, there are modifications to these algorithms which work more effectively with larger variable sets.
 
 ### Stochastic Gradient Descent
 
-One of the limitations of gradient descent is that it computes every single gradient before making a step. Now, this may not be a problem if you have few inputs, but for a function of hundreds or even thousands of inputs (like in machine learning), it can be impossibly slow to compute each of the many gradients and then take a step. Thus, a variant of gradient descenct, called Stochastic Gradient Descent, was invented. This approach takes a step every time a single gradient is calculated. It can be implemented using an index variable which increments every iteration. The gradient at that index is calculated, and a step in that direction is taken. All previously calculated gradients are stored in a vector which is used to determine when the general slope is level in all directions.
+One of the limitations of gradient descent is that it computes every single gradient before making a step. Now, this may not be a problem if you have few inputs, but it can be impossibly slow to compute each of possibly millions of gradients and then take a step. Thus, a variant of gradient descenct, called Stochastic Gradient Descent, was invented. This approach takes a step every time a single gradient is calculated. It can be implemented using an index variable which increments every iteration. The gradient at that index is calculated, and a step in that direction is taken. All previously calculated gradients are stored in a vector which is used to determine when the general slope is level in all directions.
 
 	x := random
 	f'(x) := zero vector of length == x
 	i := 0
 	until f'(x) <= EPSILON
-		x[i] := x[i] - ALPHA * f'(x)[i]
+		x[i] := x[i] - ALPHA*f'(x)[i]
 		i := (i + 1) % (length of x)
 
 The original Gradient Descent is now given the name Batch Gradient Descent, since it computes gradients in a batch.
 
 ### Quasi-Newton Algorithms
 
-The Hessian matrix is a square matrix, so the number of terms to be computed equals the square of the number of input variables. This means that if there is 2 million input variables (like an image), the Hessian matrix is would have 2 million million terms to compute for _every single iteration_. Even for beefier computers with advanced GPU's, that's a lot of work. However, the Hessian doesn't need to be computed in it's entirety. Quasi-Newton Algorithms are a family of algorithms that estimate the Hessian matrix, rather than directly computing it, at each iteration. Each algorithm has a unique way of estimating the Hessian at each iteration, instead of calculating every element.
+The Hessian matrix is a square matrix, so the number of terms to be computed equals the square of the number of input variables. This means that if there is 2 million input variables (like an image), the Hessian matrix is would have 2 million million terms to compute for _every single iteration_ in Newton's Method. Even for beefier computers with advanced GPU's, that's a ludicrous amount of work. However, the Hessian doesn't need to be computed in it's entirety. Quasi-Newton Algorithms are a family of algorithms that estimate the Hessian matrix, rather than directly computing it, at each iteration using only the gradient. Each algorithm has a unique way of estimating the Hessian at each iteration instead of calculating every element, but they all follow the general formula.
 
 	x := random
 	until f'(x) <= EPSILON
 		estimate f''(x)^-1
-		delta := f'(x)*f''(x)^-1
-		x := x - ALPHA * delta
+		x := x - ALPHA*f'(x)*f''(x)^-1
 
 ## There's Still a Problem
 
@@ -111,3 +140,9 @@ Let's go back to the mountain example, say you find where the slope is level and
 ## Addendum
 
 So the 'education' tag is something new that I'm trying. I learn a lot of things that I think are interesting to share. So this is a way for me to do that in a formatted manner. Let me know what you think and if you'd like to see more.
+
+---
+
+Image Credits:
+
+- Anshul Kharbana 2016 (using [Desmos Graphing Calculator](http://www.desmos.com))
