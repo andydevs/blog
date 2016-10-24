@@ -8,7 +8,7 @@ permalink: /about/
 
 I am a freelance programmer, a problem-solver, an avid learner, and an overall curious individual. I started learning how to code at the ripe age of 16. Not from a class, or any extracuricular program, but a website named [codecademy.com](http://www.codecademy.com). 
 
-Yes, I learned from a website. I see a stigma attached to that, but do I believe in online learning and all the things it can teach.
+Yes, I learned from a website. I see a stigma attached to that, but I do believe in online learning and all the things it can teach (I may write a blog post about it, if I haven't already).
 
 But aside, I've soon branched out of codecademy and started learning on my own. I've even taken a few programming classes in high school and college. Primarily, though, I'm self taught.
 
