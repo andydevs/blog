@@ -5,9 +5,9 @@ date:       2016-9-18
 categories: education
 ---
 
-Imagine, if you will, that you happen to be stuck on a mountain and would like to get down to the lodge at the lowest spot on the mountain. However, you are also unfortunately blindfolded, and can only "see" what you can feel with your feet. Nevermind how you got into this predicament. The first thing you would want to do is get down. How would you do that?
+Imagine, if you will, that you happen to be stuck on a mountainside and would like to get down to the lodge at the lowest spot in the valley. However, you are also unfortunately blindfolded, and can only "see" what you can feel with your feet. Nevermind how you got into this predicament. The first thing you would want to do is get down. How would you do that?
 
-What you could do is feel with your feet where the ground slopes down and step in that direction, doing so repeatedly until the ground feels level in all directions. If you take off your blindfold, you should've reached ground level where the lodge is.
+What you could do is feel with your feet where the ground slopes down and step in that direction, doing so repeatedly until the ground feels level in all directions. Theoretically, the ground will be level at the base of the valley. If you take off your blindfold, you should've reached ground level where the lodge is.
 
 This is the basis of gradient descent, one of many optimization algorithms. Just think of the mountain as any function of one or more input values, with your height on the mountain corresponding to the output of the function. Your computer starts at random inputs, a random spot on the mountain. It can't see anything beyond it's local patch of ground. It only figures out where it slopes down (by finding the gradient) and travels a little in that direction, until the slope is mostly level (or almost zero). When the algorithm finishes, the computer would've found the lowest point, or the minimum, of the function.
 

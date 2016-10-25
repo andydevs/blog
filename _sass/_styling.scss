@@ -20,6 +20,10 @@ $time: 0.5s;
     @include graphic;
     margin: 20pt;
     max-height: 250pt;
+
+    @include media-query($on-palm) {
+        margin: 10pt;
+    }
 }
 
 .graphic-right {
