@@ -15,7 +15,11 @@ Now you may be saying "Yes. This is the way we count numbers. Why are you tellin
 
 ## Roman Numerals
 
-One other number system you've come across is roman numerals, the fancy I's and V's and X's spread around old grandfather clocks and on the Big Ben.
+One other number system you've come across is roman numerals, the fancy I's and V's and X's spread around old grandfather clocks and on the Big Ben. The way this system works is that there is a symbol for every power of ten, and halfway between every power of ten: I is one, V is five, X is ten, L is fifty, C is one hundred, D is five hundred, and M is one thousand. To define a number, just place a combination of any amount of these components. For larger numbers placed before smaller ones, the value is the sum of these numbers. If a smaller number is placed before a larger one, the value is the smaller number subtracted from the larger number.
+
+For example, the decimal number 3548 in roman Numerals is MMMDXLVIII. This stands for three one thousands, one five hundred, fifty minus ten, one five, and three ones.
+
+For one, this system doesn't use position, so no need for zeros. But this system has many problems that are solved by the decimal system.
 
 ## Base Numbers
 
@@ -23,4 +27,4 @@ Notice how, in decimal, we're grouping every 10'th number. What if we, say, grou
 
 What if we tried a different number, say 5? We start at 0, and count: 1, 2, 3, 4... we move 5 over and make a group (10 is now 5).
 
-These are called base (or sometimes radix) numbers. For a base-n number, we have a set of n different symbols which represent n different values and create groups of n to represent a value. For example, the base-5 number 231 is actually 66 in decimal.
+These are called base (or sometimes radix) numbers. For a base-n number, we have count up to n and create groups of n to represent a value. For example, the base-5 number 231 is actually 66 in decimal.
