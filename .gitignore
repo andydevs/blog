@@ -1,35 +1,3 @@
-<<<<<<< HEAD
 _site
 .sass-cache
 .jekyll-metadata
-=======
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
->>>>>>> e8314f2614cf24041a566374f0a6f930997d4168
