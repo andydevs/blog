@@ -23,7 +23,7 @@ Primer's explanation is a bit more advanced.
 
 ### The "Science"
 
-Originally the time machine was meant to reduce the mass of whatever is inside. The clever engineers test this device on a toy Weeble, but the first time they try the device, the power levels become to large (over nine...just nine), and they blow a fuse or something.
+Originally the machine was meant to reduce the mass of whatever is inside. The clever engineers test this device on a toy Weeble, but the first time they try the device, the power levels become to large and they blow a fuse, abruptly stopping the experiment.
 
 After experimenting and modifying the machine a little (or a lot, as referenced by Abe's "look's like a dog digested it" remark), Aaron discovers something peculiar about the machine. He shows Abe that the machine is actually taking more power than is being supplied to it. He also disconnects the machine from the two car batteries powering the machine from it, and, to Abe's surprise, the machine keeps running, apparently under no power. It slows down eventually, but the implications are staggering. 
 

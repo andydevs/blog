@@ -9,9 +9,9 @@
 title: Andydevs
 email: andydevs1@gmail.com
 description: >
-  My website where I talk about things that I've learned and/or have 
-  interest in (which is mostly computer related). I also add updates
-  on projects that I'm working on
+  My website where I put updates on projects that I'm working on. 
+  I also write about things that I've learned and/or have 
+  interest in.
 baseurl: ""
 url: "http://localhost:4000"
 twitter_username: andydevs1
