@@ -27,7 +27,7 @@ Each fractal image being generated is represented by a `fractal` tag. Fractal fi
 
 Fractal objects must have a `save` attribute defined, which determines the location that the file is to be saved to. They can also have an `mbrot` attribute, a boolean that is true if the image being generated is the mandelbrot set, but defaults to false.
 
-The complex tag is optional and defaults to 0 + 0i (it is also ignored if the mbrot attribute is set to true). The real component of the complex is set by the real attribute, while the imaginary component is set by the imag attribute. These do not have to be both defined, i.e. `<complex real="-0.4"/> is also valid.
+The complex tag is optional and defaults to 0 + 0i (it is also ignored if the mbrot attribute is set to true). The real component of the complex is set by the real attribute, while the imaginary component is set by the imag attribute. These do not have to be both defined, i.e. `<complex real="-0.4"/>` is also valid.
 
 The size tag is required and must define a height and width component, which correspond to the height and width of the image to be generated.
 
