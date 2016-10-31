@@ -15,7 +15,7 @@ Each fractal image being generated is represented by a `fractal` tag. Fractal fi
 <fractal save="fractal.jpg">
 	<complex real="-0.4" imag="-0.6"/>
 	<size width="1920" height="1080"/>
-	<transform angle-"30" zoom="2">
+	<transform angle="30" zoom="2">
 		<offset real="-0.4" imag="-0.3"/>
 	</transform>
 	<colormap type="gradient">
