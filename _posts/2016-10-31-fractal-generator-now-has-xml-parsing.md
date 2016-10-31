@@ -29,9 +29,9 @@ Fractal objects must have a `save` attribute defined, which determines the locat
 
 The complex tag is optional and defaults to 0 + 0i (it is also ignored if the mbrot attribute is set to true). The real component of the complex is set by the real attribute, while the imaginary component is set by the imag attribute. These do not have to be both defined, i.e. `<complex real="-0.4"/>` is also valid.
 
-The size tag is required and must define a height and width component, which correspond to the height and width of the image to be generated.
+The size tag is required and must define `height` and `width` attributes, which correspond to the height and width of the image to be generated.
 
-The transform component defines the transformation of the image (the zoom, offset, and angle). The angle represented by the attribute `angle` (defaults to 0), and the zoom is represented by the attribute `zoom` (defaults to 1). The offset is represented by a child tag in the transform named offset. It is identical to the complex tag, in that it has `real` and `imag` attributes which define the real and imaginary components of the offset complex.
+The transform component defines the transformation of the image (the zoom, offset, and angle). The angle represented by the attribute `angle` (defaults to 0), and the zoom is represented by the attribute `zoom` (defaults to 1). The offset is defined by a child tag in the transform named `offset`. It is identical to the complex tag, in that it has `real` and `imag` attributes which define the real and imaginary components of the offset complex.
 
 Finally there is the colormap tag, which defines the colormap to use when generating the image. This can be defined in one of three ways. First off, the `type` attribute defines the type of colormap. There are two types: gradient and rainbow, each have their own children tags to define. 
 
@@ -59,8 +59,10 @@ Finally, you can set a preset colormap instead using the `preset` attribute. The
 <colormap preset="noir"/>
 ```
 
+Again, a list of available preset names can be viewed by typing `fractal -cmaps`.
+
 ## End Note
 
-I was putting this off for quite a while. I didn't really do anything with XML parsing before this, so I thought it would be quite a challenge, until I started on it. I was able to find an open C++ library (called pugixml) which allowed me to easily read xml documents and traverse xml tree structures (just like html in javascript, in fact). I could even iterate through xml tags with the same name and set default values for tags/attributes that wouldn't be defined. In short, I implemented the feature within a single weekend, so it wasn't as hard as I thought it would be. Things seem daunting until you try them.
+I was putting this off for quite a while. I didn't really do anything with XML parsing before this, so I thought it would be quite a challenge. That is until I started on it. I was able to find an open C++ library (called pugixml) which allowed me to easily read xml documents and traverse xml tree structures (just like html in javascript, in fact). I could even iterate through xml tags with the same name and set default values for tags/attributes that wouldn't be defined. In short, I implemented the feature within a single weekend, so it wasn't as hard as I thought it would be. Things seem daunting until you try them.
 
 Now, onto GPU acceleration...
