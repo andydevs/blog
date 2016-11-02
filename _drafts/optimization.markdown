@@ -63,7 +63,7 @@ The formula for a linear approximation is `L(x) = f(x0) + f'(x0)*(x - x0)`, wher
 	until f(x) <= EPSILON
 		x := x - ALPHA*f(x)/f'(x)
 
-Again, this can be graphically represented. In this animation, the yellow line represents the linear approximation at each iteration, and the yellow dot represents the approximated zero point.
+Again, this can be graphically represented. In this animation, the yellow line represents the linear approximation at each iteration, and the yellow dot represents the next point calculated by the algorithm.
 
 ![Newton's Method for Zeros]({{ site.url }}/resources/images/optimization/newtons_method_for_zeros.gif){:.graphic-center}
 
