@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entry>
+	<name>saree</name>
+	<colormap type="rainbow">
+		<phase r='2' g='3' b='4'/>
+		<freq r='1.4' g='1.4' b='1.4'/>
+	</colormap>
+</entry>
+
+<entry>
+	<name>flower</name>
+	<colormap type="rainbow">
+		<phase r='-2' g='-1' b='-1'/>
+		<freq r='0.7' g='0.7' b='0.7'/>
+	</colormap>
+</entry>
+
+<entry>
+	<name>glow</name>
+	<colormap type="rainbow">
+		<phase r='4' g='4' b='4'/>
+		<freq r='0' g='0' b='5'/>
+	</colormap>
+</entry>
+
+<entry>
+	<name>psychedelic</name>
+	<colormap type="rainbow">
+		<phase r='4.1' g='4.5' b='5'/>
+		<freq r='5' g='5' b='5'/>
+	</colormap>
+</entry>
+
+<entry>
+	<name>fruity</name>
+	<colormap type="rainbow">
+		<phase r='0' g='4.5' b='2.5'/>
+		<freq r='5' g='5' b='5'/>
+	</colormap>
+</entry>
+
+<entry>
+	<name>noir</name>
+	<colormap type="gradient">
+		<start>0x000000</start>
+		<end>0xffffff</end>
+	</colormap>
+</entry>
+
+<entry>
+	<name>ink</name>
+	<colormap type="gradient">
+		<start>0xffffff</start>
+		<end>0x000000</end>
+	</colormap>
+</entry>
+
+<entry>
+	<name>lightning</name>
+	<colormap type="gradient">
+		<start>0x000000</start>
+		<end>0x99ddff</end>
+	</colormap>
+</entry>
+
+<entry>
+	<name>greenlight</name>
+	<colormap type="gradient">
+		<start>0x061700</start>
+		<end>0x52c234</end>
+	</colormap>
+</entry>
+
+<entry>
+	<name>redlight</name>
+	<colormap type="gradient">
+		<start>0x000000</start>
+		<end>0xe74c3c</end>
+	</colormap>
+</entry>
+
+<entry>
+	<name>shadownight</name>
+	<colormap type="gradient">
+		<start>0x000000</start>
+		<end>0x774b9b</end>
+	</colormap>
+</entry>
+
+<entry>
+	<name>drexel</name>
+	<colormap type="gradient">
+		<start>0x002f6c</start>
+		<end>0xffc600</end>
+	</colormap>
+</entry>

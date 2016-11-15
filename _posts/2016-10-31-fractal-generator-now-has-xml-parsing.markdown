@@ -48,7 +48,7 @@ The rainbow type computes three sinusoidal functions for the red green and blue 
 
 ```xml
 <colormap type="rainbow">
-	<phase r="0.2" g="1.5", b="5.4"/>
+	<phase r="0.2" g="1.5" b="5.4"/>
 	<freq r="2" g="1" b="4"/>
 </colormap>
 ```
