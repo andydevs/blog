@@ -7,7 +7,7 @@ categories: updates
 
 Well that took forever!
 
-Yes! General 2.0 is finally on RubyGems. Here are the new Features:
+Yes! General 2.0 is finally on RubyGems. Here's a summary of the new Features:
 
 ## General IO PrePartials!
 
@@ -71,11 +71,11 @@ Resulting File
 
 You can now pass arguments to operations to modify their behavior!
 
-For example: `@(name -> capitalize first)` will capitalize the first letter of the first word in the string, whereas `@(name -> capitalize all)` will capitalize the first letter of every word in the string.
+For example: `@(name -> capitalize first)` will capitalize the first letter of the first word in the string, whereas `@(name -> capitalize all)` will capitalize the first letter of every word in the string. You can also pass a GTimeFormat to the time operation to specify the format of time `@(time -> time '@MM:@SS @HH')`.
 
 ## To-Array Operations (and the Full Placeholder)
 
-Now you can pass regular data into special operation that turn the data into arrays, which can be used by array templates with the new Full Placeholder `@#`! This passes in a string representation of the entire data set, convenient for to-array operations!
+Now you can pass regular data into special operations that turn the data into arrays, which can be used by array templates with the new Full Placeholder `@#`! This passes in a string representation of the entire data set, convenient for to-array operations!
 
 	@[groceries -> split]
 		I need to get some @#!
@@ -95,7 +95,7 @@ Like in HTML, special characters can be written as `@[code];`, to avert confusio
 
 ## Conclusion
 
-Details on these features can be found on the README.md (and the main website soon). 
+Details on these features can be found on the [main webpage](http://andydevs.github.io/general) for General.
 
 One last note: You know when you think of making something, and you try to make it not knowing if it's going to work or not, and it doesn't work... and now you're left with a tray of unbaked cake batter in the oven which couldn't rise properly because you put too many eggs in? Well, hidden in the unit tests and the source code are leftover batter lumps of a failed cake of my own. These are the `regex` and `match` methods found in the templates and placeholders.
 
