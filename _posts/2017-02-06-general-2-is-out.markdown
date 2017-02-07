@@ -7,7 +7,7 @@ categories: updates
 
 Well that took forever!
 
-Yes! General 2.0 is finally on RubyGems. Here's a summary of the new Features:
+Yes! General 2.0 is finally on RubyGems. Here's a summary of the new features:
 
 ## General IO PrePartials!
 
