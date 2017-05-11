@@ -44,6 +44,6 @@ Space-travel for example. Think of the economic boom you could create by allowin
 
 Isn't that so much cooler?
 
-Government regulations and lack of enthusiasm from the public says otherwise, as the majority opinion is on the lines of "we don't care". Even Elon Musk, the founder of SpaceX, is talking about "merging with machines", and "living in virtual worlds".
+Oh, come on, Andy! "Space Travel"? That's science fiction stuff! Lets instead build an ultra machine that will destroy our very existence and sense of importance. Now _that's_ realistic!
 
-Oh, come on, Andy! "Space Travel"? That's science fiction stuff! Think realistically! Lets instead build an ultra machine that will destroy our very existence and sense of importance. Now _that's_ realistic!
+Maybe I'm reading to deep into it.
