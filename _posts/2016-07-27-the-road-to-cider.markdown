@@ -5,11 +5,13 @@ date:       2016-07-26 21:17
 categories: updates
 ---
 
-Note: The actual name is subject to change, but I'm still calling it Cider even though that name was taken on RubyGems. 
+UPDATE 9/16/2017: Cider is off the drawing board for now...
+
+Note: The actual name is subject to change, but I'm still calling it Cider even though that name was taken on RubyGems.
 
 It will always be Cider in my heart for as long as I live.
 
-I don't like IDE's. They're big programs with clunky UI's that take up way to much RAM, work very slowly, and don't have much in the way of customizabiltiy, since they tend to be designed for specific types of projects. After working with C++ projects (compilers, makefiles and project directories) outside of IDE's, I eventually came up with Cider. 
+I don't like IDE's. They're big programs with clunky UI's that take up way to much RAM, work very slowly, and don't have much in the way of customizabiltiy, since they tend to be designed for specific types of projects. After working with C++ projects (compilers, makefiles and project directories) outside of IDE's, I eventually came up with Cider.
 
 Cider is a lightweight, command line based IDE that uses Ruby scripts to automate project tasks like file manipulation, builds, and version control. The purpose was that you can use your own text editor and configure Cider to use whatever build system, version control system, and style of programming that you like, without going through tons of confusing menus and options. I came up with several ideas for Cider, like new templating engines, project management libraries, and newer concepts like interface definition languages. However, I realized these could be used for other Ruby projects, so I decided that I can implement these as separate gems and then pull them all together into Cider (or whatever I decide to call it).
 

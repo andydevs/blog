@@ -5,6 +5,8 @@ date:       2017-2-6
 categories: updates
 ---
 
+UPDATE 9/16/2017: General is gonna go on the backburner for now. I'll still keep it up, since I know people are using it, but don't expect updates.
+
 Well that took forever!
 
 Yes! General 2.0 is finally on RubyGems. Here's a summary of the new features:
@@ -38,7 +40,7 @@ Resulting File
 You can also extend other files using `@@extend [filename]`, which will wrap the content of that file at the `@@yield` around the extending file, like so:
 
 File to Extend
-	
+
 	<!doctype html>
 	<html>
 	<title>@(title -> capitalize all)</title>

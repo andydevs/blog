@@ -5,6 +5,8 @@ date:       2016-11-15
 categories: updates
 ---
 
+UPDATE 9/16/2017: The IDE idea has been scrapped for now. Gonna focus on other projects.
+
 I've been working on (or putting off, to be honest), building a lightweight, open, and customizable IDE in Ruby. I've been currently making components of this IDE as RubyGems which handle templating ([General](https:/andydevs.github.io/general)) and file management ([Roject](https://andydevs.github.io/roject)).
 
 But now I've been thinking, what if I made the IDE in Python?
