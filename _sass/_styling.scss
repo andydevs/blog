@@ -19,7 +19,7 @@ $time: 0.5s;
 @mixin graphic-side {
     @include graphic;
     margin: 20pt;
-    max-height: 250pt;
+    max-height: 100pt;
 
     @include media-query($on-palm) {
         margin: 10pt;
