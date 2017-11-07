@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Python Decorators Are the Shit"
+title: "The Single Most Beautiful Piece of Syntax Ever Made"
 date: "2017-11-07 11:58:02 -0500"
 categories: article
 ---
