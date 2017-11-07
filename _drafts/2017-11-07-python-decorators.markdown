@@ -7,7 +7,7 @@ categories: article
 
 ## The Problem
 
-Let's say you're writing some nice functions:
+Let's say you're writing some nice functions in python:
 
 ```python
 def factorial(n):
@@ -411,7 +411,11 @@ class MyClass:
 # Registry now has 'MyClass': <class 'MyClass'>
 ```
 
-The possibilities are endless!
+And yes, `@classmethod`, `@staticmethod`, and `@property` are just examples of decorators.
+
+## To Sum Up...
+
+The true core of decorators is a combination of modular functionality and metaprogramming to create more expressive, concise, and powerful code. It's just one of the many reasons why I think Python is such an amazing language to code in, and it's something that I hope other languages (**cough**Java**cough**) can learn from and adopt.
 
 ## Footnote: Preserving Properties of the Wrapped Function
 
@@ -474,6 +478,37 @@ def factorial(n):
     """
     if n == 0: return 1
     else: return n*factorial(n-1)
+
+factorial.__doc__ # is still "Computes the factorial of n"
+```
+
+The decorator constructor `wraps` is an implementation of `update_wrapper` (also provided in `functools`), which takes the wrapped object and the wrapper object, and transfers properties accordingly. This can be used in class-constructor decorators.
+
+```python
+from functools import update_wrapper # Import this
+
+class BetterFunction:
+    def __init__(self, func):
+        self._func = func
+        update_wrapper(self, func) # Add this here
+
+    def __call__(*args, **kwargs):
+        self._func(*args, **kwargs)
+
+    def map(self, array):
+        return [self._func(elem) for elem in array]
+
+@BetterFunction
+def factorial(n):
+    """
+    Computes the factorial of n
+    """
+    if n == 0: return 1
+    else: return n*factorial(n-1)
+
+# factorial is now an instance of BetterFunction
+
+factorial.map([1, 2, 3, 4, 5]) # [1, 2, 6, 24, 120]
 
 factorial.__doc__ # is still "Computes the factorial of n"
 ```
