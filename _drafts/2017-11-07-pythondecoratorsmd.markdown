@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "The Single Most Beautiful Piece of Syntax Ever Made"
+title: "The Single Most Beautiful Piece of Syntax Ever Invented"
 date: "2017-11-07 11:58:02 -0500"
 categories: article
 ---
@@ -200,7 +200,7 @@ def elementwise(func):
     return elementwise_wrapper
 ```
 
-Here we define a function into which we pass a function and then get another function. This function takes in a value and checks if it's a list. If it is, it calls the given function on each element of that list and returns the list. Otherwise, it just calls the given function on the value. We say that this function "wraps" the elementwise code around the given function. Hence, it's called a "wrapper". Wrappers are insanely useful at creating modular code which we can add to functions.
+This brings us to the first part of that fancy new code. Here we define a function into which we pass a function and then get another function. This function takes in a value and checks if it's a list. If it is, it calls the given function on each element of that list and returns the list. Otherwise, it just calls the given function on the value. We say that this function "wraps" the elementwise code around the given function. Hence, it's called a "wrapper". Wrappers are insanely useful at creating modular code which we can add to functions.
 
 So now we can add this wrapper to all of our functions like this:
 
@@ -235,9 +235,9 @@ def cos(x):
 cos = elementwise(cos)
 ```
 
-Our functions are back to being nice again! All thanks to the wonderful properties of first-class closure wrapper functions.
+And with that, our functions are back to being nice again! All thanks to the wonderful properties of first-class closure wrapper functions.
 
-But oh no, my friend, python does not stop there. This code isn't pretty enough! Python has a better way of writing this.
+But oh no, my friend, python does not stop there. This code isn't pretty enough! We have a better way of writing this.
 
 ## BOOM! Decorators!
 
@@ -272,7 +272,7 @@ def cos(x):
     return sum((-1**n)*x*(2*n)/factorial(2*n) for n in range(1000))
 ```
 
-Nothing major happened. This is literally shorthand for what we just did. All the `@` says is "Take the below function, call the decorating function on it, and save the result to the same variable". That's it!
+Nothing major happened. This is literally shorthand for what we just did. All the `@` says is "Take the below function, call the wrapper function on it, and save the result to the same variable". That's it!
 
 Is this not the single most beautiful piece of syntax ever invented?
 
