@@ -91,13 +91,19 @@ What if we did this?
 
 ```python
 def elementwise(func):
-
+    """
+    Adds elementwise functionality to the function
+    """
     def elementwise_wrapper(val):
+        """
+        Elementwise wrapper
+        """
         if type(val) is list:
             return [func(elem) for elem in val]
         else:
             return func(val)
 
+    # Return wrapper
     return elementwise_wrapper
 
 def factorial(n):
@@ -190,13 +196,19 @@ We can pass a function into another function.
 
 ```python
 def elementwise(func):
-
+    """
+    Adds elementwise functionality to the function
+    """
     def elementwise_wrapper(val):
+        """
+        Elementwise wrapper
+        """
         if type(val) is list:
             return [func(elem) for elem in val]
         else:
             return func(val)
 
+    # Return wrapper
     return elementwise_wrapper
 ```
 
@@ -345,7 +357,7 @@ def factorial(n):
 factorial(5) # Returns (5!)*3 = 360
 ```
 
-And this doesn't just work for functions. It works for all callables in python! Basically, anything that you "call" with a function, and that returns a thing, can be a decorator.
+And this doesn't just work for functions. It works for all callables in python! Basically, anything that you "call" with a function can be a decorator.
 
 You can create a decorator from a class constructor
 
@@ -397,4 +409,71 @@ class MyClass:
         self._arg = arg
 
 # Registry now has 'MyClass': <class 'MyClass'>
+```
+
+The possibilities are endless!
+
+## Footnote: Preserving Properties of the Wrapped Function
+
+Note that, since you are creating a new object from the original function/class, you may be overwriting properties like documentation and argument specs.
+
+```python
+def elementwise(func):
+    """
+    Adds elementwise functionality to the function
+    """
+    def elementwise_wrapper(val):
+        """
+        Elementwise wrapper
+        """
+        if type(val) is list:
+            return [func(elem) for elem in val]
+        else:
+            return func(val)
+
+    # Return wrapper
+    return elementwise_wrapper
+
+@elementwise
+def factorial(n):
+    """
+    Computes the factorial of n
+    """
+    if n == 0: return 1
+    else: return n*factorial(n-1)
+
+factorial.__doc__ # is now "Elementwise wrapper", Not "Computes the factorial of n" like we want it to be
+```
+
+The way to get around this is to use a proprietary decorator constructor called `wraps` (provided in the `functools` module), that takes the wrapped function as a parameter and overwrites the properties of the wrapper with those of the wrapping function
+
+```python
+from functools import wraps # Import this
+
+def elementwise(func):
+    """
+    Adds elementwise functionality to the function
+    """
+    @wraps(func) # Add this
+    def elementwise_wrapper(val):
+        """
+        Elementwise wrapper
+        """
+        if type(val) is list:
+            return [func(elem) for elem in val]
+        else:
+            return func(val)
+
+    # Return wrapper
+    return elementwise_wrapper
+
+@elementwise
+def factorial(n):
+    """
+    Computes the factorial of n
+    """
+    if n == 0: return 1
+    else: return n*factorial(n-1)
+
+factorial.__doc__ # is still "Computes the factorial of n"
 ```
