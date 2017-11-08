@@ -291,9 +291,9 @@ Is this not the single most beautiful piece of syntax ever invented?
 Do you want to add another decorator? You can do that! Let's make another wrapper which can parse string arguments
 
 ```python
-def from_string(func):
+def parse_string(func):
 
-    def from_string_wrapper(val):
+    def parse_string_wrapper(val):
         if type(val) is str:
             if '.' in val or 'e' in val or 'E' in val:
                 return str(func(float(val)))
@@ -303,14 +303,14 @@ def from_string(func):
             return func(val)
 
     # Return wrapper
-    return from_string_wrapper
+    return parse_string_wrapper
 ```
 
 Now you can add two decorators at once!
 
 ```python
 @elementwise
-@from_string
+@parse_string
 def factorial(n):
     """
     Computes the factorial of n
@@ -328,7 +328,7 @@ def factorial(n):
     """
     if n == 0: return 1
     else: return n*factorial(n-1)
-factorial = from_string(factorial)
+factorial = parse_string(factorial)
 factorial = elementwise(factorial)
 ```
 
@@ -421,11 +421,11 @@ The true core of decorators is a combination of modular functionality and metapr
 
 ### What order should you apply your decorators?
 
-You may have noticed that I placed the `from_string` decorator under the `elementwise` decorator. This is because `elementwise` is to be called first, checking if the value is an array, and then unpacking it. Then `from_string` is called, checking if the value is a numerical string.
+You may have noticed that I placed the `parse_string` decorator under the `elementwise` decorator. This is because `elementwise` is to be called first, checking if the value is an array, and then unpacking it. Then `parse_string` is called, checking if the value is a numerical string.
 
 ```python
 @elementwise # Called first
-@from_string # Called next
+@parse_string # Called next
 def exp(x):
     """
     Computes the exponential of n
@@ -441,7 +441,7 @@ exp([0.1, 2, '0.5', '4']) # Works
 If they were placed in the opposite order, the function will first check if the value is a string, and then check if it's an array. This wouldn't pick up on string elements within an array, for example.
 
 ```python
-@from_string # Called first
+@parse_string # Called first
 @elementwise # Called next
 def exp(x):
     """
@@ -464,7 +464,7 @@ def exp(x):
         val = []
         for xi in x:
 
-            # from_string wrapper
+            # parse_string wrapper
             if type(xi) is str:
                 if '.' in xi or 'e' in xi or 'E' in xi:
                     # function
@@ -479,7 +479,7 @@ def exp(x):
         return val
     else:
 
-        # from_string wrapper
+        # parse_string wrapper
         if type(x) is str:
             if '.' in x or 'e' in x or 'E' in x:
                 # function
