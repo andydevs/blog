@@ -190,9 +190,30 @@ greet('George') # prints 'We meet again, George'
 greet('Dave') # prints 'We meet again, Dave'
 ```
 
-Using these tools, we can create function factories that can return functions which share similar functionality. This is cool enough on it's own, but we can do more.
+Using these tools, we can create what's called a function factory, that can take some parameters and return a function generated from those parameters.
 
-We can pass a function into another function.
+```python
+def create_linear_function(scale, add):
+    """
+    Creates simple y = m*x + b linear functions
+    """
+    def linear(val):
+        return scale*val + add
+
+    return linear
+
+# Generated functions
+linear2_1 = create_linear_function(2, 1)
+linear3_2 = create_linear_function(3, 2)
+
+print(linear2_1(3)) # prints 7
+print(linear2_1(2.1)) # prints 5.2
+print(linear3_2(2.1)) # prints 8.3
+```
+
+This is cool enough on it's own, but we can do more.
+
+We can create function factories with function parameters.
 
 ```python
 def elementwise(func):
@@ -212,7 +233,30 @@ def elementwise(func):
     return elementwise_wrapper
 ```
 
-This brings us to the first part of that fancy new code. Here we define a function into which we pass a function and then get another function. This function takes in a value and checks if it's a list. If it is, it calls the given function on each element of that list and returns the list. Otherwise, it just calls the given function on the value. We say that this function "wraps" the elementwise code around the given function. Hence, it's called a "wrapper". Wrappers are insanely useful at creating modular code which we can add to functions.
+This brings us to the first part of that fancy new code. Here we define a function factory into which takes a function and then generates another function from it. The generated function takes in a value and checks if it's a list. If it is, it calls the given function on each element of that list and returns the list. Otherwise, it just calls the given function on the pure value.
+
+We say that this function "wraps" the elementwise code around the given function. Hence, it's called a "wrapper".
+
+```python
+# Here's our original function
+def cool_function(x):
+    return 2*x**2 + 3
+
+# Elementwise wraps code around the original function
+even_cooler_function = elementwise(cool_function)
+
+# Creating this:
+def even_cooler_function(x):
+    # Elementwise wrap
+    if type(x) is list:
+        # Original function
+        return [2*xi**2 + 3 for xi in x]
+    else:
+        # Original function
+        return 2*x**2 + 3
+```
+
+Wrappers are insanely useful at creating modular code which we can add to functions.
 
 So now we can add this wrapper to all of our functions like this:
 
@@ -458,6 +502,16 @@ exp([1, 2.3, '2e3']) # Doesn't work!
 Remember, these are wrapper functions. You can think of them like nesting Russian dolls. The outermost decorator wraps around the inner decorators and is called first. The hard-coded version of the function would be something like this:
 
 ```python
+# This:
+@elementwise
+@parse_string
+def exp(x):
+    """
+    Computes the exponential of n
+    """
+    return sum((x**n)/factorial(n) for n in range(1000))
+
+# Creates this:
 def exp(x):
     # elementwise wrapper
     if type(x) is list:
