@@ -417,7 +417,84 @@ And yes, `@classmethod`, `@staticmethod`, and `@property` are just examples of d
 
 The true core of decorators is a combination of modular functionality and metaprogramming to create more expressive, concise, and powerful code. It's just one of the many reasons why I think Python is such an amazing language to code in, and it's something that I hope other languages (**cough**Java**cough**) can learn from and adopt.
 
-## Footnote: Preserving Properties of the Wrapped Function
+## Footnotes
+
+### What order should you apply your decorators?
+
+You may have noticed that I placed the `from_string` decorator under the `elementwise` decorator. This is because `elementwise` is to be called first, checking if the value is an array, and then unpacking it. Then `from_string` is called, checking if the value is a numerical string.
+
+```python
+@elementwise # Called first
+@from_string # Called next
+def exp(x):
+    """
+    Computes the exponential of n
+    """
+    return sum((x**n)/factorial(n) for n in range(1000))
+
+exp(2) # Works
+exp('2.3') # Works
+exp([0.1, 2]) # Works
+exp([0.1, 2, '0.5', '4']) # Works
+```
+
+If they were placed in the opposite order, the function will first check if the value is a string, and then check if it's an array. This wouldn't pick up on string elements within an array, for example.
+
+```python
+@from_string # Called first
+@elementwise # Called next
+def exp(x):
+    """
+    Computes the exponential of n
+    """
+    return sum((x**n)/factorial(n) for n in range(1000))
+
+exp(2) # Works
+exp('2.3') # Works
+exp([0.1, 2]) # Works
+exp([1, 2.3, '2e3']) # Doesn't work!
+```
+
+Remember, these are wrapper functions. You can think of them like nesting Russian dolls. The outermost decorator wraps around the inner decorators and is called first. The hard-coded version of the function would be something like this:
+
+```python
+def exp(x):
+    # elementwise wrapper
+    if type(x) is list:
+        val = []
+        for xi in x:
+
+            # from_string wrapper
+            if type(xi) is str:
+                if '.' in xi or 'e' in xi or 'E' in xi:
+                    # function
+                    val.append(str(sum((float(xi)**n)/factorial(n) for n in range(1000))))
+                else:
+                    # function
+                    val.append(str(sum((int(xi)**n)/factorial(n) for n in range(1000))))
+            else:
+                # function
+                val.append(sum((xi**n)/factorial(n) for n in range(1000)))
+
+        return val
+    else:
+
+        # from_string wrapper
+        if type(x) is str:
+            if '.' in x or 'e' in x or 'E' in x:
+                # function
+                return str(sum((float(x)**n)/factorial(n) for n in range(1000)))
+            else:
+                # function
+                return str(sum((int(x)**n)/factorial(n) for n in range(1000)))
+        else:
+            # function
+            return sum((x**n)/factorial(n) for n in range(1000))
+```
+
+Sure makes you appreciate the power of decorators, don't it?
+
+### Preserving Properties of the Wrapped Function
 
 Note that, since you are creating a new object from the original function/class, you may be overwriting properties like documentation and argument specs.
 
