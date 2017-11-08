@@ -233,7 +233,7 @@ def elementwise(func):
     return elementwise_wrapper
 ```
 
-This brings us to the first part of that fancy new code. Here we define a function factory into which takes a function and then generates another function from it. The generated function takes in a value and checks if it's a list. If it is, it calls the given function on each element of that list and returns the list. Otherwise, it just calls the given function on the pure value.
+This brings us to the first part of that fancy new code. Here we define a function factory which takes a function and generates another function from it. The generated function takes in a value and checks if it's a list. If it is, it calls the given function on each element of that list and returns the list. Otherwise, it just calls the given function on the pure value.
 
 We say that this function "wraps" the elementwise code around the given function. Hence, it's called a "wrapper".
 
