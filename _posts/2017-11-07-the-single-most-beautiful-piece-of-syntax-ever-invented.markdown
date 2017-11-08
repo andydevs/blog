@@ -336,8 +336,13 @@ Do you want to add another decorator? You can do that! Let's make another wrappe
 
 ```python
 def parse_string(func):
-
+    """
+    Adds numerical string parsing to the function
+    """
     def parse_string_wrapper(val):
+        """
+        Parse string wrapper function
+        """
         if type(val) is str:
             if '.' in val or 'e' in val or 'E' in val:
                 return str(func(float(val)))
@@ -380,8 +385,17 @@ Let's go even more meta and create a decorator factory. For example, what if we 
 
 ```python
 def scale(r):
+    """
+    Creates a scale wrapper which scales the output of the function by r
+    """
     def scalar(func):
+        """
+        Scales the output of the function
+        """
         def scalar_wrapper(val):
+            """
+            Scalar wrapper.
+            """
             return r*func(val)
         return scalar_wrapper
     return scalar
