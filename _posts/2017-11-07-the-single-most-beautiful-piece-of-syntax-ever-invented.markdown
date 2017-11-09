@@ -3,6 +3,7 @@ layout: post
 title: "The Single Most Beautiful Piece of Syntax Ever Invented"
 date: "2017-11-07 15:23:12 -0500"
 categories: article
+keywords: python decorators python3 metaprogramming
 ---
 
 ## The Problem

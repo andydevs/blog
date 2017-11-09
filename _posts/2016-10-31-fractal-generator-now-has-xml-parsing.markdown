@@ -3,6 +3,7 @@ layout:     post
 title:      Fractal Generator Now Has XML Processing
 date:       2016-10-31
 categories: updates
+keywords: fractal c xml
 ---
 
 You can now run the fractal generator with an xml file containing all of the information of the fractals being generated to the program, rather than put the info in manually! Just type `fractal -xml [your xml file]` in the command line!
@@ -33,7 +34,7 @@ The size tag is required and must define `height` and `width` attributes, which 
 
 The transform component defines the transformation of the image (the zoom, offset, and angle). The angle represented by the attribute `angle` (defaults to 0), and the zoom is represented by the attribute `zoom` (defaults to 1). The offset is defined by a child tag in the transform named `offset`. It is identical to the complex tag, in that it has `real` and `imag` attributes which define the real and imaginary components of the offset complex.
 
-Finally there is the colormap tag, which defines the colormap to use when generating the image. This can be defined in one of three ways. First off, the `type` attribute defines the type of colormap. There are two types: gradient and rainbow, each have their own children tags to define. 
+Finally there is the colormap tag, which defines the colormap to use when generating the image. This can be defined in one of three ways. First off, the `type` attribute defines the type of colormap. There are two types: gradient and rainbow, each have their own children tags to define.
 
 The gradient type linearly interpolates between two given color values. The gradient requires that a `start` and `end` tag be defined, which color values as integers. These are the start and end color values respectfully.
 
@@ -53,7 +54,7 @@ The rainbow type computes three sinusoidal functions for the red green and blue 
 </colormap>
 ```
 
-Finally, you can set a preset colormap instead using the `preset` attribute. The value of the attribute is the name of the preset, and this attribute supercedes all other options, i.e. if the preset is set, the colormap will be set to the preset, and not be defined by any other parameters set. 
+Finally, you can set a preset colormap instead using the `preset` attribute. The value of the attribute is the name of the preset, and this attribute supercedes all other options, i.e. if the preset is set, the colormap will be set to the preset, and not be defined by any other parameters set.
 
 ```xml
 <colormap preset="noir"/>
