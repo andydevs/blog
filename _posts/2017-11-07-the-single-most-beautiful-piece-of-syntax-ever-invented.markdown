@@ -28,7 +28,7 @@ def sin(x):
     """
     Computes the sin of x
     """
-    return sum((-1**(n-1))*x**(2*n+1)/factorial(2*n+1) for n in range(1000))
+    return sum((-1**n)*x**(2*n+1)/factorial(2*n+1) for n in range(1000))
 
 def cos(x):
     """
@@ -126,7 +126,7 @@ def sin(x):
     """
     Computes the sin of x
     """
-    return sum((-1**(n-1))*x**(2*n+1)/factorial(2*n+1) for n in range(1000))
+    return sum((-1**n)*x**(2*n+1)/factorial(2*n+1) for n in range(1000))
 sin = elementwise(sin)
 
 def cos(x):
@@ -281,7 +281,7 @@ def sin(x):
     """
     Computes the sin of x
     """
-    return sum((-1**(n-1))*x**(2*n+1)/factorial(2*n+1) for n in range(1000))
+    return sum((-1**n)*x**(2*n+1)/factorial(2*n+1) for n in range(1000))
 sin = elementwise(sin)
 
 def cos(x):
@@ -319,7 +319,7 @@ def sin(x):
     """
     Computes the sin of x
     """
-    return sum((-1**(n-1))*x**(2*n+1)/factorial(2*n+1) for n in range(1000))
+    return sum((-1**n)*x**(2*n+1)/factorial(2*n+1) for n in range(1000))
 
 @elementwise
 def cos(x):
