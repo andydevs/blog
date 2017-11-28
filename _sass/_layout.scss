@@ -186,6 +186,36 @@
     }
 }
 
+// Page
+.page {
+    margin-top: 80px;
+
+    // Header
+    .header {
+        // Post margin
+        padding-bottom: $spacing-unit/2;
+        margin-bottom: $spacing-unit/2;
+        border-bottom: 1px solid $grey-color;
+
+        // Header item
+        .header-item { margin: 1pt 0pt;; }
+
+        // Title
+        .title {
+            @extend .header-item;
+            font-size: $xxlarge-font-size;
+            letter-spacing: -1px;
+            line-height: 1;
+        }
+    }
+
+    // Post content
+    .content {
+        text-align: justify;
+        margin-bottom: $spacing-unit;
+    }
+}
+
 // Posts list
 .post-list {
     margin-left: 0;
@@ -224,14 +254,12 @@
     // Snippet
     .snippet {
         @extend .short-element;
+        font-size: $small-font-size;
         color: $grey-color
     }
 }
 
-.page {
-    margin-top: 80px;
-}
-
+// Home page
 .home {
     @extend .page;
 }
@@ -242,21 +270,6 @@
 
     // Header
     .header {
-        // Post margin
-        padding-bottom: $spacing-unit/2;
-        margin-bottom: $spacing-unit/2;
-        border-bottom: 1px solid $grey-color;
-
-        .header-item { margin: 0; }
-
-        // Title
-        .title {
-            @extend .header-item;
-            font-size: $xxlarge-font-size;
-            letter-spacing: -1px;
-            line-height: 1;
-        }
-
         .series {
             @extend .header-item;
             font-size: $xlarge-font-size;
@@ -266,28 +279,6 @@
         .date {
             @extend .header-item;
             color: $grey-color;
-        }
-    }
-
-    // Post content
-    .content {
-        text-align: justify;
-        margin-bottom: $spacing-unit;
-        h1 { font-size: 32px; }
-        h2 { font-size: 26px; }
-        h3 { font-size: 20px; }
-    }
-
-    // On laptop
-    @include media-query($on-laptop) {
-        // Title
-        .title { font-size: 36px; }
-
-        // Content
-        .content {
-            h1 { font-size: 28px; }
-            h2 { font-size: 22px; }
-            h3 { font-size: 18px; }
         }
     }
 }
