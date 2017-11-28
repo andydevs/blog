@@ -7,15 +7,15 @@
 
 # Site settings
 title: Andydevs
-email: andydevs1@gmail.com
 description: >
   I am a self-taught freelance programmer with proficiency in Python and Javascript.
   I'm currently pursuing a degree in Computer Engineering, while I also work on
   programming projects on the side. My website where I put updates on projects
   that I'm working on. I also write about things that I've learned and/or have
   interest in.
-baseurl: ""
 url: "http://andydevs.github.io"
+baseurl: ""
+email: andydevs1@gmail.com
 twitter_username: andydevs1
 github_username: andydevs
 
