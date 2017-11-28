@@ -45,7 +45,7 @@
         }
 
         // Mobile Navbar
-        @include media-query($on-palm) {
+        @include on-mobile {
             position: absolute;
             top: 9px;
             right: $spacing-unit / 2;
@@ -132,7 +132,7 @@
     }
 
     // On mobile
-    @include media-query($on-palm) {
+    @include on-mobile {
         // Content
         .footer-col-wrapper {
             display: block;
