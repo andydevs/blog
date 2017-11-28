@@ -4,11 +4,20 @@
         <!-- Site Nav -->
         <nav class="site-nav">
             <!-- Hamburger Icon -->
-            <a href="#" class="menu-icon">{% include icon-hamburger.svg %}</a>
+            <a href="#" class="menu-icon">
+                {% include icon-hamburger.svg %}
+            </a>
 
             <!-- Nav Div -->
             <div class="trigger">
-                
+                {% for page in site.html_pages %}
+                    {% unless page.series == 'all' %}
+                        <a class="page-link"
+                            href="{{ page.url | prepend: site.baseurl }}">
+                            &num;{{ page.series }}
+                        </a>
+                    {% endunless %}
+                {% endfor %}
             </div>
         </nav>
     </div>
