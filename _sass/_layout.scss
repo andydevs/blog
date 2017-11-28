@@ -19,10 +19,7 @@
         letter-spacing: -1px;
         margin-bottom: 0;
         float: left;
-
-        &,&:visited {
-            color: $background-color;
-        }
+        &,&:visited { color: $background-color; }
     }
 
     // Nav bar
@@ -71,14 +68,8 @@
             }
 
             // Triggered nav
-            .trigger {
-                clear: both;
-                display: none;
-            }
-            &:hover .trigger {
-                display: block;
-                padding-bottom: 5px;
-            }
+            .trigger { clear: both; display: none; }
+            &:hover .trigger { display: block; padding-bottom: 5px; }
 
             // New page link
             .page-link {
