@@ -1,0 +1,26 @@
+---
+layout: default
+keywords: andydevs developer python javascript github
+---
+<div class="series">
+    <!-- Header -->
+    {% unless page.series == 'all' %}
+        <header class='header'>
+            <h1 class='title'>&num;{{ page.series }}</h1>
+        </header>
+    {% endunless %}
+
+    <!-- All Posts in Series -->
+    <ul class="post-list">
+        {% for post in site.posts %}
+            {% if page.series == 'all' or page.series == post.series %}
+                <li class='post-short'>
+                    {% if post.date %}<h3 class="date">{{ post.date | date: "%b %-d, %Y" }}</h3>{% endif %}
+                    {% if post.series %}<h3 class="series">&num;{{ post.series }}</h3>{% endif %}
+                    <h2 class="title"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h2>
+                    <p class="snippet">{{ post.content | strip_html | truncatewords: 40 }}</p>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>

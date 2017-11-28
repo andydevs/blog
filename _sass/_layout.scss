@@ -196,52 +196,53 @@
     }
 }
 
-// Posts list
-.post-list {
-    margin-left: 0;
-    list-style: none;
-    > li { margin-bottom: $spacing-unit; }
-}
-
-// Post short
-.post-short {
-    // Elements
-    .short-element {
-        display: block;
-        margin: 1pt 0pt;
-    }
-
-    // Series
-    .series {
-        @extend .short-element;
-        font-size: $medium-font-size;
-    }
-
-    // Date
-    .date {
-        @extend .short-element;
-        font-size: $small-font-size;
-        color: $grey-color;
-    }
-
-    // Title
-    .title {
-        @extend .short-element;
-        font-size: $xlarge-font-size;
-        letter-spacing: 0px;
-    }
-
-    // Snippet
-    .snippet {
-        @extend .short-element;
-        font-size: $small-font-size;
-        color: $grey-color
-    }
-}
-
 // Home page
-.home {
+.series {
     @extend .page;
+
+    // Posts list
+    .post-list {
+        @extend .content;
+        margin-left: 0;
+        list-style: none;
+        > li { margin-bottom: $spacing-unit; }
+    }
+
+    // Post short
+    .post-short {
+        // Elements
+        .short-element {
+            display: block;
+            margin: 1pt 0pt;
+        }
+
+        // Series
+        .series {
+            @extend .short-element;
+            font-size: $medium-font-size;
+        }
+
+        // Date
+        .date {
+            @extend .short-element;
+            font-size: $small-font-size;
+            color: $grey-color;
+        }
+
+        // Title
+        .title {
+            @extend .short-element;
+            font-size: $xlarge-font-size;
+            letter-spacing: 0px;
+        }
+
+        // Snippet
+        .snippet {
+            @extend .short-element;
+            font-size: $small-font-size;
+            color: $grey-color
+        }
+    }
 }
 
 // Posts

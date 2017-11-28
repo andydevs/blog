@@ -2,7 +2,7 @@
 layout:   post
 title:    Fractal Generator Now Has XML Processing
 date:     2016-10-31
-series:   Release
+series:   Update
 keywords: fractal c xml
 ---
 
