@@ -186,100 +186,108 @@
     }
 }
 
-/**
- * Page content
- */
-.page-content {
-    padding: $spacing-unit 0;
-    margin-top: 50px;
-}
-
-.page-heading {
-    font-size: 20px;
-}
-
+// Posts list
 .post-list {
     margin-left: 0;
     list-style: none;
-
-    > li {
-        margin-bottom: $spacing-unit;
-    }
+    > li { margin-bottom: $spacing-unit; }
 }
 
 // Post short
 .post-short {
+    // Elements
     .short-element {
         display: block;
         margin: 1pt 0pt;
     }
 
-    .post-series {
+    // Series
+    .series {
         @extend .short-element;
-        font-size: $large-font-size;
+        font-size: $medium-font-size;
     }
 
-    .post-date {
+    // Date
+    .date {
         @extend .short-element;
         font-size: $small-font-size;
         color: $grey-color;
     }
 
-    .post-title {
+    // Title
+    .title {
         @extend .short-element;
         font-size: $xlarge-font-size;
         letter-spacing: 0px;
     }
 
-    .post-snippet {
+    // Snippet
+    .snippet {
         @extend .short-element;
         color: $grey-color
     }
 }
 
-
-/**
- * Posts
- */
-.post-header {
-    margin-bottom: $spacing-unit;
+.page {
+    margin-top: 80px;
 }
 
-.post-title {
-    font-size: 42px;
-    letter-spacing: -1px;
-    line-height: 1;
+.home {
+    @extend .page;
+}
 
+// Posts
+.post {
+    @extend .page;
+
+    // Header
+    .header {
+        // Post margin
+        padding-bottom: $spacing-unit/2;
+        margin-bottom: $spacing-unit/2;
+        border-bottom: 1px solid $grey-color;
+
+        .header-item { margin: 0; }
+
+        // Title
+        .title {
+            @extend .header-item;
+            font-size: $xxlarge-font-size;
+            letter-spacing: -1px;
+            line-height: 1;
+        }
+
+        .series {
+            @extend .header-item;
+            font-size: $xlarge-font-size;
+            color: $grey-color;
+        }
+
+        .date {
+            @extend .header-item;
+            color: $grey-color;
+        }
+    }
+
+    // Post content
+    .content {
+        text-align: justify;
+        margin-bottom: $spacing-unit;
+        h1 { font-size: 32px; }
+        h2 { font-size: 26px; }
+        h3 { font-size: 20px; }
+    }
+
+    // On laptop
     @include media-query($on-laptop) {
-        font-size: 36px;
-    }
-}
+        // Title
+        .title { font-size: 36px; }
 
-.post-content {
-    text-align: justify;
-    margin-bottom: $spacing-unit;
-
-    h1 {
-        font-size: 32px;
-
-        @include media-query($on-laptop) {
-            font-size: 28px;
-        }
-    }
-
-    h2 {
-        font-size: 26px;
-
-        @include media-query($on-laptop) {
-            font-size: 22px;
-        }
-    }
-
-    h3 {
-        font-size: 20px;
-
-        @include media-query($on-laptop) {
-            font-size: 18px;
+        // Content
+        .content {
+            h1 { font-size: 28px; }
+            h2 { font-size: 22px; }
+            h3 { font-size: 18px; }
         }
     }
 }

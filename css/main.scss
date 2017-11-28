@@ -7,9 +7,12 @@
 $base-font-family: "Calibri", Helvetica, Arial, sans-serif;
 $base-font-size:   16px;
 $base-font-weight: 400;
-$small-font-size:  $base-font-size * 0.875;
-$large-font-size:  $base-font-size * 1.125;
+$small-font-size: $base-font-size * 0.875;
+$medium-font-size: $base-font-size * 1.125;
+$large-font-size: $base-font-size * 1.250;
 $xlarge-font-size: $base-font-size * 1.500;
+$xxlarge-font-size: $base-font-size * 2.500;
+$xxxlarge-font-size: $base-font-size * 2.750;
 $base-line-height: 1.5;
 
 $spacing-unit:     30px;
