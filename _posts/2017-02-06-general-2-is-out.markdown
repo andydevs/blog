@@ -1,8 +1,8 @@
 ---
-title:      General 2.0 Is Out!
-layout:     post
-date:       2017-2-6
-categories: updates
+title:    General 2.0 Is Out!
+layout:   post
+date:     2017-2-6
+series:   Release
 keywords: general ruby "general 2.0"
 ---
 

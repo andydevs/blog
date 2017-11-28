@@ -6,21 +6,26 @@ keywords: andydevs developer python javascript github
 <div class="home">
   <ul class="post-list">
     {% for post in site.posts %}
-      <li>
-        <div>
-          <span class="post-meta">
-              {{ post.date | date: "%b %-d, %Y" }}
-              {% if post.categories %} • {{ post.categories | join: " " }}{% endif %}
-          </span>
+      <li class='post-short'>
+          {% if post.date %}
+            <p class="post-date">
+                {{ post.date | date: "%b %-d, %Y" }}
+            </p>
+          {% endif %}
 
-          <h2 class="post-link">
+          {% if post.series %}
+            <p class="post-series">
+                #{{ post.series }}
+            </p>
+          {% endif %}
+
+          <h2 class="post-title">
             <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
           </h2>
 
           <p class="post-snippet">
             {{ post.content | strip_html | truncatewords: 40 }}
           </p>
-        </div>
       </li>
     {% endfor %}
   </ul>

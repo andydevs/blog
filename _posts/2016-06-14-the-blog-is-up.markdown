@@ -1,8 +1,8 @@
 ---
-layout:     post
-title:      "The Blog is Up!"
-date:       2016-06-14 12:33:00
-categories: updates
+layout:   post
+title:    "The Blog is Up!"
+date:     2016-06-14 12:33:00
+series:   Update
 keywords: andydevs blog
 ---
 

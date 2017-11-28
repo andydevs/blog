@@ -1,8 +1,8 @@
 ---
-layout:     post
-title:      Fractal Generator Now Has XML Processing
-date:       2016-10-31
-categories: updates
+layout:   post
+title:    Fractal Generator Now Has XML Processing
+date:     2016-10-31
+series:   Release
 keywords: fractal c xml
 ---
 

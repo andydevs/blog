@@ -207,22 +207,35 @@
     }
 }
 
-.post-meta {
-    font-size: $small-font-size;
-    color: $grey-color;
-}
+// Post short
+.post-short {
+    .short-element {
+        display: block;
+        margin: 1pt 0pt;
+    }
 
-.post-link {
-    display: block;
-    font-size: 24px;
-    margin: 0;
-}
+    .post-series {
+        @extend .short-element;
+        font-size: $large-font-size;
+    }
 
-.post-snippet {
-    margin: 0;
-    color: $grey-color
-}
+    .post-date {
+        @extend .short-element;
+        font-size: $small-font-size;
+        color: $grey-color;
+    }
 
+    .post-title {
+        @extend .short-element;
+        font-size: $xlarge-font-size;
+        letter-spacing: 0px;
+    }
+
+    .post-snippet {
+        @extend .short-element;
+        color: $grey-color
+    }
+}
 
 
 /**
