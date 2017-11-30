@@ -34,12 +34,10 @@ $mobile-max-width: 500px;
     @media screen and (max-width: $mobile-max-width) {
         @content
     }
-}
+};
 
 // Import partials from `sass_dir` (defaults to `_sass`)
-@import
-        "base",
+@import "base",
         "layout",
         "styling",
-        "syntax-highlighting"
-;
+        "syntax-highlighting";
