@@ -8,8 +8,6 @@ dl, dd, ol, ul, figure {
     padding: 0;
 }
 
-
-
 /**
  * Basic styling
  */
@@ -25,8 +23,6 @@ body {
     font-kerning: normal;
 }
 
-
-
 /**
  * Set `margin-bottom` to maintain vertical rhythm
  */
@@ -37,8 +33,6 @@ ul, ol, dl, figure,
     margin-bottom: $spacing-unit / 2;
 }
 
-
-
 /**
  * Images
  */
@@ -47,45 +41,22 @@ img {
     vertical-align: middle;
 }
 
-
-
 /**
  * Figures
  */
-figure > img {
-    display: block;
-}
-
-figcaption {
-    font-size: $small-font-size;
-}
-
-
+figure > img { display: block; }
+figcaption { font-size: $small-font-size; }
 
 /**
  * Lists
  */
-ul, ol {
-    margin-left: $spacing-unit;
-}
-
-li {
-    > ul,
-    > ol {
-         margin-bottom: 0;
-    }
-}
-
-
+ul, ol { margin-left: $spacing-unit; }
+li { > ul, > ol { margin-bottom: 0; } }
 
 /**
  * Headings
  */
-h1, h2, h3, h4, h5, h6 {
-    font-weight: $base-font-weight;
-}
-
-
+h1, h2, h3, h4, h5, h6 { font-weight: $base-font-weight; }
 
 /**
  * Links
@@ -93,18 +64,12 @@ h1, h2, h3, h4, h5, h6 {
 a {
     color: $brand-color;
     text-decoration: none;
-
-    &:visited {
-        color: darken($brand-color, 15%);
-    }
-
+    &:visited { color: darken($brand-color, 15%); }
     &:hover {
         color: $text-color;
         text-decoration: underline;
     }
 }
-
-
 
 /**
  * Blockquotes
@@ -116,13 +81,8 @@ blockquote {
     font-size: 18px;
     letter-spacing: -1px;
     font-style: italic;
-
-    > :last-child {
-        margin-bottom: 0;
-    }
+    > :last-child { margin-bottom: 0; }
 }
-
-
 
 /**
  * Code formatting
@@ -145,7 +105,6 @@ pre {
     }
 }
 
-
 /**
  * Wrapper
  */
@@ -159,8 +118,6 @@ pre {
     @extend %clearfix;
 }
 
-
-
 /**
  * Clearfix
  */
@@ -172,8 +129,6 @@ pre {
     }
 }
 
-
-
 /**
  * Icons
  */
@@ -183,9 +138,6 @@ pre {
         width: 16px;
         height: 16px;
         vertical-align: middle;
-
-        path {
-            fill: $grey-color;
-        }
+        path { fill: $grey-color; }
     }
 }
