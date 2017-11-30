@@ -10,10 +10,7 @@ $time: 0.5s;
     border: 2pt solid #aaa;
     border-radius: 2pt;
     transition: $time;
-
-    &:hover {
-        box-shadow: $box-shadow;
-    }
+    &:hover { box-shadow: $box-shadow; }
 }
 
 @mixin graphic-side {
