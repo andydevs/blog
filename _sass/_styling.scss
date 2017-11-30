@@ -2,14 +2,14 @@
 $box-shadow: 0 -4pt 8pt 0 #ccc, 0 6pt 20pt 0 #ccc;
 
 // Transition time
-$time: 0.5s;
+$transition: 0.5s ease-in-out;
 
 // Basic graphic
 @mixin graphic {
     display: inline-block;
     border: 2pt solid #aaa;
     border-radius: 2pt;
-    transition: $time;
+    transition: $transition;
     &:hover { box-shadow: $box-shadow; }
 }
 
