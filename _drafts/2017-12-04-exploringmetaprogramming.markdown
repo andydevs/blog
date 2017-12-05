@@ -97,7 +97,7 @@ vector = Vector2(2, 3)
 
 What happens when you type `vector.x`? Get ready for a lot of double-underscores and built-in behind-the-scenes python clockwork as I explain this.
 
-What you're actually doing is calling a built-in method called `__getattribute__` available in all Python objects. This method starts a chain of checks which determines where the actual attribute value lies.
+What you're actually doing is calling a built-in method called `__getattribute__` available in all Python objects, passing in the name of the attribute, in this case `x`. This method starts a chain of checks which determines where the actual attribute value lies.
 
 ### Class Factories
 
