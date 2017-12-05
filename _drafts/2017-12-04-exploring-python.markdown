@@ -121,58 +121,51 @@ vector = Vector(2, 3, 4, 5, 1, 9)
 vector[2] # returns 4
 ```
 
-But you know that some people use 'x' and 'y', to represent the components of a 2-vector, and 'x', 'y', and 'z' to represent the components of a 3-vector. You can use the `property` decorator to get these named values. So you create special vector classes that can get and set those special names.
+But you know that some people use 'x' and 'y', to represent the components of a 2-vector, and 'x', 'y', and 'z' to represent the components of a 3-vector. You can use the `property` decorator to create these named values. So you create special vector classes that can get those special names.
 
 ```python
 class Vector2(Vector):
     @property
     def x(self):
         return self[0]
-    @x.setter
-    def x(self, value):
-        self[0] = value
 
     @property
     def y(self):
         return self[1]
-    @y.setter
-    def y(self, value):
-        self[1] = value
 
 class Vector3(Vector):
     @property
     def x(self):
         return self[0]
-    @x.setter
-    def x(self, value):
-        self[0] = value
 
     @property
     def y(self):
         return self[1]
-    @y.setter
-    def y(self, value):
-        self[1] = value
 
     @property
     def z(self):
         return self[2]
-    @z.setter
-    def z(self, value):
-        self[2] = value
 
 v = Vector3(2, 3, 4)
 v.x # Returns 2!
 v.x = 3 # X is now 3!
 ```
 
-Nice, right? Well, it seems like you're writing a lot of redundant code. All you're doing is matching each property name to an index in a list, right
+Nice, right? Well, it seems like you're writing a lot of redundant code. All you're doing is matching each property name to an index in a list, right? Is there a more concise way to write this?
 
-What happens when you type `vector.x`? Get ready for a lot of double-underscore, behind-the-scenes python clockwork as I explain this.
+Python's got you covered! But it will take a bit of explaining. Get ready for a lot of double-underscore, behind-the-scenes python clockwork.
 
-What you're actually doing is calling a built-in method called `__getattribute__` that exists in all Python objects, passing in the name of the attribute, in this case `x`. This method starts a chain of checks which determines where the actual attribute value lies. I'll explain from the bottom up to better describe it.
+When you type `v.x`, what you're actually doing is calling a built-in method called `__getattribute__` that exists in all Python objects, passing in the name of the attribute, in this case `x`. So `v.x` under the hood is `v.__getattribute__('x')`. This method starts a chain of checks which determines where the actual attribute value lies.
+
+Every object in python has what is called `__dict__`. This is a dictionary of all the attributes that are stored within that object. So, if you write `v.__dict__['x']`, you're effectively doing `v.x`.
+
+`__getattribute__` first checks if `x` is in the object's `__dict__`. If so, it returns the value of `x` in the `__dict__`. Otherwise, it goes one level and checks the `__dict__` in the class, (which, in fact, also has a `__dict__`. I'll go deeper into why this is in the next section). If `x` is in the class `__dict__`, it will return the value of `x` in that `__dict__`... almost.
 
 ## Class Factories
+
+Do you know why classes also have a `__dict__`? Are you ready to have your mind blown?
+
+It's because classes are _also_ objects.
 
 ## Metaclasses
 
