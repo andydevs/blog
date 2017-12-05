@@ -159,7 +159,7 @@ When you type `v.x`, what you're actually doing is calling a built-in method cal
 
 Every object in python has what is called `__dict__`. This is a dictionary of all the attributes that are stored within that object. So, if you write `v.__dict__['x']`, you're effectively doing `v.x`.
 
-`__getattribute__` first checks if `x` is in the object's `__dict__`. If so, it returns the value of `x` in the `__dict__`. Otherwise, it goes one level and checks the `__dict__` in the class, (which, in fact, also has a `__dict__`. I'll go deeper into why this is in the next section). If `x` is in the class `__dict__`, it will return the value of `x` in that `__dict__`... almost.
+`__getattribute__` first checks if `x` is in the object's `__dict__`. If so, it returns the value of `x` in the `__dict__`. Otherwise, it goes one level above and checks the `__dict__` in the class, (which, in fact, also has a `__dict__`. I'll go deeper into why this is in the next section). If `x` is in the class `__dict__`, it will return the value of `x` in that `__dict__`... almost.
 
 ## Class Factories
 
