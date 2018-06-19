@@ -13,7 +13,6 @@ First-class functions are functions that are treated like other datatypes. So th
 
 ```python
 def get_a_cool_function():
-
     def cool_function():
         print('This function\'s cool')
 
@@ -32,6 +31,11 @@ do_for_each(speak, ['hello', 'goodbye', 'my name is Joe'])
 # Prints '[The spoken word]: hello!'
 # Prints '[The spoken word]: goodbye!'
 # Prints '[The spoken word]: my name is Joe!'
+
+that_cool_function = get_a_cool_function()
+
+that_cool_function()
+# Prints 'This function\'s cool'
 ```
 
 Functions in python also have the closure property, which allows them to retain the environment they were defined in (including all the variables and functions set within that environment, even parameters), even if it is called outside that environment. We leverage this property to create function factories.
@@ -113,7 +117,7 @@ class Vector:
 
     def __mul__(self, scalar):
         """
-        Scales two vectors
+        Scales the vector
         """
         return Vector(*(scalar*a for a in self._comps))
 
@@ -151,9 +155,34 @@ v.x # Returns 2!
 v.x = 3 # X is now 3!
 ```
 
-Nice, right? Well, it seems like you're writing a lot of redundant code. All you're doing is matching each property name to an index in a list, right? Is there a more concise way to write this?
+Nice, right? Well, it seems like you're writing a lot of redundant code. Is there a more concise way to write this? Python's got you covered!
 
-Python's got you covered! But it will take a bit of explaining. Get ready for a lot of double-underscore, behind-the-scenes python clockwork.
+```python
+class NamedIndex:
+    def __init__(self, index):
+        self._index = index
+
+    def __get__(self, instance, klass=None):
+        return self.instance[index]
+
+    def __set__(self, instance, value):
+        self.instance[index] = value
+
+class Vector2(Vector):
+    x = NamedIndex(0)
+    y = NamedIndex(1)
+
+class Vector3(Vector):
+    x = NamedIndex(0)
+    y = NamedIndex(1)
+    z = NamedIndex(2)
+
+v = Vector3(2, 3, 4)
+v.x # Returns 2!
+v.x = 3 # X is now 3!
+```
+
+This will take a bit of explaining. Get ready for a lot of double-underscore, behind-the-scenes python clockwork.
 
 When you type `v.x`, what you're actually doing is calling a built-in method called `__getattribute__` that exists in all Python objects, passing in the name of the attribute, in this case `x`. So `v.x` under the hood is `v.__getattribute__('x')`. This method starts a chain of checks which determines where the actual attribute value lies.
 
