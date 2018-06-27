@@ -5,7 +5,7 @@ date:   "2018-06-26 19:19:00 -0400"
 series: Update
 ---
 
-_Everyone hates software. It's messy and it get's everywhere._ - Sam Gallagher 2017
+_Everyone hates software. It's messy and it get's everywhere._ - [Sam Gallagher](https://github.com/sjgallagher2) 2017
 
 My friend just said it as I was showing this to him and I decided to quote it in the README as a joke, but it's quickly become a recurring theme for my overall experience developing the Good Library.
 
