@@ -1,8 +1,8 @@
 ---
-layout:   post
-title:    "Splitting Up the Good Library (Monolithic Troubles)"
-date:     "2018-06-26 19:19:00 -0400"
-category: Update
+layout: post
+title:  "Splitting Up the Good Library (Monolithic Troubles)"
+date:   "2018-06-26 19:19:00 -0400"
+series: Update
 ---
 
 _Everyone hates software. It's messy and it get's everywhere._ - Sam Gallagher 2017
