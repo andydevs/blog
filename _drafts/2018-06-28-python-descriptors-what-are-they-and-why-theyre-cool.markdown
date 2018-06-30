@@ -4,7 +4,67 @@ title: "Python Descriptors: What Are They and Why They're Cool"
 date: "2018-06-28 22:24:53 -0400"
 ---
 
-A common practice in python classes is using the `property` object to define "members" whose values are the calculated results of other member variables. For example, you may want to define a "getter" for "private" member variables that you've prepended with `_` (a very common thing you do in python). Let's do that...
+Many times in object oriented programming, objects will have properties that are calculated values from other properties. In fact, you often just want properties which allow access to other private member variables. In Java, you write "get" methods like so:
+
+```java
+class Person {
+
+    // Private member variables
+
+    private String name;
+    private String email;
+    private Date birthday;
+
+    //
+    ...
+
+    // Property getters
+
+    public String getName() { return name; }
+
+    public String getEmail() { return email; }
+
+    public Date getDate() { return birthday; }
+}
+```
+
+You retrieve the property by calling the appropriate method. For example, if you want to get the name, you call `person.getName()`.
+
+In C#, you have the nicer `{ get; set; }` syntax, that can define how a property is retrieved.
+
+```csharp
+public class Person {
+
+    private string name;
+    private string email;
+    private Date birthday;
+
+    // Constructor
+    ...
+
+    public string Name {
+        get {
+            return name;
+        }
+    }
+
+    public string Email {
+        get {
+            return email;
+        }
+    }
+
+    public Date Birthday {
+        get {
+            return birthday;
+        }
+    }
+}
+```
+
+This lets you access the property like it's another member variable. Just use `person.Name`
+
+In Python, you have access to the `property` decorator method, which allows you to define properties from functions.
 
 ```python
 class Person:
@@ -26,9 +86,11 @@ class Person:
         return self._birthday
 ```
 
-It looks like some redundant code... Is there a better way to write this?
+Here, you can call `person.name`, and it will call the associated method to get the result.
 
-Python's got you covered!
+But this is only scratching the surface of what python can do! Python's property system goes much further than just emulating private member variables and `{ get; set; }` syntax.
+
+There's, in fact, a much cleaner way to write this.
 
 ```python
 class Get:
@@ -49,9 +111,11 @@ class Person:
     birthday = Get('_birthday')
 ```
 
-What I just created up there is called a "descriptor". To describe it, it'll take a bit of explaining. Get ready for a lot of double-underscore, behind-the-scenes python clockwork.
+What I just created up there is called a "descriptor". How does it work?
 
-The first thing to explain is the `__dict__` property. Every object (and also classes) in python has a `__dict__` property. This property contains every member variable within the object.
+Well, get ready for a lot of double-underscore, behind-the-scenes python clockwork.
+
+Every object (and also classes) in python has a `__dict__` property. This property contains every member variable within the object.
 
 ```python
 class Get:
