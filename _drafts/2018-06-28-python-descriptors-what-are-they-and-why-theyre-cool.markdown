@@ -16,7 +16,7 @@ class Person {
     private String email;
     private Date birthday;
 
-    //
+    // Constructor
     ...
 
     // Property getters
