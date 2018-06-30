@@ -2,6 +2,7 @@
 layout: post
 title: "Python Descriptors: What Are They and Why They're Cool"
 date: "2018-06-28 22:24:53 -0400"
+series: ExploringCode
 ---
 
 Many times in object oriented programming, objects will have properties that are calculated values from other properties. In fact, you often just want properties which allow access to other private member variables. In Java, you write "get" methods like so:
