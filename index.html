@@ -1,4 +1,16 @@
 ---
-layout: series
-series: all
+layout: default
+keywords: andydevs developer python javascript github
 ---
+<div class="series">
+    <!-- All Posts in Series -->
+    <ul class="post-list">
+        {% for post in site.posts %}
+            <li class='post-short'>
+                {% if post.date %}<h3 class="date">{{ post.date | date: "%b %-d, %Y" }}</h3>{% endif %}
+                <h2 class="title"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h2>
+                <p class="snippet">{{ post.content | strip_html | truncatewords: 40 }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

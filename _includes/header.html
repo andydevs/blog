@@ -10,14 +10,6 @@
 
             <!-- Nav Div -->
             <div class="trigger">
-                {% for page in site.html_pages %}
-                    {% unless page.series == 'all' %}
-                        <a class="page-link"
-                            href="{{ page.url | prepend: site.baseurl }}">
-                            &num;{{ page.series }}
-                        </a>
-                    {% endunless %}
-                {% endfor %}
             </div>
         </nav>
     </div>
