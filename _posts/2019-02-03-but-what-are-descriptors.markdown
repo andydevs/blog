@@ -23,7 +23,7 @@ class Person {
     private Date birthday;
 
     public Person(String name, String email, Date birthday) {
-	    this.name = name;
+        this.name = name;
         this.email = email;
         this.birthday = birthday;
     }
@@ -31,14 +31,14 @@ class Person {
     // Name
     public String getName() { return name; }
 
-	// Email
+    // Email
     public String getEmail() { return email; }
     public void setEmail(String value) { email = value; }
 
-	// A Calculated Property
-	public int getAge() {
-		return Date.today().getYear() - birthday.getYear();
-	}
+    // A Calculated Property
+    public int getAge() {
+        return Date.today().getYear() - birthday.getYear();
+    }
 }
 ```
 
@@ -48,7 +48,7 @@ In C#, you have the nicer `{ get; set; }` syntax, that can define the getters an
 
 ```csharp
 public class Person {
-	// Private variables
+    // Private variables
     private string name;
     private string email;
     private DateTime birthday;
@@ -60,18 +60,18 @@ public class Person {
         this.birthday = birthday;
     }
 
-	// Get name
+    // Get name
     public string Name {
         get { return name; }
     }
 
-	// Get and set email
+    // Get and set email
     public string Email {
         get { return email; }
         set { email = value; }
     }
 
-	// Calculated property
+    // Calculated property
     public int Age {
         get { return DateTime.Today.Year - birthday.Year; }
     }
@@ -99,12 +99,12 @@ class Person:
         self._email = email
         self._birthday = birthday
 
-	# Get name
+    # Get name
     @property
     def name(self):
         return self._name
 
-	# Get and set email
+    # Get and set email
     @property
     def email(self):
         return self._email
@@ -112,7 +112,7 @@ class Person:
     def email(self, value):
         self._email = value
 
-	# Get age, a calculated property
+    # Get age, a calculated property
     @property
     def age(self):
         return datetime.today().year - self._birthday.year
@@ -225,11 +225,11 @@ class Cow:
         self._name = name
         self._birthday = birthday
 
-	name = Get('_name')
-	age = TimeUnitsSince('_birthday', 'year')
-	days_since_last_milked = TimeUnitsSince('_last_milked', 'day')
+    name = Get('_name')
+    age = TimeUnitsSince('_birthday', 'year')
+    days_since_last_milked = TimeUnitsSince('_last_milked', 'day')
 
-	def milk(self):
+    def milk(self):
         self._last_milked = datetime.today()
         amount = randrange(1, 1.5, 0.01)
         return Milk(amount, self._last_milked)
@@ -263,12 +263,12 @@ class Person:
         self._email = email
         self._birthday = birthday
 
-	# Get name
+    # Get name
     @property
     def name(self):
         return self._name
 
-	# Get and set email
+    # Get and set email
     @property
     def email(self):
         return self._email
@@ -286,7 +286,7 @@ class Cow:
         self._name = name
         self._birthday = birthday
 
-	# Get name
+    # Get name
     @property
     def name(self):
         return self._name
