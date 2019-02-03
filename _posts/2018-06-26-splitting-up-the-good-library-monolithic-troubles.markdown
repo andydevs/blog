@@ -2,7 +2,7 @@
 layout: post
 title:  "Splitting Up the Good Library (Monolithic Troubles)"
 date:   "2018-06-26 19:19:00 -0400"
-series: Update
+keywords: python3 good metaprogramming
 ---
 
 _Everyone hates software. It's messy and it get's everywhere._ - [Sam Gallagher](https://github.com/sjgallagher2) 2017

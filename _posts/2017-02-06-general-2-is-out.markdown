@@ -2,7 +2,6 @@
 title:    General 2.0 Is Out!
 layout:   post
 date:     2017-2-6
-series:   Update
 keywords: general ruby "general 2.0"
 ---
 
