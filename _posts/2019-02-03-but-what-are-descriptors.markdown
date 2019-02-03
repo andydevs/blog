@@ -22,18 +22,18 @@ class Person {
     private String email;
     private Date birthday;
 
-	public Person(String name, String email, Date birthday) {
-		this.name = name;
-	    this.email = email;
-	    this.birthday = birthday;
-	}
+    public Person(String name, String email, Date birthday) {
+	    this.name = name;
+        this.email = email;
+        this.birthday = birthday;
+    }
 
     // Name
     public String getName() { return name; }
 
 	// Email
     public String getEmail() { return email; }
-	public void setEmail(String value) { email = value; }
+    public void setEmail(String value) { email = value; }
 
 	// A Calculated Property
 	public int getAge() {
@@ -55,10 +55,10 @@ public class Person {
 
     // Constructor
     public Person(String name, String email, DateTime birthday) {
-		this.name = name;
-	    this.email = email;
-	    this.birthday = birthday;
-	}
+        this.name = name;
+        this.email = email;
+        this.birthday = birthday;
+    }
 
 	// Get name
     public string Name {
@@ -72,9 +72,9 @@ public class Person {
     }
 
 	// Calculated property
-	public int Age {
-		get { return DateTime.Today.Year - birthday.Year; }
-	}
+    public int Age {
+        get { return DateTime.Today.Year - birthday.Year; }
+    }
 }
 ```
 
@@ -84,10 +84,10 @@ Python has no concept of public and private member variables. The convention for
 
 ```python
 class Person:
-	def __init__(self, name, email, birthday):
-		self._name = name
-		self._email = email
-		self._birthday = birthday
+    def __init__(self, name, email, birthday):
+        self._name = name
+        self._email = email
+        self._birthday = birthday
 ```
 
 This doesn't tell Python that the variables are private. It just tells other programmers not to mess with them! As for properties, you have the `property` decorator, which allows you to define properties from functions. You then use the `.setter` attribute of your new property to implement setters.
@@ -109,13 +109,13 @@ class Person:
     def email(self):
         return self._email
     @email.setter
-	def email(self, value):
-		self._email = value
+    def email(self, value):
+        self._email = value
 
 	# Get age, a calculated property
-	@property
-	def age(self):
-		return datetime.today().year - self._birthday.year
+    @property
+    def age(self):
+        return datetime.today().year - self._birthday.year
 ```
 
 Here, you can call `person.name`, and it will call the associated method to get the result.
@@ -128,8 +128,8 @@ There is, in fact, a much cleaner way to write this.
 
 ```python
 class Get:
-	def __init__(self, member):
-		self._member = member
+    def __init__(self, member):
+        self._member = member
 
 class GetSet:
     def __init__(self, member):
@@ -138,15 +138,15 @@ class GetSet:
     def __get__(self, instance, klass=None):
         return getattr(instance, self._member)
 
-	def __set__(self, instance, value):
-		setattr(instance, self._member, value)
+    def __set__(self, instance, value):
+        setattr(instance, self._member, value)
 
 class YearsSince:
-	def __init__(self, member):
-		self._member = member
+    def __init__(self, member):
+        self._member = member
 
-	def __get__(self, instance, klass=None):
-		datetime.today().years - getattr(instance, self._member).years
+    def __get__(self, instance, klass=None):
+        return datetime.today().years - getattr(instance, self._member).years
 
 class Person:
     def __init__(self, name, email, birthday):
@@ -197,68 +197,68 @@ We can generalize our `YearsSince` descriptor and make a `TimeUnitsSince` descri
 
 ```python
 class TimeUnitsSince:
-	def __init__(self, member, unit):
-		self._member = member
-		self._unit = unit
+    def __init__(self, member, unit):
+        self._member = member
+        self._unit = unit
 
-	def __get__(self, instance, klass=None):
-		today_units = getattr(datetime.today(), self._unit)
-		member_units = getattr(getattr(instance, self._member), self._unit)
-		return today_units - member_units
+    def __get__(self, instance, klass=None):
+        today_units = getattr(datetime.today(), self._unit)
+        member_units = getattr(getattr(instance, self._member), self._unit)
+        return today_units - member_units
 ```
 
 Now we can use this descriptor, along with the `Get` and `GetSet` descriptors, in all of our other classes!
 
 ```python
 class Person:
-	def __init__(self, name, email, birthday):
+    def __init__(self, name, email, birthday):
         self._name = name
         self._email = email
         self._birthday = birthday
 
-	name = Get('_name')
-	email = GetSet('_email')
-	age = TimeUnitsSince('_birthday', 'year')
+    name = Get('_name')
+    email = GetSet('_email')
+    age = TimeUnitsSince('_birthday', 'year')
 
 class Cow:
-	def __init__(self, name, birthday):
-		self._name = name
-		self._birthday = birthday
+    def __init__(self, name, birthday):
+        self._name = name
+        self._birthday = birthday
 
 	name = Get('_name')
 	age = TimeUnitsSince('_birthday', 'year')
 	days_since_last_milked = TimeUnitsSince('_last_milked', 'day')
 
 	def milk(self):
-		self._last_milked = datetime.today()
-		amount = randrange(1, 1.5, 0.01)
-		return Milk(amount, self._last_milked)
+        self._last_milked = datetime.today()
+        amount = randrange(1, 1.5, 0.01)
+        return Milk(amount, self._last_milked)
 
 class Milk:
-	def __init__(self, amount, milked):
-		self._amount = amount
-		self._milked = milked
+    def __init__(self, amount, milked):
+        self._amount = amount
+        self._milked = milked
 
-	amount = Get('_amount')
-	days_since_milked = TimeUnitsSince('_milked', 'day')
+    amount = Get('_amount')
+    days_since_milked = TimeUnitsSince('_milked', 'day')
 
-	def cure(self):
-		return Cheese(self._amount / 2, datetime.today())
+    def cure(self):
+        return Cheese(self._amount / 2, datetime.today())
 
 class Cheese:
-	def __init__(self, weight, cure_set):
-		self._weight = weight
-		self._cure_set = cure_set
+    def __init__(self, weight, cure_set):
+        self._weight = weight
+        self._cure_set = cure_set
 
-	weight = Get('_weight')
-	cure_months = TimeUnitsSince('_cure_set', 'month')
+    weight = Get('_weight')
+    cure_months = TimeUnitsSince('_cure_set', 'month')
 ```
 
 To hammer in the point, here's the same system implemented without descriptors
 
 ```python
 class Person:
-	def __init__(self, name, email, birthday):
+    def __init__(self, name, email, birthday):
         self._name = name
         self._email = email
         self._birthday = birthday
@@ -273,70 +273,70 @@ class Person:
     def email(self):
         return self._email
     @email.setter
-	def email(self, value):
-		self._email = value
+    def email(self, value):
+        self._email = value
 
-	# Get age, a calculated property
-	@property
-	def age(self):
-		return datetime.today().year - self._birthday.year
+    # Get age, a calculated property
+    @property
+    def age(self):
+        return datetime.today().year - self._birthday.year
 
 class Cow:
-	def __init__(self, name, birthday):
-		self._name = name
-		self._birthday = birthday
+    def __init__(self, name, birthday):
+        self._name = name
+        self._birthday = birthday
 
 	# Get name
     @property
     def name(self):
         return self._name
-	# Get age, a calculated property
-	@property
-	def age(self):
-		return datetime.today().year - self._birthday.year
+    # Get age, a calculated property
+    @property
+    def age(self):
+        return datetime.today().year - self._birthday.year
 
-	# Get days_since_last_milked, a calculated property
-	@property
-	def days_since_last_milk(self):
-		return datetime.today().day - self._birthday.day
+    # Get days_since_last_milked, a calculated property
+    @property
+    def days_since_last_milk(self):
+        return datetime.today().day - self._birthday.day
 
-	def milk(self):
-		self._last_milked = datetime.today()
-		amount = randrange(1, 1.5, 0.01)
-		return Milk(amount, self._last_milked)
+    def milk(self):
+        self._last_milked = datetime.today()
+        amount = randrange(1, 1.5, 0.01)
+        return Milk(amount, self._last_milked)
 
 class Milk:
-	def __init__(self, amount, milked):
-		self._amount = amount
-		self._milked = milked
+    def __init__(self, amount, milked):
+        self._amount = amount
+        self._milked = milked
 
-	# Get amount
+    # Get amount
     @property
     def amount(self):
         return self._amount
 
-	# Get days_since_milked, a calculated property
-	@property
-	def days_since_milked(self):
-		return datetime.today().day - self._milked.day
+    # Get days_since_milked, a calculated property
+    @property
+    def days_since_milked(self):
+        return datetime.today().day - self._milked.day
 
-	def cure(self):
-		return Cheese(self._amount / 2, datetime.today())
+    def cure(self):
+        return Cheese(self._amount / 2, datetime.today())
 
 class Cheese:
-	def __init__(self, weight, cure_set):
-		self._weight = weight
-		self._cure_set = cure_set
+    def __init__(self, weight, cure_set):
+        self._weight = weight
+        self._cure_set = cure_set
 
-	# Get amount
+    # Get amount
     @property
     def weight(self):
         return self._weight
 
-	# Get days_since_milked, a calculated property
-	@property
-	def cure_months(self):
-		return datetime.today().month - self._cure_set.month
+    # Get days_since_milked, a calculated property
+    @property
+    def cure_months(self):
+        return datetime.today().month - self._cure_set.month
 ```
 
 ## Conclusion
