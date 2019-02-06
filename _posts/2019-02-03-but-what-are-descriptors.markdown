@@ -131,6 +131,9 @@ class Get:
     def __init__(self, member):
         self._member = member
 
+    def __get__(self, instance, klass=None):
+        return getattr(instance, self._member)
+
 class GetSet:
     def __init__(self, member):
         self._member = member
