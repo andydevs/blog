@@ -1,0 +1,36 @@
+.bw-front {
+    // Positioning
+    position: absolute;
+
+    /* Setting a z-index of 0 to so that
+     * this is in front of the back layer
+     * with a z-index of -1 (see _back.scss) */
+    z-index: 0;
+    top: 0%;
+    left: $desktop-menu-size;
+    right: 0%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+
+    // Styling
+    background-color: $white-color;
+    color: black;
+    border-color: $back-color;
+    box-shadow: -2pt 0pt 8pt darken($back-color, 33%);
+
+    // Mobile
+    @include on-mobile {
+        // Positioning
+        top: 0%;
+        left: 0%;
+        right: 0%;
+        margin-left: 0%;
+    };
+
+    // Container
+    .bw-front-container {
+        margin-left: $spacing-unit;
+        margin-right: $spacing-unit;
+        padding: $spacing-unit;
+    }
+}

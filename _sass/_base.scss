@@ -1,143 +1,108 @@
-/**
- * Reset some basic elements
- */
-body, h1, h2, h3, h4, h5, h6,
-p, blockquote, pre, hr,
-dl, dd, ol, ul, figure {
-    margin: 0;
-    padding: 0;
+* {
+    font-family: $font-family;
+    font-size: $normal-font-size;
 }
 
-/**
- * Basic styling
- */
 body {
-    font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
-    color: $text-color;
-    background-color: $background-color;
-    -webkit-text-size-adjust: 100%;
-    -webkit-font-feature-settings: "kern" 1;
-    -moz-font-feature-settings: "kern" 1;
-    -o-font-feature-settings: "kern" 1;
-    font-feature-settings: "kern" 1;
-    font-kerning: normal;
+    overflow-x: hidden;
 }
 
-/**
- * Set `margin-bottom` to maintain vertical rhythm
- */
-h1, h2, h3, h4, h5, h6,
-p, blockquote, pre,
-ul, ol, dl, figure,
-%vertical-rhythm {
-    margin-bottom: $spacing-unit / 2;
+a {
+    color: inherit;
+    border-bottom: 1px solid $back-color;
+    text-decoration: none;
+    &:hover {
+        border-bottom: none;
+    }
 }
 
-/**
- * Images
- */
+h1,h2,h3,h4 {
+    color: $back-color;
+    margin: $spacing-unit 0pt;
+}
+h1 {
+    display: block;
+    font-size: $large-font-size;
+}
+h2 {
+    display: block;
+    font-size: $medium-font-size;
+}
+h3 {
+    display: block;
+    font-size: $medium-font-size;
+}
+p {
+    display: block;
+    margin-top: $spacing-unit;
+    margin-bottom: $spacing-unit;
+}
+
+ul {
+    display: block;
+    list-style: none;
+    > li:before {
+        content: "-";
+        margin-right: 8pt;
+    }
+}
+ol {
+    display: block;
+    list-style: lower-roman;
+}
+
+table {
+    width: 100%;
+    table-layout: fixed;
+    padding: 0pt;
+    border-spacing: 0;
+
+    th {
+        color: $back-color;
+    }
+    th,td {
+        margin: 0pt;
+        padding: $spacing-unit;
+        text-align: center;
+        border-bottom: 0.5pt solid $back-color;
+        overflow: hidden;
+    }
+    th:last-child, td:last-child {
+        border-right: none;
+    }
+    tr:last-child > td {
+        border-bottom: none;
+    }
+}
+
+pre {
+    @include block-cutout;
+    overflow-x: auto;
+}
+
+code {
+    font-family: $code-font-family;
+    font-size: $normal-font-size;
+    font-weight: 500;
+}
+
+blockquote {
+    @include block-cutout;
+
+    // Font
+    font-size: $medium-font-size;
+    font-style: italic;
+    text-align: justify;
+
+    // Spacing
+    display: block;
+    margin: 0;
+    margin-top: $spacing-unit;
+    margin-bottom: $spacing-unit;
+    padding: 2*$spacing-unit;
+}
+
 img {
     max-width: 100%;
-    vertical-align: middle;
-}
-
-/**
- * Figures
- */
-figure > img { display: block; }
-figcaption { font-size: $small-font-size; }
-
-/**
- * Lists
- */
-ul, ol { margin-left: $spacing-unit; }
-li { > ul, > ol { margin-bottom: 0; } }
-
-/**
- * Headings
- */
-h1, h2, h3, h4, h5, h6 { font-weight: $base-font-weight; }
-
-/**
- * Links
- */
-a {
-    color: $brand-color;
-    text-decoration: none;
-    &:visited { color: darken($brand-color, 15%); }
-    &:hover {
-        color: $text-color;
-        text-decoration: underline;
-    }
-}
-
-/**
- * Blockquotes
- */
-blockquote {
-    color: $grey-color;
-    border-left: 4px solid $grey-color-light;
-    padding-left: $spacing-unit / 2;
-    font-size: 18px;
-    letter-spacing: -1px;
-    font-style: italic;
-    > :last-child { margin-bottom: 0; }
-}
-
-/**
- * Code formatting
- */
-pre,
-code {
-    font-size: 15px;
-    border: 1px solid $grey-color-light;
-    border-radius: 5pt;
-    background-color: $grey-color-light;
-}
-code { padding: 1px 5px; }
-pre {
-    padding: 8px 12px;
-    overflow-x: auto;
-    > code {
-        border: 0;
-        padding-right: 0;
-        padding-left: 0;
-    }
-}
-
-/**
- * Wrapper
- */
-.wrapper {
-    max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
-    max-width:         calc(#{$content-width} - (#{$spacing-unit}));
-    margin-right: auto;
-    margin-left: auto;
-    padding-right: $spacing-unit / 2;
-    padding-left: $spacing-unit / 2;
-    @extend %clearfix;
-}
-
-/**
- * Clearfix
- */
-%clearfix {
-    &:after {
-        content: "";
-        display: table;
-        clear: both;
-    }
-}
-
-/**
- * Icons
- */
-.icon {
-    > svg {
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-        vertical-align: middle;
-        path { fill: $grey-color; }
-    }
+    box-shadow: 0px 0pt 8pt darken($white-color, 33%);
 }

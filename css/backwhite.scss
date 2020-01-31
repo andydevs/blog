@@ -1,0 +1,45 @@
+---
+---
+// Colors
+$back-color: rgb(34, 16, 16);
+$white-color: #fff;
+
+// Spacing
+$spacing-unit: 8pt;
+
+// Side menu size
+$desktop-menu-size: 300px;
+
+// Normal font size
+$mega-font-size: 30pt;
+$large-font-size: 20pt;
+$medium-font-size: 14pt;
+$normal-font-size: 11pt;
+$small-font-size: 8pt;
+
+// Font
+$font-family: "Calibri Light", sans-serif;
+$code-font-family: "Consolas", monospace;
+
+// Responsive sizes
+$mobile-width: 760px;
+$max-width: 1200px;
+
+// Font awesome config
+$fa-font-path: "../fonts";
+
+// Import consolas font
+@font-face {
+    font-family: "Consolas";
+    font-size: normal;
+    font-weight: normal;
+    src: url('../fonts/consolas.ttf');
+}
+
+// Imports
+@import "mixins";
+@import "back";
+@import "front";
+@import "base";
+@import "form";
+@import "misc";
