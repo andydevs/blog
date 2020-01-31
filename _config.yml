@@ -21,3 +21,7 @@ github_username: andydevs
 
 # Build settings
 markdown: kramdown
+plugins:
+  - jekyll-font-awesome-sass
+font-awesome:
+  assets: true

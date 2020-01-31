@@ -26,7 +26,7 @@ $mobile-width: 760px;
 $max-width: 1200px;
 
 // Font awesome config
-$fa-font-path: "../fonts";
+$fa-font-path: "/assets/fonts/font-awesome";
 
 // Import consolas font
 @font-face {
@@ -37,6 +37,7 @@ $fa-font-path: "../fonts";
 }
 
 // Imports
+@import "font-awesome";
 @import "mixins";
 @import "back";
 @import "front";
