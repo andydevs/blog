@@ -2,21 +2,27 @@
 layout: default
 keywords: andydevs developer python javascript github
 ---
+<!-- Header -->
 <div class="bw-header">
     <h1 class="bw-title">{{ site.title }}</h1>
     <button class='bw-action bw-show-on-mobile bw-open'>
         <span class="fas fa-chevron-right"></span>
     </button>
 </div>
-<div class="series">
-    <!-- All Posts in Series -->
-    <ul class="post-list">
-        {% for post in site.posts %}
-            <li class='post-short'>
-                {% if post.date %}<h3 class="date">{{ post.date | date: "%b %-d, %Y" }}</h3>{% endif %}
-                <h2 class="title"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h2>
-                <p class="snippet">{{ post.content | strip_html | truncatewords: 40 }}</p>
-            </li>
-        {% endfor %}
-    </ul>
+
+<!-- Post Grid! -->
+{% assign rowsize = 3 %}
+{% assign rows = site.posts.size | divided_by: rowsize | ceil %}
+{% for i in (1..rows) %}
+{% assign offset = forloop.index0 | times: rowsize %}
+<div class="bw-row">
+    {% for post in site.posts limit:rowsize offset:offset %}
+        <div class="bw-col-4">
+            <h2>{{ post.title }}</h2>
+            {% if post.date %}<h4 class="date">{{ post.date | date: "%b %-d, %Y" }}</h4>{% endif %}
+            <p>{{ post.content | strip_html | truncatewords: 80 }}</p>
+            <p><a href="{{ post.url | prepend: site.baseurl }}">Read More</a></p>
+        </div>
+    {% endfor %}
 </div>
+{% endfor %}
