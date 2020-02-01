@@ -1,33 +1,9 @@
 <!DOCTYPE html>
 <html>
-  <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      
-      <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
-      
-      <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
-      {% if page.keywords %}<meta name="keywords" content="{{ page.keywords | join: ',' }}">{% endif %}
-      
-      <link rel="stylesheet" href="{{ "/css/backwhite.css" | prepend: site.baseurl }}">
-      <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
-      <script src="{{ "/assets/js/backwhite.js" | prepend: site.baseurl }}"></script>
-    </head>
+    {% include head.html %}
     <body>
-        <div class="bw-back">
-            <div class="bw-back-container">
-                <div class="bw-header">
-                    <button class="bw-action bw-show-on-mobile bw-close">
-                        <span class="fas fa-chevron-left"></span>
-                    </button>
-                    <a href="{{ site.url }}" class="bw-title">{{ site.title }}</a>
-                </div>
-                <div class="bw-footer">
-                    <p>{{ site.description }}</p>
-                </div>
-            </div>
-        </div>
+        {% include back.html %}
+
         <div class="bw-front">
             <div class="bw-front-container">
                 {{ content }}
