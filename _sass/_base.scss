@@ -75,6 +75,7 @@ table {
 pre {
     @include block-cutout;
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 code {
