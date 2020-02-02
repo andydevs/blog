@@ -5,9 +5,7 @@ keywords: andydevs blog webdesign
 ---
 
 Old UI
-
 Concept of new UI
-Sketched out UI
 
 Code samples
 Back
@@ -16,9 +14,16 @@ Mobile Styling
 Cutouts
 
 Challenges Faced
-Floating Button
 Sliding UI
+Floating Button
+Forms not aligning properly
 
 Solutions and Compromises
 Two fixed buttons at top instead of floating button
 Setting margin
+How flexbox actually works
+
+Porting design over to my website
+Adding the sass
+Making new layouts
+Updating syntax highlighting
