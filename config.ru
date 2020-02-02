@@ -1,3 +1,3 @@
 require "rack/jekyll"
 
-Rack::Jekyll.new show_drafts: true
+run Rack::Jekyll.new show_drafts: true
