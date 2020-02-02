@@ -5,6 +5,10 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # 'jekyll serve'. If you change this file, please restart the server process.
 
+# URL Settings
+url: "http://andydevs.github.io"
+baseurl: ""
+
 # Site settings
 title: Andydevs
 description: >
@@ -13,17 +17,17 @@ description: >
   programming projects on the side. My website where I put updates on projects
   that I'm working on. I also write about things that I've learned and/or have
   interest in.
-url: "http://andydevs.github.io"
-baseurl: ""
 github_username: andydevs
 
-# Styling
+# Plugins
+plugins:
+  - jekyll-font-awesome-sass
+
+# Backwhite Styling
 backwhite:
   back_color: '#10143a'
 
 # Build settings
 markdown: kramdown
-plugins:
-  - jekyll-font-awesome-sass
 font-awesome:
   assets: true
