@@ -1,29 +1,49 @@
 // Block form
 .bw-form {
+    // Page block
     display: block;
-    background-color: inherit;
 
+    // Inherit theme colors
+    background-color: inherit;
+    color: inherit;
+
+    // Single row in block form
     .bw-form-row {
+        // We want each form element in
+        // The row to have the same width
         display: flex;
         flex-direction: row;
         align-items: stretch;
+
+        // We also want to keep the theme
+        // colors according to context
         background-color: inherit;
+        color: inherit;
     }
 }
 
 // Inline forms
 .bw-inline-form {
-    margin: $spacing-unit/2 0pt;
+    // We want to space input elements evenly
     display: flex;
     flex-direction: row;
     align-items: stretch;
+
+    // Keep theme colors
     background-color: inherit;
     color: inherit;
 
+    // Input group
     .bw-input-group {
+        // Scale up to share space
         flex: 1;
-        padding: 0;
+
+        // Spacing and padding
         margin: $spacing-unit/2 0pt;
+        padding: 0;
+
+        // Theme colors
+        background-color: inherit;
         color: inherit;
 
         input {
@@ -32,6 +52,7 @@
     }
 
     .bw-button-group {
+        // No scaling
         flex: 0;
         padding: 0;
         margin: $spacing-unit/2 0pt;
@@ -57,24 +78,50 @@
 }
 
 .bw-input-group {
-    flex: 1;
+    // Scale to fill space 
+    // (apparantly, the element was not shrinking, 
+    // it was being forced to have an input of 1,
+    // so we add "auto" to tell it that it grows to
+    // 1 fraction, but it can scale down if need be)
+    flex: 1 auto;
+
+    // Internal spacing
+    padding: $spacing-unit/2;
+
+    // Space elements vertically.
+    // Input is at absolute bottom,
+    // Label is at absolute top.
     display: flex;
     flex-direction: column;
-    align-items: stretch;
     justify-content: space-between;
-    padding: $spacing-unit/2;
+
+    // Theme colors
     background-color: inherit;
 
     label {
-        flex-grow: 1;
+        // Vertical block
         display: block;
         font-size: $small-font-size;
+
+        // Theme colors
         color: inherit;
     }
 
-    input {
+    input, select {
+        // Vertical block
         display: block;
-        width: 100%;
+
+        // Set width to containing unit
+        width: 100% !important;
+
+        // So apparently the sizing on these is just that 
+        // little bit off, because it uses different sizing...
+        box-sizing: border-box;
+        -ms-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+
+        // Style input field
         border: none;
         background: none;
         border-radius: 0pt;
@@ -82,27 +129,14 @@
         border-color: inherit;
         background-color: inherit;
         color: inherit;
+
+        // Same on iOS
         -webkit-appearance: none;
+
+        // We don't need an outline on focus
         &:focus {
             outline: none;
         };
-    }
-
-    select {
-        display: block;
-        width: 100%;
-        border: none;
-        background: none;
-        background-color: inherit;
-        border-radius: 0pt;
-        background-color: inherit;
-        border-bottom: 1px solid;
-        border-color: inherit;
-        color: inherit;
-        -webkit-appearance: none;
-        &:focus {
-            outline: none;
-        }
     }
 }
 
