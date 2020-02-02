@@ -4,29 +4,22 @@ title:    "The Site Looks Different..."
 keywords: andydevs blog webdesign
 ---
 
-- Intro
-    - Old UI
-        - Kinda sucked
-        - It's not that it was ugly
-        - It was boring
-        - Decided to start a new UI
-        - Create a style library
-            - This way I can use it on other websites
-        - Then port it over to my website
-            - Create a gem with my theme
-    - Concept of new UI
-        - Description
-            - Two tone design
-                - Dark "back" color
-                - White color for the front
-                - Hence "backwhite"
-            - Two panels
-                - One menu panel, one content panel
-                - Menu panel appears recessed (using a shadow)
-            - On desktop, menu appears beside content
-            - On mobile, menu appears behind content
-                - There's a button that slides the front panel out and in
-        - Rough drawing after the fact
+So, you may have noticed that the website looks different. I've been working on changing the site design for a while now (about a couple years). I'll admit, the old UI kinda sucked. I mean, it was the default jekyll UI, so... It wasn't that it was ugly. It was just boring. So I decided to create a new UI design. I decided to create a style library as a npm package (that way I and other people can use it on other websites), then port it over to my website (and creating a jekyll theme to boot).
+
+- Concept of new UI
+    - Description
+        - Two tone design
+            - Dark "back" color
+            - White color for the front
+            - Hence "backwhite"
+        - Two panels
+            - One menu panel, one content panel
+            - Menu panel appears recessed (using a shadow)
+        - On desktop, menu appears beside content
+        - On mobile, menu appears behind content
+            - There's a button that slides the front panel out and in
+    - Rough drawing after the fact
+
 - Desktop Styling
     - Back
         - Fixed positioning
@@ -39,6 +32,7 @@ keywords: andydevs blog webdesign
         - Absolute positioning
         - z-index to foreground
     - Grids
+
 - Mobile Styling
     - Change width and height of back and front
     - Create vertical grids
@@ -47,6 +41,7 @@ keywords: andydevs blog webdesign
     - Handle sliding using jQuery
         - Sliding UI causes window to expand. Can't seem to hide it effectively
         - The front will just collapse using margin-left. That's what we're gonna do
+
 - Cutouts
     - Inspired by back panel.
     - The idea is parts of the front are cut out from the back pane
@@ -58,6 +53,7 @@ keywords: andydevs blog webdesign
             - In place, we have two buttons at the top that stay in a place where the shadows can't clash.
                 - You do have to move up the page to access the menu.
                 - I got an idea for replacing the button which I'll talk about it later.
+
 - Styling Forms
     - Block forms
         - Form row
@@ -67,6 +63,7 @@ keywords: andydevs blog webdesign
     - Forms not aligning properly on mobile
         - The input fields were too big on mobile.
         - `flex: 1` sets the flex-basis, which is the required length of the element. What we need is `flex: 1 auto`. This tells the element to grow to be 1 fractional length, but shrink as needed.
+
 - Porting design over to my website
     - Adding the sass/js
         - Just copied over the files
@@ -82,6 +79,7 @@ keywords: andydevs blog webdesign
     - Updating syntax highlighting
         - Wanted every part to be in relation to the back color, so that the style is customizable, but still fits with the two tone design.
     - Creating the theme gem
+    
 - Future
     - Getting an actual slide animation working
     - React components.
