@@ -7,7 +7,7 @@
 
 # URL Settings
 url: http://andydevs-test.herokuapp.com # CHANGE THIS WHEN MERGING WITH MASTER
-baseurl: /
+baseurl: ''
 
 # Site settings
 title: Andydevs
