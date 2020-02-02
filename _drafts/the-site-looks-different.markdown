@@ -4,21 +4,13 @@ title:    "The Site Looks Different..."
 keywords: andydevs blog webdesign
 ---
 
-So, you may have noticed that the website looks different. I've been working on changing the site design for a while now (about a couple years). I'll admit, the old UI kinda sucked. I mean, it was the default jekyll UI, so... It wasn't that it was ugly. It was just boring. So I decided to create a new UI design. I decided to create a style library as a npm package (that way I and other people can use it on other websites), then port it over to my website (and creating a jekyll theme to boot).
+So, you may have noticed that the website looks different. I've been working on changing the site design for a while now (about a couple years). It wasn't that the old UI was ugly. It was just boring (it was the default jekyll UI). So, I decided to create a new UI design. I decided to create it as a npm package (that way I and other people can use it on other websites), then port it over to my website (and creating a jekyll theme to boot).
 
-- Concept of new UI
-    - Description
-        - Two tone design
-            - Dark "back" color
-            - White color for the front
-            - Hence "backwhite"
-        - Two panels
-            - One menu panel, one content panel
-            - Menu panel appears recessed (using a shadow)
-        - On desktop, menu appears beside content
-        - On mobile, menu appears behind content
-            - There's a button that slides the front panel out and in
-    - Rough drawing after the fact
+The new style I came up with is something I call "backwhite". Admittedly, the name isn't the best, but I'm keeping it for now (because everything now has that name). The layout is a two-panel design. We have a menu panel off to the side of the content panel, that, on mobile, is switched to with a button. In this layout, the menu appears recessed into the background, behind the content (using a shadow), and is actually hidden behind the content. Toggling to this menu slides the content aside, revealing the menu in the back. Coloring follows a two-tone design, with one dark "back" color coloring the menu, and one white color which colors the content panel. Hence "backwhite" (it's still a stupid name, but that's where it came from).
+
+I drew this diagram after the fact...
+
+(diagram)
 
 - Desktop Styling
     - Back
