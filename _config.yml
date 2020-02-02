@@ -17,6 +17,10 @@ url: "http://andydevs.github.io"
 baseurl: ""
 github_username: andydevs
 
+# Styling
+backwhite:
+  back_color: '#10143a'
+
 # Build settings
 markdown: kramdown
 plugins:

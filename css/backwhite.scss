@@ -1,8 +1,18 @@
 ---
 ---
+$the-color: #10143a;
+
 // Colors
-$back-color: rgb(46, 29, 22);
+{% if site.backwhite.back_color %}
+$back-color: {{ site.backwhite.back_color }};
+{% else %}
+$back-color: #333;
+{% endif %}
+{% if site.backwhite.white_color %}
+$white-color: {{ site.backwhite.white_color }};
+{% else %}
 $white-color: #fff;
+{% endif %}
 
 // Spacing
 $spacing-unit: 8pt;
