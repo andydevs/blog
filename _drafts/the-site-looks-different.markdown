@@ -10,20 +10,104 @@ The new style is something I call "backwhite". Admittedly, the name isn't the be
 
 ## Desktop Styling
 
-So, the first thing I needed to do was create the two panels. I created two divs, `<div class='bw-front'>` and `<div class='bw-back'>`, both existing on the root body. We'll start with `bw-back`. I wanted to keep the menu completely separate from the flow of the page. So, obviously, we needed `position: fixed`.
+So, the first thing I needed to do was create the two panels. I created two divs, `<div class='bw-front'>` and `<div class='bw-back'>`, both existing on the root body. We'll start with `bw-back`. I wanted to keep the menu completely separate from the flow of the page. So, obviously, we needed `position: fixed`. This also means we set the top, bottom, and left edges to `0%`, meaning they are locked to the edges of the screen.
+
+```scss
+.bw-back {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    bottom: 0%;
+}
+```
+
+Since the menu is off to the side, I thought I'd set a variable `$desktop-menu-size`, which is the width of the menu. This also controls the position of the `.bw-front` div, so everything is consistent and can change with one variable.
+
+```scss
+.bw-back {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    bottom: 0%;
+    
+    width: $desktop-menu-size;
+}
+```
+
+The other thing we need to set is the `z-index`. We need to tell the div that it's actually behind the `bw-front` div that we're making. We set this to `-1` to keep it behind everything else.
+
+```scss
+.bw-back {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    bottom: 0%;
+
+    width: $desktop-menu-size;
+
+    z-index: -1;
+}
+```
+
+For the front, I first decided to use fixed positioning and give the div it's own scroll bar. This was achieved with `overflow-y: scroll`.
+
+```scss
+.bw-front {
+    position: fixed;
+    top: 0%;
+    right: 0%;
+
+    // Offset by menu size
+    left: $desktop-menu-size;
+}
+```
+
+However, this caused a few problems. For one, the scrolling on mobile doesn't have momentum. This can be fixed with `-webkit-overflow-scrolling: touch`. The other problem was that the UI doesn't change on mobile when you scroll. The mobile UIs only follow the main scroll wheel, that scrolls the entire page. So, we have to set the position to absolute.
+
+```scss
+.bw-front {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+
+    // Offset by menu size
+    left: $desktop-menu-size;
+}
+```
+
+We'll set the z-index to 0 so that it's moved to the front.
+
+```scss
+.bw-front {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+
+    // Offset by menu size
+    left: $desktop-menu-size;
+
+    z-index: 0;
+}
+```
+
+The final thing to do for these is to make the shadow effect. This is done with box shadow.
+
+```scss
+.bw-front {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+
+    // Offset by menu size
+    left: $desktop-menu-size;
+
+    z-index: 0;
+
+    box-shadow: -2pt 0pt 8pt darken($back-color, 33%);
+}
+```
 
 - Desktop Styling
-    - Back
-        - Fixed positioning
-        - z-index to background
-    - Front
-        - First fixed positioning with scroll wheel
-            - `-webkit-overflow-scrolling`
-        - This doesn't fit with mobile scrolling
-            - Doesn't make the web ui change with scrolling
-        - Absolute positioning
-        - z-index to foreground
-        - Cast shadow
     - Grids
 
 - Mobile Styling
