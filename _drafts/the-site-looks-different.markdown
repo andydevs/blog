@@ -4,13 +4,13 @@ title:    "The Site Looks Different..."
 keywords: andydevs blog webdesign
 ---
 
-So, you may have noticed that the website looks different. I've been working on changing the site design for a while now (about a couple years). It wasn't that the old UI was ugly. It was just boring (it was the default jekyll UI). So, I decided to create a new UI design. I decided to create it as a npm package (that way I and other people can use it on other websites), then port it over to my website (and creating a jekyll theme to boot).
+So, you may have noticed that the website looks different. I've been working on changing the site design for a while now (about a couple years). It wasn't that the old UI was ugly. It was just boring (it was the default jekyll UI). So, I decided to create a new UI design. I decided to create it as a npm package (that way I and other people can use it on other websites), then port it over to my website (and creating a jekyll theme to boot). Note: this is mostly of an overview of the new styling which included some of the process of creating it (problems, decisions, etc.). Not going to go too much in depth on the process of designing it. I will only touch on some of the challenges I faced and decsions that I made during designing this style.
 
-The new style I came up with is something I call "backwhite". Admittedly, the name isn't the best, but I'm keeping it for now (because everything now has that name). The layout is a two-panel design. We have a menu panel off to the side of the content panel, that, on mobile, is switched to with a button. In this layout, the menu appears recessed into the background, behind the content (using a shadow), and is actually hidden behind the content. Toggling to this menu slides the content aside, revealing the menu in the back. Coloring follows a two-tone design, with one dark "back" color coloring the menu, and one white color which colors the content panel. Hence "backwhite" (it's still a stupid name, but that's where it came from).
+The new style is something I call "backwhite". Admittedly, the name isn't the best, but I'm keeping it for now (because everything now has that name). Basic rundown of what you're seeing: The layout is a two-panel design. We have a menu panel off to the side of the content panel, that, on mobile, is switched to with a button. In this layout, the menu appears recessed into the background, behind the content (using a shadow), and is actually hidden behind the content. During switching to this menu, the content slides aside, revealing the menu in the back. Coloring follows a two-tone design, with one dark "back" color coloring the menu, and one white color which colors the content panel. Hence "backwhite" (it's still a stupid name, but that's where it came from).
 
-I drew this diagram after the fact...
+## Desktop Styling
 
-(diagram)
+So, the first thing I needed to do was create the two panels. I created two divs, `<div class='bw-front'>` and `<div class='bw-back'>`, both existing on the root body. We'll start with `bw-back`. I wanted to keep the menu completely separate from the flow of the page. So, obviously, we needed `position: fixed`.
 
 - Desktop Styling
     - Back
@@ -23,6 +23,7 @@ I drew this diagram after the fact...
             - Doesn't make the web ui change with scrolling
         - Absolute positioning
         - z-index to foreground
+        - Cast shadow
     - Grids
 
 - Mobile Styling
