@@ -25,7 +25,7 @@ plugins:
 
 # Backwhite Styling
 backwhite:
-  back_color: '#151433'
+  back_color: '#393B0B' # '#151433'
 
 # Build settings
 markdown: kramdown

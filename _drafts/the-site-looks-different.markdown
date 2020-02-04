@@ -4,13 +4,33 @@ title:    "The Site Looks Different..."
 keywords: andydevs blog webdesign
 ---
 
-So, you may have noticed that the website looks different. I've been working on changing the site design for a while now (about a couple years). It wasn't that the old UI was ugly. It was just boring (it was the default jekyll UI). So, I decided to create a new UI design. I decided to create it as a npm package (that way I and other people can use it on other websites), then port it over to my website (and creating a jekyll theme to boot). Note: this is mostly of an overview of the new styling which included some of the process of creating it (problems, decisions, etc.). Not going to go too much in depth on the process of designing it. I will only touch on some of the challenges I faced and decsions that I made during designing this style.
+So, you may have noticed that the website looks different. I've been working on changing the site design for a while now (about a couple years). It wasn't that the old UI was ugly. It was just boring (I mean, it was the default jekyll UI and it's meant to be changed to something better looking). I decided to try my hand at styling a website. I also decided to put my css and javascript in a separate npm package, creating a style library that other people can use in their websites. Then, I'd port it over to my jekyll website. 
 
-The new style is something I call "backwhite". Admittedly, the name isn't the best, but I'm keeping it for now (because everything now has that name). Basic rundown of what you're seeing: The layout is a two-panel design. We have a menu panel off to the side of the content panel, that, on mobile, is switched to with a button. In this layout, the menu appears recessed into the background, behind the content (using a shadow), and is actually hidden behind the content. During switching to this menu, the content slides aside, revealing the menu in the back. Coloring follows a two-tone design, with one dark "back" color coloring the menu, and one white color which colors the content panel. Hence "backwhite" (it's still a stupid name, but that's where it came from).
+This is just an overview of the some of the new styling, particularly the more specific parts of it (the menu, cutouts, the slide buttons, etc). Not going to go too much in depth on the process of designing it. I will only touch on some of the challenges I faced and decsions that I made during designing this style.
+
+Mostly because I forgot to document my work...
+
+The new style is something I call "backwhite". Admittedly, the name isn't the best, but I'm keeping it for now (because everything now has that name). Basic rundown of what you're seeing: We have a menu panel off to the side of the main content. On mobile, this is hidden and switched to with a button. In this layout, the menu appears recessed into the background, behind the content (using a shadow), and is actually hidden behind the content. During switching to this menu on mobile, the content slides aside, revealing the menu in the back. Coloring follows a two-tone design. A dark "back" color colors the menu and other features, and one white color which colors the whitespace of the content panel. 
+
+Hence "backwhite" (it's still a stupid name, but that's where it came from).
 
 ## Desktop Styling
 
-So, the first thing I needed to do was create the two panels. I created two divs, `<div class='bw-front'>` and `<div class='bw-back'>`, both existing on the root body. We'll start with `bw-back`. I wanted to keep the menu completely separate from the flow of the page. So, obviously, we needed `position: fixed`. This also means we set the top, bottom, and left edges to `0%`, meaning they are locked to the edges of the screen.
+The two panels of the website are made out of two divs, `<div class='bw-front'>` and `<div class='bw-back'>`, both existing on the root body. 
+
+```html
+<body>
+    <div class="bw-back">
+        <!-- Back menu content -->
+    </div>
+
+    <div class="bw-front">
+        <!-- Main content -->
+    </div>
+</body>
+```
+
+We'll start with `bw-back`. You notice the menu is completely separate from the flow of the page. It stays in place. This is achieved by `position: fixed`. This also means we set the top, bottom, and left edges to `0%`, meaning they are locked to the edges of the screen.
 
 ```scss
 .bw-back {
@@ -21,9 +41,11 @@ So, the first thing I needed to do was create the two panels. I created two divs
 }
 ```
 
-Since the menu is off to the side, I thought I'd set a variable `$desktop-menu-size`, which is the width of the menu. This also controls the position of the `.bw-front` div, so everything is consistent and can change with one variable.
+Since the menu is off to the side, I thought I'd set a variable `$desktop-menu-size`, which is the width of the menu. This also controls the left end of the `.bw-front` div, so everything is consistent and can change with one variable.
 
 ```scss
+$desktop-menu-size: 300px;
+
 .bw-back {
     position: fixed;
     top: 0%;
@@ -34,9 +56,13 @@ Since the menu is off to the side, I thought I'd set a variable `$desktop-menu-s
 }
 ```
 
-The other thing we need to set is the `z-index`. We need to tell the div that it's actually behind the `bw-front` div that we're making. We set this to `-1` to keep it behind everything else.
+Yes I am using SCSS.
+
+The other thing you notice in the css is the `z-index`. Since the menu is behind everything, We manually set the depth ordering of the div so that it's actually behind the other content. We set this to -1.
 
 ```scss
+$desktop-menu-size: 300px;
+
 .bw-back {
     position: fixed;
     top: 0%;
@@ -49,26 +75,16 @@ The other thing we need to set is the `z-index`. We need to tell the div that it
 }
 ```
 
-For the front, I first decided to use fixed positioning and give the div it's own scroll bar. This was achieved with `overflow-y: scroll`.
+The front panel has absolute positioning with top and right set to 0%. Left is set to the width of the menu, so it appears right beside the menu. We also set the `min-height` to 100% This ensures the div fills its entire section of the page, but can overflow downwards if need be. (even when the content doesn't fill the entire page).
 
 ```scss
-.bw-front {
-    position: fixed;
-    top: 0%;
-    right: 0%;
+$desktop-menu-size: 300px;
 
-    // Offset by menu size
-    left: $desktop-menu-size;
-}
-```
-
-However, this caused a few problems. For one, the scrolling on mobile doesn't have momentum. This can be fixed with `-webkit-overflow-scrolling: touch`. The other problem was that the UI doesn't change on mobile when you scroll. The mobile UIs only follow the main scroll wheel, that scrolls the entire page. So, we have to set the position to absolute.
-
-```scss
 .bw-front {
     position: absolute;
     top: 0%;
     right: 0%;
+    min-height: 100%;
 
     // Offset by menu size
     left: $desktop-menu-size;
@@ -78,6 +94,8 @@ However, this caused a few problems. For one, the scrolling on mobile doesn't ha
 We'll set the z-index to 0 so that it's moved to the front.
 
 ```scss
+$desktop-menu-size: 300px;
+
 .bw-front {
     position: absolute;
     top: 0%;
@@ -86,13 +104,16 @@ We'll set the z-index to 0 so that it's moved to the front.
     // Offset by menu size
     left: $desktop-menu-size;
 
+    // Set z-index to 0
     z-index: 0;
 }
 ```
 
-The final thing to do for these is to make the shadow effect. This is done with box shadow.
+Since I want the page to flow vertically only, I set `overflow-x` to be hidden. We'll control horizontal scrolling in specific sections of the page (tables, code, etc.).
 
 ```scss
+$desktop-menu-size: 300px;
+
 .bw-front {
     position: absolute;
     top: 0%;
@@ -101,14 +122,73 @@ The final thing to do for these is to make the shadow effect. This is done with 
     // Offset by menu size
     left: $desktop-menu-size;
 
+    // Set z-index to 0
     z-index: 0;
 
+    // No scrolling in x direction
+    overflow-x: hidden;
+}
+```
+
+The final thing to do for these is to make the shadow effect. This is done with `box-shadow`.
+
+```scss
+$desktop-menu-size: 300px;
+
+.bw-front {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+
+    // Offset by menu size
+    left: $desktop-menu-size;
+
+    // Set z-index to 0
+    z-index: 0;
+
+    // Shadow effect
     box-shadow: -2pt 0pt 8pt darken($back-color, 33%);
 }
 ```
 
-- Desktop Styling
-    - Grids
+The last thing I want to cover here is the bootstrap-like grid system.
+
+```html
+...
+<div class='bw-row'>
+    <div class='bw-col-4'>
+        <!-- Content -->
+    </div>
+    <div class='bw-col-4'>
+        <!-- Content -->
+    </div>
+    <div class='bw-col-4'>
+        <!-- Content -->
+    </div>
+</div>
+...
+```
+A grid row is created by a `bw-row` div. Within the `bw-row` div are `bw-col-[x]` divs where `x` can be from 1 to 12. `bw-row`'s have 12 columns that the `bw-col` divs can span across.
+
+This is some clever little scss code that takes advantage of css's grid system and scss for loops.
+
+To create a grid, you set the `display` property to `grid`.
+
+```scss
+.bw-row {
+    display: grid;
+}
+```
+
+A `bw-row` is made up of 1 row that is 12 columns wide. `grid-template-rows` determines the number of rows in the div, and `grid-template-columns` determines the number of columns. Each column is `1fr`, which means 1 equally-spaced width.
+
+```scss
+.bw-row {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(12, 1fr);
+}
+```
 
 - Mobile Styling
     - Change width and height of back and front
