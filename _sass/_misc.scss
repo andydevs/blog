@@ -35,7 +35,7 @@
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: repeat(12, 1fr);
-    grid-column-gap: 8pt;
+    column-gap: $spacing-unit;
 
     // Create grid columns
     $col-class-slug: bw-col !default;
