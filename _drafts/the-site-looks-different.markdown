@@ -168,7 +168,7 @@ The last thing I want to cover here is the bootstrap-like grid system.
 </div>
 ...
 ```
-A grid row is created by a `bw-row` div. Within the `bw-row` div are `bw-col-[x]` divs where `x` can be from 1 to 12. `bw-row`'s have 12 columns that the `bw-col` divs can span across.
+A grid row is created by a `bw-row` div. Within the `bw-row` div are `bw-col-[n]` divs where `n` can be from 1 to 12. `bw-row`'s have 12 columns that the `bw-col` divs can span across. The number `n` in `bw-col-[n]` tells how many columns that the `bw-col-[n]` spans across.
 
 This is some clever little scss code that takes advantage of css's grid system and scss for loops.
 
@@ -191,6 +191,38 @@ A `bw-row` is made up of 1 row that is 12 columns wide. `grid-template-rows` det
 ```
 
 Next is `column-gap`. This is the space between columns. At this point, we come across `$spacing-unit`. This is a global variable that controls the overall spacing accross the entire website. I set it to `8pt`, but it can change (another part of customization).
+
+```scss
+$spacing-unit: 8pt;
+
+.bw-row {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: $spacing-unit;
+}
+```
+
+Now the magic happens. The following syntax automatically creates `bw-col-[x]` classes for x from 1 to 12.
+
+```scss
+$spacing-unit: 8pt;
+
+.bw-row {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: $spacing-unit;
+
+    @for $i from 1 to 12 {
+        .bw-col-#{$i} {
+            grid-column-start: span $i;
+        }
+    }
+}
+```
+
+The first line, `@for $i from 1 to 12` is a scss for loop. This runs the below block with `$i` set to all integers from 1 to 12. The second line, `.bw-col-#{$i}` replaces `#{$i}` with whatever value $i is. The `grid-column-start` parameter usually describes where the div starts. If you write `span [n]`, this just tells the div that it should be `n` columns wide. In total, this statement creates the 12 `bw-col` div classes.
 
 - Mobile Styling
     - Change width and height of back and front

@@ -38,9 +38,8 @@
     column-gap: $spacing-unit;
 
     // Create grid columns
-    $col-class-slug: bw-col !default;
     @for $i from 1 to 12 {
-        .#{$col-class-slug}-#{$i} {
+        .bw-col-#{$i} {
             grid-column-start: span 12;
             @include on-max {
                 grid-column-start: span $i;
