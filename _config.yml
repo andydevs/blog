@@ -6,7 +6,7 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # URL Settings
-url: http://andydevs-test.herokuapp.com # CHANGE THIS WHEN MERGING WITH MASTER
+url: http://andydevs-test.netlify.com # CHANGE THIS WHEN MERGING WITH MASTER
 baseurl: ''
 
 # Site settings
