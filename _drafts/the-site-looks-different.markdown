@@ -190,6 +190,8 @@ A `bw-row` is made up of 1 row that is 12 columns wide. `grid-template-rows` det
 }
 ```
 
+Next is `column-gap`. This is the space between columns. At this point, we come across `$spacing-unit`. This is a global variable that controls the overall spacing accross the entire website. I set it to `8pt`, but it can change (another part of customization).
+
 - Mobile Styling
     - Change width and height of back and front
     - Create vertical grids

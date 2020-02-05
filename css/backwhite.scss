@@ -1,7 +1,5 @@
 ---
 ---
-$the-color: #10143a;
-
 // Colors
 {% if site.backwhite.back_color %}
 $back-color: {{ site.backwhite.back_color }};
