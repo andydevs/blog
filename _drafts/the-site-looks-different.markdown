@@ -224,14 +224,76 @@ $spacing-unit: 8pt;
 
 The first line, `@for $i from 1 to 12` is a scss for loop. This runs the below block with `$i` set to all integers from 1 to 12. The second line, `.bw-col-#{$i}` replaces `#{$i}` with whatever value $i is. The `grid-column-start` parameter usually describes where the div starts. If you write `span [n]`, this just tells the div that it should be `n` columns wide. In total, this statement creates the 12 `bw-col` div classes.
 
+## Mobile Styling
+
+So now that we got the UI working on desktop, let's start working on mobile. The first thing we need to do is something HTML-related. We need to add the meta tag `<meta name="viewport" content="width=device-width,initial-scale=1">`. This tells the browser to assume the page width is as big as the actual screen. I'll cover this more in a possible future post, but, for now, all I'll say is that if we don't add this, the site won't work.
+
+Now we write some more clever scss
+
+```scss
+$mobile-width: 760px;
+
+@mixin on-mobile {
+    @media only screen and (max-width: $mobile-width) {
+        @content;
+    }
+}
+```
+
+This is a scss mixin, a piece of reusable code that we can `@include` in a scss class, id, or tag to change it's behavior on mobile. This will render a block of content underneath the media query, replacing `@content`. The media query checks if the screen width is below the `$mobile-width` variable, which is another customizable variable.
+
+We want the front and back to take up the screen and sit on top of each other on mobile, so we'll use this mixin to control that behavior.
+
+```scss
+.bw-back {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    bottom: 0%;
+
+    width: $desktop-menu-size;
+
+    z-index: -1;
+
+    @include on-mobile {
+        // Set width to full width of screen on mobile
+        width: 100%;
+    }
+}
+
+...
+
+.bw-front {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+
+    // Offset by menu size
+    left: $desktop-menu-size;
+
+    @include on-mobile {
+        // No offset on mobile, front takes up entire screen
+        left: 0%;
+    }
+
+    // Set z-index to 0
+    z-index: 0;
+
+    // Shadow effect
+    box-shadow: -2pt 0pt 8pt darken($back-color, 33%);
+}
+```
+
 - Mobile Styling
-    - Change width and height of back and front
-    - Create vertical grids
-    - `<meta name="viewport" content="width=device-width,initial-scale=1">`
-    - Make floating button appear
+    - Make buttons appear
+        - Header
+        - Title and Action buttons
+        - show-on-mobile
     - Handle sliding using jQuery
         - Sliding UI causes window to expand. Can't seem to hide it effectively
         - The front will just collapse using margin-left. That's what we're gonna do
+    - Create vertical grids
+        - On tablet
 
 - Cutouts
     - Inspired by back panel.
