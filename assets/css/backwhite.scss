@@ -1,29 +1,29 @@
 ---
 ---
 // Colors
-$back-color: #333;
-$white-color: #fff;
+$back-color: #333 !default;
+$white-color: #fff !default;
 
 // Spacing
-$spacing-unit: 8pt;
+$spacing-unit: 8pt !default;
 
 // Side menu size
-$desktop-menu-size: 300px;
+$desktop-menu-size: 300px !default;
 
 // Normal font size
-$mega-font-size: 30pt;
-$large-font-size: 20pt;
-$medium-font-size: 14pt;
-$normal-font-size: 11pt;
-$small-font-size: 8pt;
+$mega-font-size: 30pt !default;
+$large-font-size: 20pt !default;
+$medium-font-size: 14pt !default;
+$normal-font-size: 11pt !default;
+$small-font-size: 8pt !default;
 
 // Font
-$font-family: "Calibri Light", sans-serif;
-$code-font-family: "Consolas", monospace;
+$font-family: "Calibri Light", sans-serif !default;
+$code-font-family: "Consolas", monospace !default;
 
 // Responsive sizes
-$mobile-width: 760px;
-$max-width: 1200px;
+$mobile-width: 760px !default;
+$max-width: 1200px !default;
 
 // Font awesome config
 $fa-font-path: "/assets/fonts/font-awesome";
