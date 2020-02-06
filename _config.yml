@@ -23,10 +23,6 @@ github_username: andydevs
 plugins:
   - jekyll-font-awesome-sass
 
-# Backwhite Styling
-backwhite:
-  back_color: '#151433'
-
 # Build settings
 markdown: kramdown
 font-awesome:
