@@ -44,7 +44,7 @@
     .ne    { color: #900; font-weight: bold } // Name.Exception
     .nf    { color: lighten($color: $back-color, $amount: 55%); font-weight: bold } // Name.Function
     .nn    { color: darken($color: $white-color, $amount: 20%) } // Name.Namespace
-    .nt    { color: lighten($color: $back-color, $amount: 30%); } // Name.Tag
+    .nt    { color: lighten($color: $back-color, $amount: 45%); } // Name.Tag
     .nv    { color: darken($color: $white-color, $amount: 20%) } // Name.Variable
     .bp    { color: darken($color: $white-color, $amount: 20%) } // Name.Builtin.Pseudo
     .vc    { color: darken($color: $white-color, $amount: 20%) } // Name.Variable.Class
