@@ -4,8 +4,8 @@
         @content;
     }
 }
-@mixin on-max {
-    @media only screen and (min-width: $max-width) {
+@mixin on-tablet {
+    @media only screen and (max-width: $tablet-width) {
         @content;
     }
 }

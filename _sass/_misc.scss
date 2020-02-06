@@ -40,9 +40,9 @@
     // Create grid columns
     @for $i from 1 to 12 {
         .bw-col-#{$i} {
-            grid-column-start: span 12;
-            @include on-max {
-                grid-column-start: span $i;
+            grid-column-start: span $i;
+            @include on-tablet {
+                grid-column-start: span 12;
             };
         }
     }
