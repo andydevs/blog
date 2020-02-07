@@ -6,7 +6,7 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # URL Settings
-url: https://andydevs-test.netlify.com # CHANGE THIS WHEN MERGING WITH MASTER
+url: https://andydevs-drafts.netlify.com # CHANGE THIS WHEN MERGING WITH MASTER
 baseurl: ''
 
 # Site settings
