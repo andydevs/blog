@@ -3,9 +3,12 @@ layout:   post
 title:    Fractal Generator Now Has XML Processing
 date:     2016-10-31
 keywords: fractal c xml
+excerpt_separator: <!--more-->
 ---
 
 You can now run the fractal generator with an xml file containing all of the information of the fractals being generated to the program, rather than put the info in manually! Just type `fractal -xml [your xml file]` in the command line!
+
+<!--more-->
 
 ## The XML File
 

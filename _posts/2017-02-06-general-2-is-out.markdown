@@ -3,9 +3,10 @@ title:    General 2.0 Is Out!
 layout:   post
 date:     2017-2-6
 keywords: general ruby "general 2.0"
+excerpt_separator: <!--more-->
 ---
 
-UPDATE 9/16/2017: General is gonna go on the backburner for now. I'll still keep it up, since I know people are using it, but don't expect updates.
+UPDATE 9/16/2017: General is gonna go on the backburner for now. I'll still keep it up, since I know people are using it, but don't expect updates. <!--more-->
 
 Well that took forever!
 
