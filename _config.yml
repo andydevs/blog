@@ -1,22 +1,16 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely need to edit after that.
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'jekyll serve'. If you change this file, please restart the server process.
-
 # URL Settings
 url: https://andydevs-drafts.netlify.com # CHANGE THIS WHEN MERGING WITH MASTER
 baseurl: ''
 
-# Site settings
+# Site content
 title: Andydevs
 description: >
-  I am a self-taught hobbyist programmer with proficiency in Python and Javascript.
+  I am a hobbyist programmer with proficiency in Python and Javascript.
   I'm currently pursuing a degree in Computer Engineering, while I also work on
   programming projects on the side. My website where I put updates on projects
   that I'm working on. I also write about things that I've learned and/or have
   interest in.
 github_username: andydevs
 
+# Theme
 theme: jekyll-theme-backwhite
