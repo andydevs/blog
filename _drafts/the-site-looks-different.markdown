@@ -4,15 +4,15 @@ title:    "The Site Looks Different..."
 keywords: andydevs blog webdesign
 ---
 
-So, you may have noticed that the website looks different. I've been working on changing the site design for a while now (about a couple years). It wasn't that the old UI was ugly. It was just boring (I mean, it was the default jekyll UI and it's meant to be changed to something better looking). I decided to try my hand at styling a website. I also decided to put my css and javascript in a separate npm package, creating a style library that other people can use in their websites. Then, I'd port it over to my jekyll website. 
-
-This is just an overview of the some of the new styling, particularly the more specific parts of it (the menu, cutouts, the slide buttons, etc). Not going to go too much in depth on the process of designing it. I will only touch on some of the challenges I faced and decsions that I made during designing this style.
+So, you may have noticed that the website looks different. I've been working on changing the site design for a while now (about a couple years). It wasn't that the old UI was ugly. It was just boring (I mean, it was the default jekyll UI and it's meant to be changed to something better looking). I decided to try my hand at styling a website. This is just an overview of the some of the new styling, particularly the more specific parts of it (the menu, cutouts, the slide buttons, etc). Not going to go too much in depth on the process of designing it. I will only touch on some of the challenges I faced and decsions that I made during designing this style.
 
 Mostly because I forgot to document my work...
 
 The new style is something I call "backwhite". Admittedly, the name isn't the best, but I'm keeping it for now (because everything now has that name). Basic rundown of what you're seeing: We have a menu panel off to the side of the main content. On mobile, this is hidden and switched to with a button. In this layout, the menu appears recessed into the background, behind the content (using a shadow), and is actually hidden behind the content. During switching to this menu on mobile, the content slides aside, revealing the menu in the back. Coloring follows a two-tone design. A dark "back" color colors the menu and other features, and one white color which colors the whitespace of the content panel. 
 
 Hence "backwhite" (it's still a stupid name, but that's where it came from).
+
+I have my css and javascript in an npm package, and a jekyll theme.
 
 ## Desktop Styling
 
@@ -284,17 +284,61 @@ We want the front and back to take up the screen and sit on top of each other on
 }
 ```
 
+Now, we make the buttons appear. For that, a bit of styling is involved in the titles. Both on the front and back, we have a `bw-header` div, which contains a title and icon buttons. For Icons, I use font-awesome's styles and icons, which are available for free.
+
+_front_
+
+```html
+<div class='bw-header'>
+    <h1 class='bw-title'>{{ page.title }}</h1>
+    <button class='bw-action bw-show-on-mobile bw-open'>
+        <span class="fas fa-chevron-right"></span>
+    </button>
+</div>
+```
+
+_back_
+
+```html
+<div class='bw-header'>
+    <button class='bw-action bw-show-on-mobile bw-close'>
+        <span class="fas fa-chevron-left"></span>
+    </button>
+    <h1 class='bw-title'>{{ page.title }}</h1>
+</div>
+```
+
+`bw-header` has `display: flex`, so that it scales content based on the width. `bw-title` has `flex: 1`, so that it grows with the page and keeps the button on the right. `bw-action` has `flex: 0`, so it's flushed entirely to the right (or left, depending on the order of the elements. The final thing is `bw-show-on-mobile` which sets `display` to `inline-block` only on mobile. Otherwise, it's `none`.
+
+```scss
+.bw-show-on-mobile {
+    display: none;
+    @include on-mobile {
+        display: inline-block;
+    }
+}
+
+.bw-header {
+    display: flex;
+    align-items: center;
+
+    .bw-title {
+        flex: 1;
+    }
+
+    .bw-action {
+        flex: 0;
+    }
+}
+```
+
 - Mobile Styling
-    - Make buttons appear
-        - Header
-        - Title and Action buttons
-        - show-on-mobile
     - Handle sliding using jQuery
         - Sliding UI causes window to expand. Can't seem to hide it effectively
         - The front will just collapse using margin-left. That's what we're gonna do
     - Create vertical grids
         - On tablet
-    - Fix code and tables
+    - Fix code and tables (using jQuery)
 
 - Cutouts
     - Inspired by back panel.
