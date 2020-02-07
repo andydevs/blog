@@ -6,7 +6,7 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # URL Settings
-url: https://andydevs-test.netlify.com # CHANGE THIS WHEN MERGING WITH MASTER
+url: https://andydevs.github.io
 baseurl: ''
 
 # Site settings
@@ -19,4 +19,4 @@ description: >
   interest in.
 github_username: andydevs
 
-theme: jekyll-theme-backwhite
+remote_theme: jekyll-theme-backwhite
