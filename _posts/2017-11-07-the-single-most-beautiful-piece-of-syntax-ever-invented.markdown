@@ -5,8 +5,6 @@ date:     "2017-11-07 15:23:12 -0500"
 keywords: python decorators python3 metaprogramming
 ---
 
-## The Problem
-
 Let's say you're writing some nice functions in python:
 
 ```python

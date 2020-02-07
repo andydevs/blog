@@ -3,6 +3,7 @@ layout: post
 title: "But What Are Descriptors?"
 date: "2019-02-03 15:35:22 -0500"
 keywords: python3 metaprogramming descriptors
+excerpt_separator: <!--more-->
 ---
 
 Let's say I have a `Person` class that contains the name, email, and birthday of a person. I want my `Person` class to do the following:
@@ -11,7 +12,7 @@ Let's say I have a `Person` class that contains the name, email, and birthday of
 - Provide the email of the person and allow it to be changed
 - Provide the age of the person, which is calculated in years from their birthday and today's date.
 
-These business rules all have to deal with properties. Objects often have "properties" which are calculated from internal data. In fact, you often just want properties which allow access to other private member variables, enforcing how you access or manipulate objects and their data. Two of our business rules, the ones pertaining to the name and the email of the person, are examples of those kinds of properties. The age, however, is an example of a calculated property.
+These business rules all have to deal with properties. Objects often have "properties" which are calculated from internal data. In fact, you often just want properties which allow access to other private member variables, enforcing how you access or manipulate objects and their data. <!--more--> Two of our business rules, the ones pertaining to the name and the email of the person, are examples of those kinds of properties. The age, however, is an example of a calculated property.
 
 In Java, you write properties using "get" and "set" methods like so:
 

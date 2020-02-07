@@ -12,7 +12,7 @@ keywords: andydevs developer python javascript github
 
 <!-- Post Grid! -->
 {% assign rowsize = 3 %}
-{% assign rows = site.posts.size | divided_by: rowsize | ceil %}
+{% assign rows = site.posts.size | times: 1.0 | divided_by: rowsize | ceil %}
 {% for i in (1..rows) %}
 {% assign offset = forloop.index0 | times: rowsize %}
 <div class="bw-row">
@@ -20,7 +20,7 @@ keywords: andydevs developer python javascript github
         <div class="bw-col-4">
             <h2>{{ post.title }}</h2>
             {% if post.date %}<h4 class="date">{{ post.date | date: "%b %-d, %Y" }}</h4>{% endif %}
-            <p>{{ post.content | strip_html | truncatewords: 80 }}</p>
+            <p>{{ post.excerpt }}</p>
             <p><a class='bw-cutout-button' href="{{ post.url | prepend: site.baseurl }}">Read More</a></p>
         </div>
     {% endfor %}

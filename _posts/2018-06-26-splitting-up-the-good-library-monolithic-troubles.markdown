@@ -3,6 +3,7 @@ layout: post
 title:  "Splitting Up the Good Library (Monolithic Troubles)"
 date:   "2018-06-26 19:19:00 -0400"
 keywords: python3 good metaprogramming
+excerpt_separator: <!--more-->
 ---
 
 _Everyone hates software. It's messy and it get's everywhere._ - [Sam Gallagher](https://github.com/sjgallagher2) 2017
@@ -12,6 +13,8 @@ My friend just said it as I was showing this to him and I decided to quote it in
 The Good Library was meant to be a utility library for writing more expressive code, eliminating redundancy, and solidifying some common python practices in code (like Duck-Typing through the use of Interfaces).  For me, it's been an exercise in seeing what I could create using the many meta-programming features and quirks of python (which I will definitely write more about).
 
 However, I've written the library to large enough at this point to make me realize that I ran into a bit of a problem.
+
+<!--more-->
 
 ## The Software was Messy and Got Everywhere
 
