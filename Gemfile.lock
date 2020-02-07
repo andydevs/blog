@@ -1,10 +1,9 @@
 GIT
   remote: https://www.github.com/andydevs/jekyll-theme-backwhite.git
-  revision: 0c1fcb025f455d6ce0fc91de0cc038bc746bf29a
+  revision: 2dd9ecb791ae21644977edc88c6042750a469626
   specs:
     jekyll-theme-backwhite (0.1.2)
       jekyll (~> 3.8)
-      true
 
 GEM
   remote: https://rubygems.org/
@@ -18,8 +17,6 @@ GEM
       http_parser.rb (~> 0.6.0)
     eventmachine (1.2.7-x64-mingw32)
     ffi (1.12.2-x64-mingw32)
-    font-awesome-sass (5.12.0)
-      sassc (>= 1.11)
     forwardable-extended (2.6.0)
     http_parser.rb (0.6.0)
     i18n (0.9.5)
@@ -37,9 +34,6 @@ GEM
       pathutil (~> 0.9)
       rouge (>= 1.7, < 4)
       safe_yaml (~> 1.0)
-    jekyll-font-awesome-sass (0.1.1)
-      font-awesome-sass (>= 4)
-      jekyll (>= 2.5, < 4.0)
     jekyll-sass-converter (1.5.2)
       sass (~> 3.4)
     jekyll-watch (2.2.1)
@@ -63,17 +57,12 @@ GEM
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
-    sassc (2.2.1-x64-mingw32)
-      ffi (~> 1.9)
-    true (2.2.2)
-      sass (~> 3.4)
 
 PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
   jekyll
-  jekyll-font-awesome-sass
   jekyll-theme-backwhite!
 
 RUBY VERSION

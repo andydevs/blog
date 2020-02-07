@@ -19,7 +19,4 @@ description: >
   interest in.
 github_username: andydevs
 
-plugins:
-  - jekyll-font-awesome-sass
-
 theme: jekyll-theme-backwhite
