@@ -19,11 +19,7 @@ description: >
   interest in.
 github_username: andydevs
 
-# Plugins
 plugins:
   - jekyll-font-awesome-sass
 
-# Build settings
-markdown: kramdown
-font-awesome:
-  assets: true
+theme: jekyll-theme-backwhite

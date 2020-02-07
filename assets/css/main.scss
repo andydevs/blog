@@ -4,4 +4,4 @@
 $back-color:#0d1222;
 
 // Import site theme
-@import "backwhite";
+@import "{{ site.theme }}";
