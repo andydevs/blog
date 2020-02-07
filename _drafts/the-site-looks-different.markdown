@@ -294,6 +294,7 @@ We want the front and back to take up the screen and sit on top of each other on
         - The front will just collapse using margin-left. That's what we're gonna do
     - Create vertical grids
         - On tablet
+    - Fix code and tables
 
 - Cutouts
     - Inspired by back panel.
@@ -317,21 +318,7 @@ We want the front and back to take up the screen and sit on top of each other on
         - The input fields were too big on mobile.
         - `flex: 1` sets the flex-basis, which is the required length of the element. What we need is `flex: 1 auto`. This tells the element to grow to be 1 fractional length, but shrink as needed.
 
-- Porting design over to my website
-    - Adding the sass/js
-        - Just copied over the files
-        - Javascript file needed to be in /assets folder
-            - Just yanked that from the other library
-    - Making new layouts
-        - default.html
-        - post.html
-        - index.html
-    - Includes
-        - head.html
-        - back.html
-    - Updating syntax highlighting
-        - Wanted every part to be in relation to the back color, so that the style is customizable, but still fits with the two tone design.
-    - Creating the theme gem
+- Syntax highlighting
     
 - Future
     - Getting an actual slide animation working
