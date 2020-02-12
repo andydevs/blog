@@ -1016,8 +1016,13 @@ $tablet-width: 1230px;
 
 ## Future
 
-- Getting an actual slide animation working
-- React components.
-- Touch gestures!
+Obviously, this is not a complete project (especially being my first web and ui design heavy project). I have a few ideas that I would want to add in later versions.
 
-In the mean time, checkout the projects on Github for [NPM](https://www.github.com/andydevs/backwhite) and [Jekyll](https://www.github.com/andydevs/jekyll-theme-backwhite)
+For one, I want to get an actual slide animation working. The UI was meant to slide to the right, off screen, revealing the menu in the back, not collapse like it does now. Another thing I definitely want to make is a library of React components, so developers can use Backwhite in their React projects.
+
+Finally, and this is possibly the most ambitious idea: I want to try adding touch gestures on mobile, namely a slide gesture that will open the back menu from anywhere in the page.
+
+I'll keep you guys posted on major updates. In the mean time, checkout the project repositories on Github:
+    
+    - NPM: [https://www.github.com/andydevs/backwhite](https://www.github.com/andydevs/backwhite)
+    - Jekyll: [https://www.github.com/andydevs/jekyll-theme-backwhite](https://www.github.com/andydevs/jekyll-theme-backwhite)
