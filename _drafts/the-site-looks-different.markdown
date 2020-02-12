@@ -8,18 +8,6 @@ So you may have noticed that the site looks different. I've been thinking of cha
 
 I call it "backwhite". Admittedly, this is not the best name I could give it, but it will do for now, mostly because everything is named "backwhite".
 
-_Desktop View_
-
-![Desktop View](/assets/images/the-site-looks-different/desktop.png)
-
-_Mobile Page_
-
-![Mobile Page View](/assets/images/the-site-looks-different/mobile-page.png)
-
-_Mobile Menu_
-
-![Mobile Menu View](/assets/images/the-site-looks-different/mobile-menu.png)
-
 Below is some documentation for installing and using the style library in your own projects.
 
 ## Installation
