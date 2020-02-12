@@ -4,6 +4,10 @@ title:    "The Site Looks Different..."
 keywords: andydevs blog webdesign
 ---
 
+So you may have noticed that the site looks different. I've been thinking of changing the site design for a while now. Not that the old site was ugly... It was just kinda boring and lackluster.  After a total of a few weeks on and off of working on this project (and learning a whole lot about (s)css and it's quirks in the process), I ended up with a new design that I've packaged both as a Jekyll Theme and an NPM style module, which is what you're seeing right now.
+
+I call it "backwhite". Admittedly, this is not the best name I could give it, but it will do for now, mostly because everything is named after this now.
+
 _Desktop View_
 
 ![Desktop View](/assets/images/the-site-looks-different/desktop.png)
@@ -15,6 +19,8 @@ _Mobile Page_
 _Mobile Menu_
 
 ![Mobile Menu View](/assets/images/the-site-looks-different/mobile-menu.png)
+
+Below is some documentation for installing and using the style library in your own projects.
 
 ## Installation
 
