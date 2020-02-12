@@ -32,7 +32,7 @@ In your html page, import the css and js files.
 Add this line to your Jekyll site's `Gemfile`:
 
 ```ruby
-gem "jekyll-theme-backwhite"
+gem "jekyll-theme-backwhite", git:"https://github.com/andydevs/jekyll-theme-backwhite.git"
 ```
 
 And add this line to your Jekyll site's `_config.yml`:
@@ -48,6 +48,14 @@ And then execute:
 Or install it yourself as:
 
     $ gem install jekyll-theme-backwhite
+
+### Github Pages
+
+Just add the following to your site's `_config.yml`:
+
+```yaml
+remote_theme: andydevs/jekyll-theme-backwhite
+```
 
 ## Usage
 
