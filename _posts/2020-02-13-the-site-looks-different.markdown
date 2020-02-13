@@ -1,6 +1,7 @@
 ---
 layout:   post
 title:    "The Site Looks Different..."
+date:     2020-02-13 
 keywords: andydevs blog webdesign
 ---
 
