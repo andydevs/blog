@@ -33,7 +33,7 @@ In your html page, import the css and js files.
 Add this line to your Jekyll site's `Gemfile`:
 
 ```ruby
-gem "jekyll-theme-backwhite", git:"https://github.com/andydevs/jekyll-theme-backwhite.git"
+gem "jekyll-theme-backwhite"
 ```
 
 And add this line to your Jekyll site's `_config.yml`:
