@@ -4,8 +4,6 @@ layout: post
 keywords: andydevs blog css-grid css grid gradient
 ---
 
-NOTICE: Add info about footer!
-
 I watched a [video lecture](https://youtu.be/7kVeCqQCxlk) from Coding Tech about 
 CSS Grid. I saw how CSS Grid was so much easier and more elegant than whatever I 
 was using before (mainly flexbox).
@@ -270,33 +268,19 @@ OFF TO CODING!
         </p>
     </div>
 
-    <div class="post-snippet third-9">
-        <h3 class="title">Example Header</h3>
-        <p class="buttons">
-            <a href="#" class="button read-button">Read</a>
-        </p>
-    </div>
-
-    <div class="post-snippet third-10">
-        <h3 class="title">Example Header</h3>
-        <p class="buttons">
-            <a href="#" class="button read-button">Read</a>
-        </p>
-    </div>
-
-    <div class="post-snippet third-11">
-        <h3 class="title">Example Header</h3>
-        <p class="buttons">
-            <a href="#" class="button read-button">Read</a>
-        </p>
-    </div>
-
-    <div class="post-snippet third-12">
-        <h3 class="title">Example Header</h3>
-        <p class="buttons">
-            <a href="#" class="button read-button">Read</a>
-        </p>
-    </div>
+    <footer class="footer">
+        <div>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Atque ratione officia minima esse, enim ducimus adipisci 
+                voluptates non iure iste commodi eius, porro recusandae. 
+                Debitis libero sapiente odio placeat atque?
+            </p>
+            <center>
+                Copyright &copy; Anshul Kharbanda (andydevs) 2020
+            </center>
+        </div>
+    </footer>
 </div>
 ```
 
@@ -333,7 +317,7 @@ $third-count: 12;
         "main     main     main     second-1 second-1 second-1 second-1 menu     menu"
         "main     main     main     second-2 second-2 third-1  third-2  third-3  third-4"
         "second-3 second-3 second-3 second-2 second-2 third-5  third-6  third-7  third-8"
-        "second-3 second-3 second-3 second-2 second-2 third-9  third-10 third-11 third-12";
+        "second-3 second-3 second-3 second-2 second-2 footer   footer   footer   footer";
 }
 
 .menu {
@@ -354,6 +338,12 @@ $third-count: 12;
     .third-#{$i} {
         grid-area: third-#{$i};
     }
+}
+
+...
+
+.footer {
+    grid-area: footer;
 }
 ```
 
@@ -379,7 +369,7 @@ $responsive-mobile-size: 830px !default;
     @include on-mobile {
         // CSS Grid
         display: grid;
-        grid-template-rows: auto 1.5fr repeat(3, 1fr) repeat(6, auto);
+        grid-template-rows: auto 1.5fr repeat(3, 1fr) repeat(5, auto);
         grid-template-columns: repeat(2, 1fr);
 
         // Grid areas
@@ -394,8 +384,7 @@ $responsive-mobile-size: 830px !default;
             "third-3  third-4"
             "third-5  third-6"
             "third-7  third-8"
-            "third-9  third-10"
-            "third-11 third-12";
+            "footer   footer";
     }
 }
 ```
@@ -710,6 +699,42 @@ $third-backgrounds:
 
 - Screenshot
 
+## Styling footer
+
+- Need to center text
+- NAHFAM 3: Thanos Snaps Himself
+
+```scss
+// Footer
+.footer {
+    ...
+
+    // Display Grid
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+    place-items: center;
+
+    ...
+}
+```
+
+- Coloring and fonts
+
+```scss
+.footer {
+    ...
+
+    // Font and spacing
+    padding: $spacing-unit;
+    font-style: italic;
+
+    // Coloring
+    background-image: linear-gradient(45deg, lighten($footer-background, 8%), $footer-background);
+    color: white;
+}
+```
+
 ## Setting Tablet Layout
 
 ```scss
@@ -723,8 +748,6 @@ $responsive-tablet-size: 1200px !default;
 ```
 
 - Explain why on-tablet needs to come before on-mobile
-
-Main layout
 
 ```scss
 .layout {
@@ -742,11 +765,12 @@ Main layout
             "menu     menu     menu     menu     menu     menu"
             "main     main     main     main     second-1 second-1"
             "main     main     main     main     second-1 second-1"
-            "second-2 second-2 second-2 third-1  second-1 second-1"
-            "second-2 second-2 second-2 third-1  third-2  third-3"
-            "second-3 second-3 second-3 third-4  third-5  third-6"
-            "second-3 second-3 second-3 third-7  third-8  third-9"
-            "second-3 second-3 second-3 third-10 third-11 third-12";
+            "main     main     main     main     second-1 second-1"
+            "second-2 second-2 second-2 second-1 second-1 second-1"
+            "second-2 second-2 second-2 second-2 third-1  third-2"
+            "second-3 second-3 second-3 third-3  third-4  third-5"
+            "second-3 second-3 second-3 third-6  third-7  third-8"
+            "second-3 second-3 second-3 footer   footer   footer";
     }
 
     // Mobile styling comes after!
