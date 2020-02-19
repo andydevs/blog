@@ -4,6 +4,8 @@ layout: post
 keywords: andydevs blog css-grid css grid gradient
 ---
 
+NOTICE: Add info about footer!
+
 I watched a [video lecture](https://youtu.be/7kVeCqQCxlk) from Coding Tech about 
 CSS Grid. I saw how CSS Grid was so much easier and more elegant than whatever I 
 was using before (mainly flexbox).
