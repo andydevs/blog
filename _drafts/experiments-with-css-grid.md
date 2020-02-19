@@ -291,15 +291,9 @@ Here's what that looks like
 
 ## First grid
 
-- Summarize position attributes
-- Explain grid sections
-- Explain css stuff at the bottom
-- Explain 1fr
+So, first, I set up the `layout` div to take up the entire page, but be able to scroll downward to accomodate for content.
 
 ```scss
-$second-count: 3;
-$third-count: 12;
-
 .layout {
     // Fill entire screen
     position: absolute;
@@ -307,11 +301,34 @@ $third-count: 12;
     left: 0%;
     right: 0%;
     min-height: 100%;
+    
+    ...
+}
+```
+
+To make a grid we use `display: grid`, then define the number of rows and columns in the grid, using
+`grid-template-rows` and `grid-template-columns`.
+
+```scss
+.layout {
+    ...
 
     // CSS Grid
     display: grid;
     grid-template-rows: repeat(5, 1fr);
     grid-template-columns: repeat(8, 1fr);
+}
+```
+
+The `1fr` translates to "1 fraction". `repeat(5, 1fr)` will repeat that five times. This tells CSS to divide the vertical 
+free space into five equally spaced rows. Likewise `repeat(8, 1fr)` will divide the horizontal free space into eight 
+evenly spaced columns. The result is a 5x8 grid of evenly sized cells that we can play around in.
+
+Now the real magic happens. Using `grid-template-areas`, we can assign cells on this grid into named areas. 
+
+```scss
+.layout {
+    ...
 
     // Grid areas
     grid-template-areas:
@@ -321,6 +338,53 @@ $third-count: 12;
         "second-3 second-3 second-3 second-2 second-2 third-5  third-6  third-7  third-8"
         "second-3 second-3 second-3 second-2 second-2 footer   footer   footer   footer";
 }
+```
+
+Then, in our contained elements, we set `grid-area` to a named area, and the element will automatically fill that area!
+
+```scss
+.menu {
+    grid-area: menu;
+}
+
+.main {
+    grid-area: main;
+}
+
+.second-1 {
+    grid-area: second-1;
+}
+
+.second-2 {
+    grid-area: second-2;
+}
+
+.second-3 {
+    grid-area: second-3;
+}
+
+.third-1 {
+    grid-area: third-1;
+}
+
+.third-2 {
+    grid-area: third-2;
+}
+
+...
+
+.footer {
+    grid-area: footer;
+}
+```
+
+- Screenshot
+
+SCSS makes this code more concise using variables and for loops
+
+```scss
+$second-count: 3;
+$third-count: 12;
 
 .menu {
     grid-area: menu;
@@ -342,14 +406,12 @@ $third-count: 12;
     }
 }
 
-...
-
 .footer {
     grid-area: footer;
 }
 ```
 
-- Add Screenshot
+Crazy, right. Well...
 
 ## Mobile grid
 
