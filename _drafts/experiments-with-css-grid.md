@@ -4,36 +4,154 @@ layout: post
 keywords: andydevs blog css-grid css grid gradient
 ---
 
-I watched a video lecture from Coding Tech about CSS Grid, and I was intrigued.
+I watched a [video lecture](https://youtu.be/7kVeCqQCxlk) from Coding Tech about 
+CSS Grid. I saw how CSS Grid was so much easier and more elegant than whatever I 
+was using before (mainly flexbox).
 
-So, I'm creating a website using CSS grid. This website in particular will be 
-a homepage for a "blog". I might actually add pages later, but I'm just making 
-the homepage for now.
+Needless to say, I was intrigued and I wanted to try it myself.
 
-I "drew" a layout (using google drawings)
+So, off the tail of another css project, I'm jumping right back in and making a 
+website using CSS grid. This website in particular will be a homepage for a "blog".
+
+It's not a real website, it's just a mockup.
+
+I "drew" this layout (using google drawings)
 
 _Desktop_
 
-![Desktop](./journal-assets/css-grid/desktop.jpg)
+![Desktop](/assets/images/experiments-with-css-grid/desktop.jpg)
 
 _Mobile_
 
-![Mobile](./journal-assets/css-grid/mobile.jpg)
+![Mobile](/assets/images/experiments-with-css-grid/mobile.jpg)
 
-A few notes on this design, the colors are actually linear gradients. Makes things 
-look nice. The "Icon Grid" and "Icon Row" sections will contain icons for accessing 
-other parts of the website.
-
-I'll be using scss and fontawesome for icons!
+A few notes on this design: the colors are actually linear gradients, and the 
+"Icon Grid" and "Icon Row" sections will contain icons for accessing other 
+parts of the website.
 
 ## Setting up the Project
 
-- Created new npm package
-- Installed grunt and scss dependencies
-    - Realized that I didn't use any javascript so didn't install babel
-    - Talk about grunt-contrib-connect and grunt-contrib-watch
-    - Also talk about grunt-contrib-copy and copying html file
-- Created a TO-DO list
+So I started up a new npm project. I used `grunt` as a task runner, as I was
+going to be building `scss` code, and copying files over in my build process.
+
+So I installed `grunt`, `grunt-cli`, `grunt-sass`, and `node-sass`.
+
+I realized down the road that I didn't need any javascript for this project.
+This was pure css. So no `grunt-babel` or any of that stuff.
+
+I designated `_public` to be the directory where my files are stored (I 
+underscored it so that it appears at the top... I think I might've gotten
+it backwards as I should keep my source files on top but... oh well).
+
+I decided to have a folder for my html files and have grunt copy them over
+to the public directory using `grunt-contrib-copy`... I felt like the 
+`_public` dir should be for build artifacts and I shouldn't have to go 
+into it to change source files.
+
+Plus, since I'm using `grunt-contrib-watch`, I can have it do something
+when the html changes.
+
+Speaking of which, `grunt-contrib-watch` will watch my source directories for
+changes and run build tasks accordingly, so I don't have to keep doing that.
+I can also add a special script into my html that will reload the page when 
+grunt rebuilds the source files.
+
+I did this in my last project and I liked that workflow. What I didn't know was
+that there was also `grunt-contrib-connect`, which will set up a little server
+that you can view the code from. This plugin will also automatically inject the
+livereload script when serving html pages and automatically open the browser when
+it starts. It made the development experience so much easier and enjoyable.
+
+So yeah, I was pretty happy about that.
+
+With my installs done, I setup my grunt file.
+
+```js
+const sass = require('node-sass')
+const siteDirectory = '_public/'
+
+/**
+ * Configure grunt
+ * 
+ * @param grunt grunt instance
+ */
+module.exports = function configGrunt(grunt) {
+    // Configure grunt
+    grunt.initConfig({
+        sass: {
+            options: {
+                implementation: sass,
+                sourceMap: true
+            },
+            public: {
+                files: [{
+                    expand: true,
+                    cwd: 'scss',
+                    src: ['main.scss'],
+                    dest: siteDirectory,
+                    ext: '.css'
+                }]
+            }
+        },
+        copy: {
+            html: {
+                files: [{
+                    expand: true,
+                    cwd: 'html',
+                    src: '**/*.html',
+                    dest: siteDirectory
+                }]
+            }
+        },
+        watch: {
+            options: {
+                livereload: true
+            },
+            scss: {
+                files: ['scss/**/*.scss'],
+                tasks: ['sass']
+            },
+            html: {
+                files: ['html/**/*.html'],
+                tasks: ['copy']
+            }
+        },
+        connect: {
+            server: {
+                options: {
+                    hostname: 'localhost',
+                    base: siteDirectory,
+                    livereload: true,
+                    open: true
+                }
+            }
+        }
+    })
+
+    // Load tasks
+    grunt.loadNpmTasks('grunt-sass')
+    grunt.loadNpmTasks('grunt-contrib-watch')
+    grunt.loadNpmTasks('grunt-contrib-connect')
+    grunt.loadNpmTasks('grunt-contrib-copy')
+
+    // Register tasks
+    grunt.registerTask('build', ['sass', 'copy'])
+    grunt.registerTask('devserver', ['build', 'connect', 'watch'])
+    grunt.registerTask('default', ['build'])
+}
+```
+
+I set up two tasks: `build` (the default task) will just build 
+the project, compiling scss and copying html, and `devserver` 
+will set up the `grunt-contrib-connect` server and 
+`grunt-contrib-watch`.
+
+To keep me on track (mostly to prevent me from spending long hours just
+endlessly tweaking the project to satiate my perfectionism) I made a simple
+To-Do list and put it in a `TODO.md`. A bit low-tech, but found I like it 
+better this way.
+
+OFF TO CODING!
 
 ## Make content
 
