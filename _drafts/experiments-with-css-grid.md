@@ -113,7 +113,7 @@ module.exports = function configGrunt(grunt) {
             },
             html: {
                 files: ['html/**/*.html'],
-                tasks: ['copy']
+                tasks: ['copy:html']
             }
         },
         connect: {
@@ -151,12 +151,9 @@ endlessly tweaking the project to satiate my perfectionism) I made a simple
 To-Do list and put it in a `TODO.md`. A bit low-tech, but found I like it 
 better this way.
 
-OFF TO CODING!
+## Adding Dummy Content
 
-## Make content
-
-- Explain the naming of the divs
-- Doing main layout first, and then doing menu
+The first thing I did was add the HTML content in. I'm adding the content in first and then styling it, as you would.
 
 ```html
 <div class="layout">
@@ -284,7 +281,12 @@ OFF TO CODING!
 </div>
 ```
 
-- Explain why you added extra third divs
+The basic gist is that we have all of our content under one layout div. This single div will control the placement of all of our components. In it, we have our menu. I've kept the menu blank for now, as I work on it a bit down the road (using nested grid). Following the menu are the post snippets. I grouped the snippets into `main`, `second` and `third` snippets. In the hypothetical blog I would be making, the `main` snippet would be, for example, the featured post of the day. The `second` snippets would be three other highlighted posts, and the `third` snippets would be eight less important posts (possibly like the posts from last week or something)
+
+I noticed I forgot to add the footer in my layout so I added it in after the fact.
+
+Here's what that looks like
+
 - Add a screenshot of this
 
 ## First grid
