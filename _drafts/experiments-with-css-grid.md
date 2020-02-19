@@ -322,7 +322,7 @@ To make a grid we use `display: grid`, then define the number of rows and column
 
 The `1fr` translates to "1 fraction". `repeat(5, 1fr)` will repeat that five times. This tells CSS to divide the vertical 
 free space into five equally spaced rows. Likewise `repeat(8, 1fr)` will divide the horizontal free space into eight 
-evenly spaced columns. The result is a 5x8 grid of evenly sized cells that we can play around in.
+equally spaced columns. The result is a 5x8 grid of equally sized cells that we can play around in.
 
 Now the real magic happens. Using `grid-template-areas`, we can assign cells on this grid into named areas. 
 
