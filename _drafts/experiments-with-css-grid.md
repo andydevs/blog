@@ -415,8 +415,7 @@ Crazy, right. Well...
 
 ## Mobile grid
 
-All we need to do is change the grid layout
-in the `.layout` class.
+First, I created an scss mixin for detecting mobile screens.
 
 ```scss
 $responsive-mobile-size: 830px !default;
@@ -426,7 +425,11 @@ $responsive-mobile-size: 830px !default;
         @content;
     }
 }
+```
 
+Then, all we need to do is change `grid-template-areas` in the `.layout` class.
+
+```scss
 .layout {
     ...
 
@@ -452,6 +455,12 @@ $responsive-mobile-size: 830px !default;
     }
 }
 ```
+
+Yeah, that's it! That's all ya gotta do. You can arrange these blocks
+anywhere, and the divs will follow!
+
+A few things to note here. `auto` means scale the row to fit the content. 
+We only want the menu to be as big as it needs to be
 
 - Explain auto
 - Explain 1.5fr
