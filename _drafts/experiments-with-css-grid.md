@@ -843,7 +843,7 @@ $responsive-tablet-size: 1200px !default;
             "second-2 second-2 second-2 second-2 third-1  third-2"
             "second-3 second-3 second-3 third-3  third-4  third-5"
             "second-3 second-3 second-3 third-6  third-7  third-8"
-            "second-3 second-3 second-3 footer   footer   footer";
+            "footer   footer   footer   footer   footer   footer";
     }
 
     // Mobile styling comes after!
