@@ -460,10 +460,15 @@ Yeah, that's it! That's all ya gotta do. You can arrange these blocks
 anywhere, and the divs will follow!
 
 A few things to note here. `auto` means scale the row to fit the content. 
-We only want the menu to be as big as it needs to be
+We only want the menu to be as big as it needs to be, so `auto` takes care 
+of that.
 
-- Explain auto
-- Explain 1.5fr
+The other thing is that `1.5fr`. I wanted the main post snippet to be about 
+50% taller than the second post snippets, so I set that row to take up 
+slightly more space.
+
+Here's what that looks like:
+
 - Screenshot!
 
 ## Adding Fonts
