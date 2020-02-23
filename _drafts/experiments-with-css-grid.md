@@ -535,14 +535,18 @@ Now for the fun part
 
 ## Colors!
 
-- Explain color lists
-- Explain gradients
-- Explain mixins
+So, according to the diagram, all the post-snippets are different colors,
+and the buttons and titles follow that color scheme. I also want to have
+the background of the post snippets have a linear gradient.
+
+So, to make things easier to change and configure, I created a few variables
+which will contain the color data for the parts of the web page.
 
 ```scss
-// Control background colors for menu and 
+// Control background colors for menu, footer, and 
 // main, second and third post snippets
 $menu-background: #444 !default;
+$footer-background: #999 !default;
 $main-background: gold !default;
 $second-backgrounds: 
     tomato dodgerblue mediumseagreen !default;
@@ -550,9 +554,18 @@ $third-backgrounds:
     lightcoral sienna indianred orange 
     pink lavender violet turquoise 
     teal slateblue darkolivegreen slategray !default;
+```
 
+`$second-backgrounds` and `$third-backgrounds` are lists of color data,
+each element is separated by whitespace.
+
+I also created a mixin, which would take the given base color and style
+each of the components within a post snippet based on that color. It also
+applies the linear gradient to the background.
+
+```scss
 @mixin colored-snippet($color) {
-    // Background color
+    // Background image
     background-image: linear-gradient(45deg, lighten($color, 8%), $color);
 
     // Title color
@@ -569,9 +582,12 @@ $third-backgrounds:
         }
     }
 }
+```
 
-...
+Now we just include this in our subcomponents. In SCSS, to select the
+n'th element in a list, you use `nth($list-variable, $n)`.
 
+```scss
 // Main post snippet
 .main {
     grid-area: main;
@@ -594,6 +610,8 @@ $third-backgrounds:
     }
 }
 ```
+
+The fruits of my labour:
 
 - Screenshot!
 
