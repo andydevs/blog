@@ -4,11 +4,12 @@ layout: post
 keywords: andydevs blog css-grid css grid gradient
 ---
 
-I watched a [video lecture](https://youtu.be/7kVeCqQCxlk) from Coding Tech about 
-CSS Grid. I saw how CSS Grid was so much easier and more elegant than whatever I 
-was using before (mainly flexbox).
+A while back, I watched a [video lecture](https://youtu.be/7kVeCqQCxlk) from 
+Coding Tech about CSS Grid. The lecturer was pretty enthusiastic about this
+new feature, and he showed how he redesigned his entire blog using CSS Grid.
+The code was short, concise, and elegant.
 
-Needless to say, I was intrigued and I wanted to try it myself.
+Needless to say, I was intrigued. I wanted to try it myself.
 
 So, off the tail of another css project, I'm jumping right back in and making a 
 website using CSS grid. This website in particular will be a homepage for a "blog".
@@ -26,8 +27,8 @@ _Mobile_
 ![Mobile](/assets/images/experiments-with-css-grid/mobile.jpg)
 
 A few notes on this design: the colors are actually linear gradients, and the 
-"Icon Grid" and "Icon Row" sections will contain icons for accessing other 
-parts of the website.
+"Icon Grid" and "Icon Row" sections will contain icons for things like mail
+and social media.
 
 ## Setting up the Project
 
@@ -39,9 +40,10 @@ So I installed `grunt`, `grunt-cli`, `grunt-sass`, and `node-sass`.
 I realized down the road that I didn't need any javascript for this project.
 This was pure css. So no `grunt-babel` or any of that stuff.
 
-I designated `_public` to be the directory where my files are stored (I 
-underscored it so that it appears at the top... I think I might've gotten
-it backwards as I should keep my source files on top but... oh well).
+I designated `_public` to be the directory where my files are stored. I 
+underscored it so that it appears at the top. I realize after the fact
+that it would've been beeter if I kept my source files on top. I'll try
+that in my next web design project.
 
 I decided to have a folder for my html files and have grunt copy them over
 to the public directory using `grunt-contrib-copy`... I felt like the 
@@ -281,7 +283,7 @@ The first thing I did was add the HTML content in. I'm adding the content in fir
 </div>
 ```
 
-The basic gist is that we have all of our content under one layout div. This single div will control the placement of all of our components. In it, we have our menu. I've kept the menu blank for now, as I work on it a bit down the road (using nested grid). Following the menu are the post snippets. I grouped the snippets into `main`, `second` and `third` snippets. In the hypothetical blog I would be making, the `main` snippet would be, for example, the featured post of the day. The `second` snippets would be three other highlighted posts, and the `third` snippets would be eight less important posts (possibly like the posts from last week or something)
+The basic gist is that we have all of our content under one layout div. This single div will control the placement of all of our components. In it, we have our menu. I've kept the menu blank for now, as I'll be working on it a bit down the road (using nested grid). Following the menu are the post snippets. I grouped the snippets into `main`, `second` and `third` snippets. In the hypothetical blog I would be making, the `main` snippet would be a featured post of the day. The `second` snippets would be three other highlighted posts, and the `third` snippets would be eight less important posts (possibly the posts from last week or something)
 
 I noticed I forgot to add the footer in my layout so I added it in after the fact.
 
@@ -320,8 +322,8 @@ To make a grid we use `display: grid`, then define the number of rows and column
 }
 ```
 
-The `1fr` translates to "1 fraction". `repeat(5, 1fr)` will repeat that five times. This tells CSS to divide the vertical 
-free space into five equally spaced rows. Likewise `repeat(8, 1fr)` will divide the horizontal free space into eight 
+The `1fr` translates to "1 fraction". `repeat(5, 1fr)` will repeat that five times. This part of the code tells CSS to divide the vertical 
+free space into five equally spaced rows. Likewise the part containing `repeat(8, 1fr)` will divide the horizontal free space into eight 
 equally spaced columns. The result is a 5x8 grid of equally sized cells that we can play around in.
 
 Now the real magic happens. Using `grid-template-areas`, we can assign cells on this grid into named areas. 
@@ -340,7 +342,7 @@ Now the real magic happens. Using `grid-template-areas`, we can assign cells on 
 }
 ```
 
-Then, in our contained elements, we set `grid-area` to a named area, and the element will automatically fill that area!
+Then, in our contained elements, we set `grid-area` to the named area we want the element to be in, and the element will automatically fill that area!
 
 ```scss
 .menu {
@@ -411,7 +413,7 @@ $third-count: 12;
 }
 ```
 
-Crazy, right. Well...
+Crazy, right? Well...
 
 ## Mobile grid
 
@@ -427,7 +429,7 @@ $responsive-mobile-size: 830px !default;
 }
 ```
 
-Then, all we need to do is change `grid-template-areas` in the `.layout` class.
+Then, all we need to do is change `grid-template-areas` in the `.layout` class when we detect a mobile screen.
 
 ```scss
 .layout {
@@ -456,28 +458,27 @@ Then, all we need to do is change `grid-template-areas` in the `.layout` class.
 }
 ```
 
-Yeah, that's it! That's all ya gotta do. You can arrange these blocks
-anywhere, and the divs will follow!
-
-A few things to note here. `auto` means scale the row to fit the content. 
-We only want the menu to be as big as it needs to be, so `auto` takes care 
-of that.
-
-The other thing is that `1.5fr`. I wanted the main post snippet to be about 
-50% taller than the second post snippets, so I set that row to take up 
-slightly more space.
-
-Here's what that looks like
-
 ![Mobile Grid 1](/assets/images/experiments-with-css-grid/mobile-grid-1.jpg)
 
 ![Mobile Grid 2](/assets/images/experiments-with-css-grid/mobile-grid-2.jpg)
 
+Yeah, that's it! That's all ya gotta do. You can arrange these blocks
+anywhere, and the divs will follow!
+
+A few things to note here. The `auto` means scale the row to fit the content. 
+We only want the menu to be as big as it needs to be, so `auto` takes care 
+of that.
+
+The other thing is that `1.5fr`. I wanted the main post snippet to be about 
+50% taller than the second post snippets, so setting that row to `1.5fr` does
+that for me
+
 ## Adding Fonts
 
 Calibri Light, that's my go-to font. I'm putting the font settings in the
-`layout` div. The `layout` is mean to be the root of the "app", so it controls
-the layout and the styling, including the fonts.
+`.layout` div. In this styling, the `.layout` is meant to be the root of 
+the "app", like the base component of a react page, so it controls the 
+layout and the styling, including the fonts.
 
 ```scss
 $font-family: "Calibri Light", sans-serif !default;
@@ -494,12 +495,18 @@ $font-size: 14pt !default;
 
 ![Adding Fonts](/assets/images/experiments-with-css-grid/adding-fonts.jpg)
 
+Looking back, in an actual app, I'd consider creating a separate class 
+which controls theming and adding that in alongside layout in the root
+div.
+
 ## Styling the post snippets
 
 Now I want the post snippet to have the header right at top, the button 
 group right at the bottom, and the remaining space to be filled with 
-the content. I was originally thinking that I would use `display: flex`
-and set the `.content` div to have `flex: 1` so that it could fill the-
+the content. 
+
+I could use `display: flex` and set the `.content` div to have `flex: 1` 
+so that it could fill the-
 
 **NAHFAM&trade;**
 
@@ -540,7 +547,7 @@ $spacing-unit: 12pt !default;
 
 ![Post Snippet Styling 1](/assets/images/experiments-with-css-grid/post-snippets-2.jpg)
 
-Also I added a bit of button styling
+And, just to make the "buttons" look nicer
 
 ```scss
 // Generic button
@@ -774,11 +781,12 @@ Now we're making our first nested grid. The css is as simple as always:
 ### Centering the elements
 
 So now we have a problem. The elements are arranged in a grid, but they're not really centered.
+
 I could wrap each of the elements in a container grid and use `flexbox` to center the-
 
 **NAHFAM 2: Revenge of the YEET**
 
-CSS Grid's got you covered! In fact, it's even simpler than `flexbox`. All you need is one attribute.
+In fact, it's even simpler than `flexbox`. All you need is one attribute.
 
 ```scss
 .menu {
@@ -871,13 +879,14 @@ For centering the title, I just needed `text-align: center` to be active only on
 
 ![Mobile Snippets Header](/assets/images/experiments-with-css-grid/mobile-snippets-header.jpg)
 
-Now for the read button to fill the entire width of the button group. 
-I thought of using a CSS Grid, and tt would work. It would work pretty 
-well.
+Now to make the read button fill the entire width of the button group.
 
-I'll admit, though, that flex would work better for this use case.
-I thought of this section as something that could have one or more 
-buttons or even small input forms that are evenly spaced, and flex 
+I could use `flexbox` with `flex-direction: row-reverse` and set `flex: 1` 
+on the button to -
+
+Actually, `flexbox` would work better for this use case. I thought 
+of this section as something that could have one or more buttons 
+or even small input forms that are evenly spaced, and flex 
 automatically scales and positions those buttons accordingly. With 
 CSS Grid, I would have to change the layout to accomodate the new 
 elements.
@@ -923,29 +932,45 @@ So, I ultimately decided to use flex here.
 
 If there's anything I learned as a professional idiot who happens 
 to know how to code, it's to not try to fit the job around the tool. 
-Always find the right tool for the job.
+Better to find the right tool for the job.
 
 ## Styling footer
 
 So for the footer, I wanted to have the text at the center
-of the division. Again, I could use flex here, but...
+of the division. So, what's the best tool for this one?
 
 **NAHFAM 3: Thanos Snaps Himself**
 
-This is a case where CSS Grid works more concisely. Just
-declare a 1x1 grid and set the items to be placed in the
-center.
+Flexbox does use less attributes, but I think CSS grid just reads better.
+
+You declare a 1x1 grid and set the items to be placed in the center.
 
 ```scss
 // Footer
 .footer {
     ...
 
-    // Display Grid
+    // Center using Grid
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr;
     place-items: center;
+
+    ...
+}
+```
+
+Vs.
+
+```scss
+// Footer
+.footer {
+    ...
+
+    // Center using flexbox
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     ...
 }
@@ -1066,11 +1091,14 @@ Just like before, we just change the layout and the divs will follow suit!
 
 ## Conclusion
 
-So, in summary, while there are still cases where other tools like
-flex come in handy, CSS Grid solves oh so many problems, especially with
-laying out webpages both horizontally and vertically on multiple devices.
+So, in summary, there are still cases where other tools like flex come in handy, 
+but CSS Grid does have it's many uses. Namely, I found that CSS Grid is incredibly 
+useful for laying out webpages both horizontally and vertically and having the layout 
+respond to multiple device sizes. For cases where you have one or more items that are
+evenly spaced/scaled in one direction, like a list or a row of items, Flexbox works 
+better for that.
 
-So yeah, I'm gonna use this for everything.
+So yeah, I'm gonna use CSS Grid for everything now.
 
 Check out the project on [GitHub](https://github.com/andydevs/css-grid-blog-homepage-example) 
 and the actual [website](https://css-grid-blog-homepage-example.netlify.com/) if it fancies you.
