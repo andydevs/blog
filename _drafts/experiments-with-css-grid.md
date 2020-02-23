@@ -467,13 +467,15 @@ The other thing is that `1.5fr`. I wanted the main post snippet to be about
 50% taller than the second post snippets, so I set that row to take up 
 slightly more space.
 
-Here's what that looks like:
+Here's what that looks like
 
 - Screenshot!
 
 ## Adding Fonts
 
-- Explain why you're putting it in the layout
+Calibri Light, that's my go-to font. I'm putting the font settings in the
+`layout` div. The `layout` is mean to be the root of the "app", so it controls
+the layout and the styling, including the fonts.
 
 ```scss
 $font-family: "Calibri Light", sans-serif !default;
@@ -528,6 +530,8 @@ $spacing-unit: 12pt !default;
 ```
 
 - Screenshot!
+
+Now for the fun part
 
 ## Colors!
 
