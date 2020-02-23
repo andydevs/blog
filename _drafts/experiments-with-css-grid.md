@@ -494,7 +494,10 @@ $font-size: 14pt !default;
 
 Now I want the post snippet to have the header right at top, the button 
 group right at the bottom, and the remaining space to be filled with 
-the content. I was originally thinking that I would use flexbox but...
+the content. I was originally thinking that I would use `display: flex`
+and set the `.content` div to have `flex: 1` so that it could fill the-
+
+**NAHFAM&trade;**
 
 CSS Grid can take care of this as well! Here's what that looks like
 
@@ -737,9 +740,9 @@ Now we're making our first nested grid. The css is as simple as always:
 ### Centering the elements
 
 So now we have a problem. The elements are arranged in a grid, but they're not really centered.
-I could wrap the elements in a container grid and use `flexbox` to create the-
+I could wrap each of the elements in a container grid and use `flexbox` to center the-
 
-**NAHFAM&trade;**
+**NAHFAM 2: Revenge of the YEET**
 
 CSS Grid's got you covered! In fact, it's even simpler than `flexbox`. All you need is one attribute.
 
@@ -782,6 +785,8 @@ use icons elsewhere in the website.
 
 ### Mobile menu grid
 
+For mobile, all you need to do is change the layout!
+
 ```scss
 .menu {
     ...
@@ -801,20 +806,17 @@ use icons elsewhere in the website.
 }
 ```
 
+- Screenshot
+
 ## Changing mobile layout of post snippets
 
-- Center title
-- Explain `justify-items: stretch;`
+To go off that, I also wanted to change the styling of the post snippets on mobile.
+Mainly, I want to center the title and have the `Read` button fill the entire bottom.
+
+For centering the title, I just needed `text-align: center` to be active only on mobile.
 
 ```scss
 .post-snippet {
-
-    ...
-
-    // Mobile
-    @include on-mobile {
-        justify-items: stretch;
-    }
 
     ...
 
@@ -831,35 +833,70 @@ use icons elsewhere in the website.
 
 - Screenshot
 
-- Make button fill entire width
-- NAHFAM 2: Revenge of the YEET
+Now for the read button to fill the entire width of the button group. 
+I thought of using a CSS Grid, and tt would work. It would work pretty 
+well.
+
+I'll admit, though, that flex would work better for this use case.
+I thought of this section as something that could have one or more 
+buttons or even small input forms that are evenly spaced, and flex 
+automatically scales and positions those buttons accordingly. With 
+CSS Grid, I would have to change the layout to accomodate the new 
+elements.
+
+So, I ultimately decided to use flex here.
 
 ```scss
 .post-snippet {
     ...
 
     .buttons {
-        display: block;
+        grid-area: buttons;
 
-        @include on-mobile {
-            display: grid;
-            grid-template-rows: 1fr;
-            grid-template-columns: 1fr;
-            justify-items: stretch;
+        // Set display to flex
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: flex-start;
 
-            // Align text
+        .button {
+            // Dont stretch
+            flex: 0;
+
+            // Set only margin left
+            margin: 0pt;
+            margin-left: $spacing-unit/2;
+
+            // Align internal text to center
             text-align: center;
+
+            @include on-mobile {
+                // Stretch and margin both sides
+                flex: 1;
+                margin: 0pt $spacing-unit/2;
+            }
         }
     }
+
+    ...
 }
 ```
 
 - Screenshot
 
+If there's anything I learned as a professional idiot who happens 
+to know how to code, it's to not try to fit the job around the tool. 
+Always find the right tool for the job.
+
 ## Styling footer
 
-- Need to center text
-- NAHFAM 3: Thanos Snaps Himself
+So for the footer, I wanted to have the text at the center
+of the division. Again, I could use flex here, but...
+
+**NAHFAM 3: Thanos Snaps Himself**
+
+This is a case where CSS Grid works more concisely. Just
+declare a 1x1 grid and set the items to be placed in the
+center.
 
 ```scss
 // Footer
@@ -876,7 +913,8 @@ use icons elsewhere in the website.
 }
 ```
 
-- Coloring and fonts
+After that, I just set the font-style to italic, gave it a slightly
+grey color, and padded the edges.
 
 ```scss
 .footer {
@@ -894,6 +932,10 @@ use icons elsewhere in the website.
 
 ## Setting Tablet Layout
 
+The last thing I wanted to do was create an intermediate layout for tablets.
+
+First off, I made another mixin.
+
 ```scss
 $responsive-tablet-size: 1200px !default;
 
@@ -904,7 +946,27 @@ $responsive-tablet-size: 1200px !default;
 }
 ```
 
-- Explain why on-tablet needs to come before on-mobile
+Now, there's a major caveat when using this mixin along with `on-mobile`.
+These media queries will check if the screen width is _less than_ the
+given width in the query. CSS also works from top to bottom, meaning
+that media queries are processed in the order that they are in the file.
+
+So, say you put the `on-tablet` media query underneath the `on-mobile`
+media query. On a mobile device, it will check to see if the screen
+width is less than the mobile width, which it is. So, it will style
+accordingly. Then, it will check to see if the screen width is less
+than the tablet width, which it is. So, it will overwrite the mobile
+styling and give you the tablet layout on mobile!
+
+Not what we want.
+
+So, it's important to make sure that the `on-tablet` media query comes
+_before_ the `on-mobile` one. That way, on a mobile device, it will
+set the tablet style, but then it will overwrite that style with the
+mobile media query, and give us what we want. On a tablet, the mobile
+query will fail, and we won't have to worry about it.
+
+Just like before, we just change the layout and the divs will follow suit!
 
 ```scss
 .layout {
@@ -958,7 +1020,11 @@ $responsive-tablet-size: 1200px !default;
 
 ## Conclusion
 
-- CSS Grid was insanely easy
-- I'm gonna use this for everything
-- Check out project on github
-- Check out website
+So, in summary, while there are still cases where other tools like
+flex come in handy, CSS Grid solves oh so many problems, especially with
+laying out webpages both horizontally and vertically on multiple devices.
+
+So yeah, I'm gonna use this for everything.
+
+Check out the project on [GitHub](https://github.com/andydevs/css-grid-blog-homepage-example) 
+and the actual [website](https://css-grid-blog-homepage-example.netlify.com/) if it fancies you.
