@@ -617,9 +617,53 @@ The fruits of my labour:
 
 ## Menu
 
-- Install fontawesome
-- Extra grunt copy task
-- Configuring fontawesome in css
+Now onto the menu. For this, I'll need some icons. I'll be using `fontawesome-free`.
+So I type `npm install --save @fortawesome/fontawesome-free` to install the library.
+Fontawesome stores SCSS files which can be imported in my main SCSS file.
+
+```scss
+@import "./node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "./node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
+@import "./node_modules/@fortawesome/fontawesome-free/scss/brands.scss";
+
+// ... Import remaining scss
+```
+
+But there's a little issue here. Fontawesome stores it's icons in font files that it
+needs to import. In order to import these files, our "web app" needs to be able to 
+serve them, which means they need to be copied over to our `_public` folder.
+
+Luckily, I already had `grunt-contrib-copy`, so I can get grunt to do this for me.
+
+In the `copy` property in my `grunt.initConfig` config, I added this extra bit of
+configuration
+
+```js
+copy: {
+    ...
+    fonts: {
+        files: [{
+            expand: true,
+            cwd: './node_modules/@fortawesome/fontawesome-free/webfonts',
+            src: '*',
+            dest: siteDirectory + '/fonts'
+        }]
+    }
+},
+```
+
+Fontawesome stores it's fonts in a directory called "webfonts". It is configured by
+default to look for fonts there. That needs to be changed, and it can be by setting
+the `$fa-font-path` variable in the main scss file.
+
+```scss
+$fa-font-path: '/fonts';
+@import "./node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "./node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
+@import "./node_modules/@fortawesome/fontawesome-free/scss/brands.scss";
+
+// ... Import remaining scss
+```
 
 ### Color menu
 
