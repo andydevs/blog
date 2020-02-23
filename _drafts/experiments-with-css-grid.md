@@ -706,6 +706,8 @@ title.
 </div>
 ```
 
+![Menu Content]()
+
 ### Make another grid
 
 Now we're making our first nested grid. The css is as simple as always:
@@ -735,7 +737,7 @@ Now we're making our first nested grid. The css is as simple as always:
 }
 ```
 
-![Menu]()
+![Menu Grid]()
 
 ### Centering the elements
 
@@ -754,7 +756,7 @@ CSS Grid's got you covered! In fact, it's even simpler than `flexbox`. All you n
 }
 ```
 
-![Centering Elements]()
+![Menu Centered]()
 
 ### Styling Menu
 
@@ -785,7 +787,7 @@ use icons elsewhere in the website.
 }
 ```
 
-![Styling Menu]()
+![Menu Styled]()
 
 ### Mobile menu grid
 
@@ -810,7 +812,7 @@ For mobile, all you need to do is change the layout!
 }
 ```
 
-![Mobile Menu]()
+![Menu Mobile]()
 
 ## Changing mobile layout of post snippets
 
