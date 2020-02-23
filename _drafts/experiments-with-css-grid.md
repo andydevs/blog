@@ -532,7 +532,7 @@ $spacing-unit: 12pt !default;
 }
 ```
 
-![Post Snippets]()
+![Post Snippet Styling]()
 
 Now for the fun part
 
