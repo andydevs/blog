@@ -769,7 +769,7 @@ Now we're making our first nested grid. The css is as simple as always:
 }
 ```
 
-![Menu Grid]()
+![Menu Grid](/assets/images/experiments-with-css-grid/menu-grid.jpg)
 
 ### Centering the elements
 
@@ -788,7 +788,7 @@ CSS Grid's got you covered! In fact, it's even simpler than `flexbox`. All you n
 }
 ```
 
-![Menu Centered]()
+![Menu Centered](/assets/images/experiments-with-css-grid/menu-centered.jpg)
 
 ### Styling Menu
 
@@ -819,7 +819,7 @@ use icons elsewhere in the website.
 }
 ```
 
-![Menu Styled]()
+![Menu Styled](/assets/images/experiments-with-css-grid/menu-styled.jpg)
 
 ### Mobile menu grid
 
@@ -844,7 +844,7 @@ For mobile, all you need to do is change the layout!
 }
 ```
 
-![Menu Mobile]()
+![Menu Mobile](/assets/images/experiments-with-css-grid/menu-mobile.jpg)
 
 ## Changing mobile layout of post snippets
 
@@ -869,7 +869,7 @@ For centering the title, I just needed `text-align: center` to be active only on
 }
 ```
 
-![Mobile Snippets Header]()
+![Mobile Snippets Header](/assets/images/experiments-with-css-grid/mobile-snippets-header.jpg)
 
 Now for the read button to fill the entire width of the button group. 
 I thought of using a CSS Grid, and tt would work. It would work pretty 
@@ -919,7 +919,7 @@ So, I ultimately decided to use flex here.
 }
 ```
 
-![Mobile Snippets Button Group]()
+![Mobile Snippets Button Group](/assets/images/experiments-with-css-grid/mobile-snippets-button-group.jpg)
 
 If there's anything I learned as a professional idiot who happens 
 to know how to code, it's to not try to fit the job around the tool. 
@@ -951,7 +951,7 @@ center.
 }
 ```
 
-![Footer Centered]()
+![Footer Centered](/assets/images/experiments-with-css-grid/footer-centered.jpg)
 
 After that, I just set the font-style to italic, gave it a slightly
 grey color, and padded the edges.
@@ -970,7 +970,7 @@ grey color, and padded the edges.
 }
 ```
 
-![Footer Styled]()
+![Footer Styled](/assets/images/experiments-with-css-grid/footer-styled.jpg)
 
 ## Setting Tablet Layout
 
@@ -1058,11 +1058,11 @@ Just like before, we just change the layout and the divs will follow suit!
 }
 ```
 
-![Tablet Layout 1]()
+![Tablet Layout 1](/assets/images/experiments-with-css-grid/tablet-layout-1.jpg)
 
-![Tablet Layout 2]()
+![Tablet Layout 2](/assets/images/experiments-with-css-grid/tablet-layout-2.jpg)
 
-![Tablet Layout 3]()
+![Tablet Layout 3](/assets/images/experiments-with-css-grid/tablet-layout-3.jpg)
 
 ## Conclusion
 
