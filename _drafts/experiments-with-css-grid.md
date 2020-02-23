@@ -287,7 +287,7 @@ I noticed I forgot to add the footer in my layout so I added it in after the fac
 
 Here's what that looks like
 
-![Dummy Content]()
+![Dummy Content](/assets/images/experiments-with-css-grid/dummy-content.jpg)
 
 ## First grid
 
@@ -378,7 +378,7 @@ Then, in our contained elements, we set `grid-area` to a named area, and the ele
 }
 ```
 
-![First Grid]()
+![First Grid](/assets/images/experiments-with-css-grid/first-grid.jpg)
 
 SCSS makes this code more concise using variables and for loops
 
@@ -469,7 +469,9 @@ slightly more space.
 
 Here's what that looks like
 
-![Mobile Grid]()
+![Mobile Grid 1](/assets/images/experiments-with-css-grid/mobile-grid-1.jpg)
+
+![Mobile Grid 2](/assets/images/experiments-with-css-grid/mobile-grid-2.jpg)
 
 ## Adding Fonts
 
@@ -489,6 +491,8 @@ $font-size: 14pt !default;
     font-size: $font-size;
 }
 ```
+
+![Adding Fonts](/assets/images/experiments-with-css-grid/adding-fonts.jpg)
 
 ## Styling the post snippets
 
@@ -532,7 +536,33 @@ $spacing-unit: 12pt !default;
 }
 ```
 
-![Post Snippet Styling]()
+![Post Snippet Styling 1](/assets/images/experiments-with-css-grid/post-snippets-1.jpg)
+
+![Post Snippet Styling 1](/assets/images/experiments-with-css-grid/post-snippets-2.jpg)
+
+Also I added a bit of button styling
+
+```scss
+// Generic button
+.button {
+    // Sizing
+    text-decoration: none;
+    padding: $spacing-unit/2 $spacing-unit;
+    border-radius: $button-border-radius;
+    
+    // Coloring
+    color: black;
+    background-color: #ccc;
+
+    // Hover effect
+    transition: background-color 0.5s;
+    &:hover {
+        background-color: #aaa;
+    }
+}
+```
+
+![Button Styling](/assets/images/experiments-with-css-grid/button-styling.jpg)
 
 Now for the fun part
 
@@ -616,7 +646,9 @@ n'th element in a list, you use `nth($list-variable, $n)`.
 
 The fruits of my labour:
 
-![Colors]()
+![Colors 1](/assets/images/experiments-with-css-grid/colors-1.jpg)
+
+![Colors 2](/assets/images/experiments-with-css-grid/colors-2.jpg)
 
 ## Menu
 
