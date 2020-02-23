@@ -738,7 +738,7 @@ title.
 </div>
 ```
 
-![Menu Content]()
+![Menu Content](/assets/images/experiments-with-css-grid/menu-content.jpg)
 
 ### Make another grid
 
@@ -951,6 +951,8 @@ center.
 }
 ```
 
+![Footer Centered]()
+
 After that, I just set the font-style to italic, gave it a slightly
 grey color, and padded the edges.
 
@@ -968,7 +970,7 @@ grey color, and padded the edges.
 }
 ```
 
-![Footer]()
+![Footer Styled]()
 
 ## Setting Tablet Layout
 
@@ -1056,7 +1058,11 @@ Just like before, we just change the layout and the divs will follow suit!
 }
 ```
 
-![Tablet Layout]()
+![Tablet Layout 1]()
+
+![Tablet Layout 2]()
+
+![Tablet Layout 3]()
 
 ## Conclusion
 
