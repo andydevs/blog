@@ -287,7 +287,7 @@ I noticed I forgot to add the footer in my layout so I added it in after the fac
 
 Here's what that looks like
 
-- Add a screenshot of this
+![Dummy Content]()
 
 ## First grid
 
@@ -378,7 +378,7 @@ Then, in our contained elements, we set `grid-area` to a named area, and the ele
 }
 ```
 
-- Screenshot
+![First Grid]()
 
 SCSS makes this code more concise using variables and for loops
 
@@ -469,7 +469,7 @@ slightly more space.
 
 Here's what that looks like
 
-- Screenshot!
+![Mobile Grid]()
 
 ## Adding Fonts
 
@@ -532,7 +532,7 @@ $spacing-unit: 12pt !default;
 }
 ```
 
-- Screenshot!
+![Post Snippets]()
 
 Now for the fun part
 
@@ -616,7 +616,7 @@ n'th element in a list, you use `nth($list-variable, $n)`.
 
 The fruits of my labour:
 
-- Screenshot!
+![Colors]()
 
 ## Menu
 
@@ -735,7 +735,7 @@ Now we're making our first nested grid. The css is as simple as always:
 }
 ```
 
-- Screenshot
+![Menu]()
 
 ### Centering the elements
 
@@ -753,6 +753,8 @@ CSS Grid's got you covered! In fact, it's even simpler than `flexbox`. All you n
     ...
 }
 ```
+
+![Centering Elements]()
 
 ### Styling Menu
 
@@ -783,6 +785,8 @@ use icons elsewhere in the website.
 }
 ```
 
+![Styling Menu]()
+
 ### Mobile menu grid
 
 For mobile, all you need to do is change the layout!
@@ -806,7 +810,7 @@ For mobile, all you need to do is change the layout!
 }
 ```
 
-- Screenshot
+![Mobile Menu]()
 
 ## Changing mobile layout of post snippets
 
@@ -831,7 +835,7 @@ For centering the title, I just needed `text-align: center` to be active only on
 }
 ```
 
-- Screenshot
+![Mobile Snippets Header]()
 
 Now for the read button to fill the entire width of the button group. 
 I thought of using a CSS Grid, and tt would work. It would work pretty 
@@ -881,7 +885,7 @@ So, I ultimately decided to use flex here.
 }
 ```
 
-- Screenshot
+![Mobile Snippets Button Group]()
 
 If there's anything I learned as a professional idiot who happens 
 to know how to code, it's to not try to fit the job around the tool. 
@@ -929,6 +933,8 @@ grey color, and padded the edges.
     color: white;
 }
 ```
+
+![Footer]()
 
 ## Setting Tablet Layout
 
@@ -1016,7 +1022,7 @@ Just like before, we just change the layout and the divs will follow suit!
 }
 ```
 
-- Screenshot
+![Tablet Layout]()
 
 ## Conclusion
 
