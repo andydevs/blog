@@ -665,49 +665,10 @@ $fa-font-path: '/fonts';
 // ... Import remaining scss
 ```
 
-### Color menu
-
-```scss
-.menu {
-    grid-area: menu;
-
-    // Spacing
-    padding: $spacing-unit;
-
-    // Coloring!
-    background-image: linear-gradient(45deg, lighten($menu-background, 5%), $menu-background);
-    color: white;
-}
-```
-
-### Make another grid
-
-```scss
-.menu {
-    ...
-
-    // Create grid layout
-    display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-areas: 
-        "title  title  icon-1"
-        "title  title  icon-2"
-        "icon-3 icon-4 icon-5";
-
-    .title {
-        grid-area: title;
-    }
-
-    @for $i from 1 through 5 {
-        .icon-#{i} {
-            grid-area: icon-#{i};
-        }
-    }
-}
-```
-
 ### Add Content
+
+With fontawesome installed, I added the icons I was going to use, along with a
+title.
 
 ```html
 <div class="menu">
@@ -742,13 +703,45 @@ $fa-font-path: '/fonts';
 </div>
 ```
 
+### Make another grid
+
+Now we're making our first nested grid. The css is as simple as always:
+
+```scss
+.menu {
+    ...
+
+    // Create grid layout
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: 
+        "title  title  icon-1"
+        "title  title  icon-2"
+        "icon-3 icon-4 icon-5";
+
+    .title {
+        grid-area: title;
+    }
+
+    @for $i from 1 through 5 {
+        .icon-#{i} {
+            grid-area: icon-#{i};
+        }
+    }
+}
+```
+
 - Screenshot
 
 ### Centering the elements
 
-- First off how do we center them...
-- NAHFAM&trade;
-- Use CSS Grid
+So now we have a problem. The elements are arranged in a grid, but they're not really centered.
+I could wrap the elements in a container grid and use `flexbox` to create the-
+
+**NAHFAM&trade;**
+
+CSS Grid's got you covered! In fact, it's even simpler than `flexbox`. All you need is one attribute.
 
 ```scss
 .menu {
@@ -758,7 +751,27 @@ $fa-font-path: '/fonts';
 }
 ```
 
-### Styling icons
+### Styling Menu
+
+I just wanted to add the linear gradient without the remaining styling in the `colored-snippet` 
+mixin. So, I didn't use it, and I added the gradient manually. I also added a bit of spacing 
+around the menu content.
+
+```scss
+.menu {
+    grid-area: menu;
+
+    // Spacing
+    padding: $spacing-unit;
+
+    // Coloring!
+    background-image: linear-gradient(45deg, lighten($menu-background, 5%), $menu-background);
+    color: white;
+}
+```
+
+For the icons, I just made them a lot bigger and had them inherit their color. This way, I could
+use icons elsewhere in the website.
 
 ```scss
 .icon {
