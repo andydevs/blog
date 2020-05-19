@@ -5,16 +5,11 @@ keywords: andydevs blog css-grid css grid gradient
 ---
 
 A while back, I watched a [video lecture](https://youtu.be/7kVeCqQCxlk) from 
-Coding Tech about CSS Grid. The lecturer was pretty enthusiastic about this
-new feature, and he showed how he redesigned his entire blog using CSS Grid.
-The code was short, concise, and elegant.
+Coding Tech where a blogger showed how he designed his entire blog website just using CSS Grid, with no help from Bootstrap or any other style library.
 
-Needless to say, I was intrigued. I wanted to try it myself.
+Needless to say, I was intrigued.
 
-So, off the tail of another css project, I'm jumping right back in and making a 
-website using CSS grid. This website in particular will be a homepage for a "blog".
-
-It's not a real website, it's just a mockup.
+I wanted to try it myself. I decided to use CSS Grid to design a homepage for a mock blog website.
 
 I "drew" this layout (using google drawings)
 
@@ -26,136 +21,17 @@ _Mobile_
 
 ![Mobile](/assets/images/experiments-with-css-grid/mobile.jpg)
 
-A few notes on this design: the colors are actually linear gradients, and the 
+Note: the colors are actually linear gradients, and the 
 "Icon Grid" and "Icon Row" sections will contain icons for things like mail
 and social media.
 
-## Setting up the Project
+Also note: I'll be using SCSS for this project. It makes code more concise and easy to read
 
-So I started up a new npm project. I used `grunt` as a task runner, as I was
-going to be building `scss` code, and copying files over in my build process.
+Check out the project on [GitHub](https://github.com/andydevs/css-grid-blog-homepage-example) for more details on the coing and tools used to make this website.
 
-So I installed `grunt`, `grunt-cli`, `grunt-sass`, and `node-sass`.
+## Starting with the Content
 
-I realized down the road that I didn't need any javascript for this project.
-This was pure css. So no `grunt-babel` or any of that stuff.
-
-I designated `_public` to be the directory where my files are stored. I 
-underscored it so that it appears at the top. I realize after the fact
-that it would've been beeter if I kept my source files on top. I'll try
-that in my next web design project.
-
-I decided to have a folder for my html files and have grunt copy them over
-to the public directory using `grunt-contrib-copy`... I felt like the 
-`_public` dir should be for build artifacts and I shouldn't have to go 
-into it to change source files.
-
-Plus, since I'm using `grunt-contrib-watch`, I can have it do something
-when the html changes.
-
-Speaking of which, `grunt-contrib-watch` will watch my source directories for
-changes and run build tasks accordingly, so I don't have to keep doing that.
-I can also add a special script into my html that will reload the page when 
-grunt rebuilds the source files.
-
-I did this in my last project and I liked that workflow. What I didn't know was
-that there was also `grunt-contrib-connect`, which will set up a little server
-that you can view the code from. This plugin will also automatically inject the
-livereload script when serving html pages and automatically open the browser when
-it starts. It made the development experience so much easier and enjoyable.
-
-So yeah, I was pretty happy about that.
-
-With my installs done, I setup my grunt file.
-
-```js
-const sass = require('node-sass')
-const siteDirectory = '_public/'
-
-/**
- * Configure grunt
- * 
- * @param grunt grunt instance
- */
-module.exports = function configGrunt(grunt) {
-    // Configure grunt
-    grunt.initConfig({
-        sass: {
-            options: {
-                implementation: sass,
-                sourceMap: true
-            },
-            public: {
-                files: [{
-                    expand: true,
-                    cwd: 'scss',
-                    src: ['main.scss'],
-                    dest: siteDirectory,
-                    ext: '.css'
-                }]
-            }
-        },
-        copy: {
-            html: {
-                files: [{
-                    expand: true,
-                    cwd: 'html',
-                    src: '**/*.html',
-                    dest: siteDirectory
-                }]
-            }
-        },
-        watch: {
-            options: {
-                livereload: true
-            },
-            scss: {
-                files: ['scss/**/*.scss'],
-                tasks: ['sass']
-            },
-            html: {
-                files: ['html/**/*.html'],
-                tasks: ['copy:html']
-            }
-        },
-        connect: {
-            server: {
-                options: {
-                    hostname: 'localhost',
-                    base: siteDirectory,
-                    livereload: true,
-                    open: true
-                }
-            }
-        }
-    })
-
-    // Load tasks
-    grunt.loadNpmTasks('grunt-sass')
-    grunt.loadNpmTasks('grunt-contrib-watch')
-    grunt.loadNpmTasks('grunt-contrib-connect')
-    grunt.loadNpmTasks('grunt-contrib-copy')
-
-    // Register tasks
-    grunt.registerTask('build', ['sass', 'copy'])
-    grunt.registerTask('devserver', ['build', 'connect', 'watch'])
-    grunt.registerTask('default', ['build'])
-}
-```
-
-I set up two tasks: `build` (the default task) will just build 
-the project, compiling scss and copying html, and `devserver` 
-will set up the `grunt-contrib-connect` server and 
-`grunt-contrib-watch`.
-
-To keep me on track (mostly to prevent me from spending long hours just
-endlessly tweaking the project to satiate my perfectionism) I made a simple
-To-Do list and put it in a `TODO.md`. A bit low-tech, but found I like it 
-better this way.
-
-## Adding Dummy Content
-
-The first thing I did was add the HTML content in. I'm adding the content in first and then styling it, as you would.
+The first thing I did was add the HTML content in.
 
 ```html
 <div class="layout">
@@ -283,9 +159,7 @@ The first thing I did was add the HTML content in. I'm adding the content in fir
 </div>
 ```
 
-The basic gist is that we have all of our content under one layout div. This single div will control the placement of all of our components. In it, we have our menu. I've kept the menu blank for now, as I'll be working on it a bit down the road (using nested grid). Following the menu are the post snippets. I grouped the snippets into `main`, `second` and `third` snippets. In the hypothetical blog I would be making, the `main` snippet would be a featured post of the day. The `second` snippets would be three other highlighted posts, and the `third` snippets would be eight less important posts (possibly the posts from last week or something)
-
-I noticed I forgot to add the footer in my layout so I added it in after the fact.
+We have all of our content under one layout div, which will use CSS Grid to control the placement of all of our components. In it, we have our menu (which I've kept blank for now), followed by post snippets of various sizes, and finally a footer. In the hypothetical blog I would be making, the `main` snippet would be a featured post of the day, and the `second` and `third` other highlighted posts to put on the main page.
 
 Here's what that looks like
 
@@ -293,23 +167,7 @@ Here's what that looks like
 
 ## First grid
 
-So, first, I set up the `layout` div to take up the entire page, but be able to scroll downward to accomodate for content.
-
-```scss
-.layout {
-    // Fill entire screen
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    right: 0%;
-    min-height: 100%;
-    
-    ...
-}
-```
-
-To make a grid we use `display: grid`, then define the number of rows and columns in the grid, using
-`grid-template-rows` and `grid-template-columns`.
+To make a grid we use `display: grid`, then define the number of rows and columns in the grid, using `grid-template-rows` and `grid-template-columns`.
 
 ```scss
 .layout {
@@ -322,9 +180,7 @@ To make a grid we use `display: grid`, then define the number of rows and column
 }
 ```
 
-The `1fr` translates to "1 fraction". `repeat(5, 1fr)` will repeat that five times. This part of the code tells CSS to divide the vertical 
-free space into five equally spaced rows. Likewise the part containing `repeat(8, 1fr)` will divide the horizontal free space into eight 
-equally spaced columns. The result is a 5x8 grid of equally sized cells that we can play around in.
+The `1fr` translates to "1 fraction". `repeat(5, 1fr)` will repeat that five times. This part of the code tells CSS to divide the vertical free space into five equally spaced rows. Likewise, `grid-template-columns: repeat(8, 1fr)` will divide the horizontal free space into eight equally spaced columns. The result is a 5x8 grid of equally sized cells that we can play around in.
 
 Now the real magic happens. Using `grid-template-areas`, we can assign cells on this grid into named areas. 
 
@@ -342,47 +198,7 @@ Now the real magic happens. Using `grid-template-areas`, we can assign cells on 
 }
 ```
 
-Then, in our contained elements, we set `grid-area` to the named area we want the element to be in, and the element will automatically fill that area!
-
-```scss
-.menu {
-    grid-area: menu;
-}
-
-.main {
-    grid-area: main;
-}
-
-.second-1 {
-    grid-area: second-1;
-}
-
-.second-2 {
-    grid-area: second-2;
-}
-
-.second-3 {
-    grid-area: second-3;
-}
-
-.third-1 {
-    grid-area: third-1;
-}
-
-.third-2 {
-    grid-area: third-2;
-}
-
-...
-
-.footer {
-    grid-area: footer;
-}
-```
-
-![First Grid](/assets/images/experiments-with-css-grid/first-grid.jpg)
-
-SCSS makes this code more concise using variables and for loops
+Then, in our contained elements, we set `grid-area` to the named area we want the element to be in
 
 ```scss
 $second-count: 3;
@@ -413,11 +229,15 @@ $third-count: 12;
 }
 ```
 
+and the element will automatically fill that area!
+
+![First Grid](/assets/images/experiments-with-css-grid/first-grid.jpg)
+
 Crazy, right? Well...
 
 ## Mobile grid
 
-First, I created an scss mixin for detecting mobile screens.
+First, I created a mixin for detecting mobile screens.
 
 ```scss
 $responsive-mobile-size: 830px !default;
@@ -473,32 +293,6 @@ The other thing is that `1.5fr`. I wanted the main post snippet to be about
 50% taller than the second post snippets, so setting that row to `1.5fr` does
 that for me
 
-## Adding Fonts
-
-Calibri Light, that's my go-to font. I'm putting the font settings in the
-`.layout` div. In this styling, the `.layout` is meant to be the root of 
-the "app", like the base component of a react page, so it controls the 
-layout and the styling, including the fonts.
-
-```scss
-$font-family: "Calibri Light", sans-serif !default;
-$font-size: 14pt !default;
-
-.layout {
-    // CSS Grid magic...
-
-    // Font styling
-    font-family: $font-family;
-    font-size: $font-size;
-}
-```
-
-![Adding Fonts](/assets/images/experiments-with-css-grid/adding-fonts.jpg)
-
-Looking back, in an actual app, I'd consider creating a separate class 
-which controls theming and adding that in alongside layout in the root
-div.
-
 ## Styling the post snippets
 
 Now I want the post snippet to have the header right at top, the button 
@@ -545,7 +339,7 @@ $spacing-unit: 12pt !default;
 
 ![Post Snippet Styling 1](/assets/images/experiments-with-css-grid/post-snippets-1.jpg)
 
-![Post Snippet Styling 1](/assets/images/experiments-with-css-grid/post-snippets-2.jpg)
+![Post Snippet Styling 2](/assets/images/experiments-with-css-grid/post-snippets-2.jpg)
 
 And, just to make the "buttons" look nicer
 
@@ -570,8 +364,6 @@ And, just to make the "buttons" look nicer
 ```
 
 ![Button Styling](/assets/images/experiments-with-css-grid/button-styling.jpg)
-
-Now for the fun part
 
 ## Colors!
 
@@ -1101,4 +893,4 @@ better for that.
 So yeah, I'm gonna use CSS Grid for everything now.
 
 Check out the project on [GitHub](https://github.com/andydevs/css-grid-blog-homepage-example) 
-and the actual [website](https://css-grid-blog-homepage-example.netlify.com/) if it fancies you.
+and the actual [website](https://css-grid-blog-homepage-example.netlify.com/).
