@@ -1,6 +1,6 @@
 ---
-title: "Experiments in CSS Grid"
 layout: post
+title: "Experiments in CSS Grid"
 keywords: andydevs blog css-grid css grid gradient
 ---
 
