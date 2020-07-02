@@ -2,6 +2,7 @@
 layout:   post
 title:    "The Single Most Beautiful Piece of Syntax Ever Invented"
 date:     "2017-11-07 15:23:12 -0500"
+edited:   true
 keywords: python decorators python3 metaprogramming
 ---
 
@@ -173,6 +174,8 @@ greet('Dave') # prints ('Hello Dave')
 But wait! If you're calling the `greet` function outside the `create_greeting` function, wouldn't it not have access to the `greeting` variable since it's not in that scope anymore?
 
 Actually, no. Python functions are also what are called "closures". A closure holds all the variables of the environment it was in even after it has left that environment. So, since the `greet` function is a closure, it still holds the `greeting` variable even after it's been returned.
+
+_EDIT: Future Andy here to explain some specifics. A closure is not the function itself. Rather, it's a record of the function AND it's immediate environment. It really has more to do with implementation of the language, but it is still a feature of the language. Anyways, I will now quietly excuse myself and hop back in this time machine._
 
 This also works for function arguments as well!
 

@@ -6,10 +6,10 @@ baseurl: ''
 title: Andydevs
 description: >
   I am a hobbyist programmer with proficiency in Python and Javascript.
-  I'm currently pursuing a degree in Computer Engineering, while I also work on
-  programming projects on the side. My website where I put updates on projects
-  that I'm working on. I also write about things that I've learned and/or have
-  interest in.
+  My website where I put updates on projects that I'm working on. I also
+  write about things that I've learned and/or have interest in.
+
+# Usernames
 github_username: andydevs
 
 # Theme
