@@ -30,8 +30,8 @@ Check out the project on [GitHub](https://github.com/andydevs/css-grid-blog-home
 The first thing I did was add the HTML content in.
 
 ```html
-<div class="layout">
-    <div class="menu">
+<div class="main-layout">
+    <div class="menu menu-layout">
         <p>Menu Content</p>
     </div>
 
@@ -157,16 +157,16 @@ The first thing I did was add the HTML content in.
 
 We have all of our content under one layout div, which will use CSS Grid to control the placement of all of our components. In it, we have our menu (which I've kept blank for now), followed by post snippets of various sizes, and finally a footer. In the hypothetical blog I would be making, the `main` snippet would be a featured post of the day, and the `second` and `third` other highlighted posts to put on the main page.
 
-Here's what that looks like
+After some css styling, here's what that looks like
 
-![Dummy Content](/assets/images/experiments-with-css-grid/dummy-content.jpg)
+![Dummy Content](/assets/images/experiments-with-css-grid/styled-content.png)
 
 ## First grid
 
-To make a grid we use `display: grid`, then define the number of rows and columns in the grid, using `grid-template-rows` and `grid-template-columns`.
+To make a grid we use `display: grid`, then define the number and size of rows and columns in the grid, using `grid-template-rows` and `grid-template-columns`.
 
 ```scss
-.layout {
+.main-layout {
     ...
 
     // CSS Grid
@@ -181,7 +181,7 @@ To make a grid we use `display: grid`, then define the number of rows and column
 Now the real magic happens. Using `grid-template-areas`, we can assign cells on this grid into named areas. 
 
 ```scss
-.layout {
+.main-layout {
     ...
 
     // Grid areas
@@ -227,11 +227,19 @@ $third-count: 12;
 
 and the element will automatically fill that area!
 
-![First Grid](/assets/images/experiments-with-css-grid/first-grid.jpg)
+![First Grid](/assets/images/experiments-with-css-grid/first-grid.png)
 
 ## Mobile grid
 
-First, I created a mixin for detecting mobile screens.
+So we have our grid, which looks nice on a desktop screen. But we know that most of our page's viewers will be coming from mobile devices.
+
+Let's see what our website looks like on mobile.
+
+![Mobile Problem](/assets/images/experiments-with-css-grid/problem-mobile.png)
+
+Barely even functional. We need to restyle our page to fit mobile devices. CSS Grid can help us with that.
+
+First, I created an scss mixin for detecting mobile screens.
 
 ```scss
 $responsive-mobile-size: 830px !default;
@@ -243,10 +251,10 @@ $responsive-mobile-size: 830px !default;
 }
 ```
 
-Then, all we need to do is change `grid-template-areas` in the `.layout` class when we detect a mobile screen.
+Then, all we need to do is change `grid-template-areas` in the `.main-layout` class when we detect a mobile screen.
 
 ```scss
-.layout {
+.main-layout {
     ...
 
     @include on-mobile {
@@ -272,61 +280,10 @@ Then, all we need to do is change `grid-template-areas` in the `.layout` class w
 }
 ```
 
-![Mobile Grid 1](/assets/images/experiments-with-css-grid/mobile-grid-1.jpg)
-
-![Mobile Grid 2](/assets/images/experiments-with-css-grid/mobile-grid-2.jpg)
+![Mobile Grid](/assets/images/experiments-with-css-grid/better-mobile-grid.png)
 
 Yeah, that's it! That's all ya gotta do. You can arrange these blocks
 anywhere, and the divs will follow!
-
-## Styling the post snippets
-
-Now I want the post snippet to have the header right at top, the button 
-group right at the bottom, and the remaining space to be filled with 
-the content. 
-
-CSS Grid can take care of this as well! Here's what that looks like
-
-```scss
-$spacing-unit: 12pt !default;
-
-.post-snippet {
-    // Spacing
-    padding: $spacing-unit;
-
-    // Layout
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    grid-template-columns: 1fr;
-    grid-template-areas: "title" "snippet" "buttons";
-
-    // Post title
-    .title {
-        grid-area: title;
-    }
-
-    // Post snippet
-    .snippet {
-        grid-area: snippet;
-    }
-
-    // Button set
-    .buttons {
-        grid-area: buttons;
-        text-align: right;
-    }
-}
-```
-
-![Post Snippet Styling 1](/assets/images/experiments-with-css-grid/post-snippets-1.jpg)
-
-![Post Snippet Styling 2](/assets/images/experiments-with-css-grid/post-snippets-2.jpg)
-
-And, just to make everything look nicer:
-
-![Colors 1](/assets/images/experiments-with-css-grid/colors-1.jpg)
-
-![Colors 2](/assets/images/experiments-with-css-grid/colors-2.jpg)
 
 ## Menu
 
@@ -334,7 +291,7 @@ Now onto the menu. I added the icons I was going to use, along with a
 title. I'm using fontawesome for the icons.
 
 ```html
-<div class="menu">
+<div class="menu menu-layout">
     <h1 class='title'>
         CSS Grid Example Homepage
     </h1>
@@ -366,12 +323,12 @@ title. I'm using fontawesome for the icons.
 </div>
 ```
 
-![Menu Content](/assets/images/experiments-with-css-grid/menu-content.jpg)
+![Menu Content](/assets/images/experiments-with-css-grid/menu-content.png)
 
 Now we're making our first nested grid. The css is as simple as always:
 
 ```scss
-.menu {
+.menu-layout {
     ...
 
     // Create grid layout
@@ -382,7 +339,9 @@ Now we're making our first nested grid. The css is as simple as always:
         "title  title  icon-1"
         "title  title  icon-2"
         "icon-3 icon-4 icon-5";
+}
 
+.menu {
     .title {
         grid-area: title;
     }
@@ -395,11 +354,11 @@ Now we're making our first nested grid. The css is as simple as always:
 }
 ```
 
-![Menu Grid](/assets/images/experiments-with-css-grid/menu-grid.jpg)
+![Menu Grid](/assets/images/experiments-with-css-grid/menu-grid.png)
 
 So now we have a problem. The elements are arranged in a grid, but they're not really centered.
 
-CSS can handle this as well, In fact, all you need is to set one attribute.
+CSS grid can handle this as well, In fact, all you need is to set one attribute.
 
 ```scss
 .menu {
@@ -409,13 +368,9 @@ CSS can handle this as well, In fact, all you need is to set one attribute.
 }
 ```
 
-![Menu Centered](/assets/images/experiments-with-css-grid/menu-centered.jpg)
+![Menu Centered](/assets/images/experiments-with-css-grid/menu-centered.png)
 
-And of course, styling...
-
-![Menu Styled](/assets/images/experiments-with-css-grid/menu-styled.jpg)
-
-For mobile, all you need to do is change the layout!
+And, of course, for mobile, all you need to do is change the layout.
 
 ```scss
 .menu {
@@ -436,157 +391,18 @@ For mobile, all you need to do is change the layout!
 }
 ```
 
-![Menu Mobile](/assets/images/experiments-with-css-grid/menu-mobile.jpg)
-
-## Changing mobile layout of post snippets
-
-To go off that, I also wanted to change the styling of the post 
-snippets on mobile. Mainly, I want to center the title and have 
-the `Read` button fill the entire bottom.
-
-For centering the title, I just needed `text-align: center` to 
-be active only on mobile.
-
-```scss
-.post-snippet {
-
-    ...
-
-    .title {
-        ...
-
-        @include on-mobile {
-            text-align: center;
-        }
-    }
-    ...
-}
-```
-
-![Mobile Snippets Header](/assets/images/experiments-with-css-grid/mobile-snippets-header.jpg)
-
-Now to make the read button fill the entire width of the 
-button group.
-
-I could use `flexbox` with `flex-direction: row-reverse` 
-and set `flex: 1` on the button to -
-
-Actually, `flexbox` would work better for this use case. 
-I thought of this section as something that could have 
-one or more buttons or even small input forms that are 
-evenly spaced, and flex automatically scales and positions 
-those buttons accordingly. With CSS Grid, I would have to 
-change the layout to accomodate the new elements.
-
-So, I ultimately decided to use flex here.
-
-```scss
-.post-snippet {
-    ...
-
-    .buttons {
-        grid-area: buttons;
-
-        // Set display to flex
-        display: flex;
-        flex-direction: row-reverse;
-        align-items: flex-start;
-
-        .button {
-            // Dont stretch
-            flex: 0;
-
-            // Set only margin left
-            margin: 0pt;
-            margin-left: $spacing-unit/2;
-
-            // Align internal text to center
-            text-align: center;
-
-            @include on-mobile {
-                // Stretch and margin both sides
-                flex: 1;
-                margin: 0pt $spacing-unit/2;
-            }
-        }
-    }
-
-    ...
-}
-```
-
-![Mobile Snippets Button Group](/assets/images/experiments-with-css-grid/mobile-snippets-button-group.jpg)
-
-If there's anything I learned as a professional idiot who happens 
-to know how to code, it's to not try to fit the job around the tool. 
-Better to find the right tool for the job.
-
-## Styling footer
-
-So for the footer, I wanted to have the text at the center
-of the division. So, what's the best tool for this one?
-
-**NAHFAM 3: Thanos Snaps Himself**
-
-Flexbox does use less attributes, but I think CSS grid just reads better.
-
-You declare a 1x1 grid and set the items to be placed in the center.
-
-```scss
-// Footer
-.footer {
-    ...
-
-    // Center using Grid
-    display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr;
-    place-items: center;
-
-    ...
-}
-```
-
-Vs.
-
-```scss
-// Footer
-.footer {
-    ...
-
-    // Center using flexbox
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    ...
-}
-```
-
-![Footer Centered](/assets/images/experiments-with-css-grid/footer-centered.jpg)
-
-After that, I just set the font-style to italic, gave it a slightly
-grey color, and padded the edges.
-
-```scss
-.footer {
-    ...
-
-    // Font and spacing
-    padding: $spacing-unit;
-    font-style: italic;
-
-    // Coloring
-    background-image: linear-gradient(45deg, lighten($footer-background, 8%), $footer-background);
-    color: white;
-}
-```
-
-![Footer Styled](/assets/images/experiments-with-css-grid/footer-styled.jpg)
+![Menu Mobile](/assets/images/experiments-with-css-grid/menu-mobile.png)
 
 ## Setting Tablet Layout
 
 The last thing I wanted to do was create an intermediate layout for tablets.
+
+When we open the webpage on a tablet, right now we'll get the desktop layout.
+
+![Tablet Problem](/assets/images/experiments-with-css-grid/tablet-problem.png)
+
+It does work, but it doesn't work as well. Fortunately, with CSS Grid and SCSS, 
+it's not too difficult to add another layout option for tablets.
 
 First off, I made another mixin.
 
@@ -600,10 +416,10 @@ $responsive-tablet-size: 1200px !default;
 }
 ```
 
-Now, there's a major caveat when using this mixin along with `on-mobile`.
-These media queries will check if the screen width is _less than_ the
-given width in the query. CSS also works from top to bottom, meaning
-that media queries are processed in the order that they are in the file.
+Now, there's a major caveat with the way I've written these media queries.
+They check if the screen width is _less than_ the given width in the query. 
+CSS also works from top to bottom, meaning that media queries are processed 
+in the order that they are in the file.
 
 So, say you put the `on-tablet` media query underneath the `on-mobile`
 media query. On a mobile device, it will check to see if the screen
@@ -623,7 +439,7 @@ query will fail, and we won't have to worry about it.
 Just like before, we just change the layout and the divs will follow suit!
 
 ```scss
-.layout {
+.main-layout {
     ...
 
     // Grid areas on tablet
@@ -652,7 +468,7 @@ Just like before, we just change the layout and the divs will follow suit!
 
 ...
 
-.menu {
+.menu-layout {
     ...
 
     // Tablet styling
@@ -670,20 +486,14 @@ Just like before, we just change the layout and the divs will follow suit!
 }
 ```
 
-![Tablet Layout 1](/assets/images/experiments-with-css-grid/tablet-layout-1.jpg)
-
-![Tablet Layout 2](/assets/images/experiments-with-css-grid/tablet-layout-2.jpg)
-
-![Tablet Layout 3](/assets/images/experiments-with-css-grid/tablet-layout-3.jpg)
+![Tablet Layout](/assets/images/experiments-with-css-grid/tablet-layout.png)
 
 ## Conclusion
 
-So, in summary, there are still cases where other tools like flex come in handy, 
-but CSS Grid does have it's many uses. Namely, I found that CSS Grid is incredibly 
-useful for laying out webpages both horizontally and vertically and having the layout 
-respond to multiple device sizes. For cases where you have one or more items that are
-evenly spaced/scaled in one direction, like a list or a row of items, Flexbox works 
-better for that.
+I found that CSS Grid helps if you're working on broad layouts of webpages which have to work both 
+horizontally and vertically and also change for multiple device sizes. For cases where you have one 
+or more items that are evenly spaced/scaled in one direction, like a list or a row of items, flexbox 
+might work better for that.
 
 So yeah, I'm gonna use CSS Grid for everything now.
 
