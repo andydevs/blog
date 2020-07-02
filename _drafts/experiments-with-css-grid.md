@@ -9,7 +9,7 @@ Coding Tech where a blogger showed how he designed his entire blog website just 
 
 Needless to say, I was intrigued.
 
-I wanted to try it myself. I decided to use CSS Grid to design a homepage for a mock blog website.
+I wanted to try it myself. So, I used CSS Grid to design a homepage for a mock blog website.
 
 I "drew" this layout (using google drawings)
 
@@ -27,7 +27,7 @@ and social media.
 
 Also note: I'll be using SCSS for this project. It makes code more concise and easy to read
 
-Check out the project on [GitHub](https://github.com/andydevs/css-grid-blog-homepage-example) for more details on the coing and tools used to make this website.
+Check out the project on [GitHub](https://github.com/andydevs/css-grid-blog-homepage-example) for more details on the coding and tools used to make this website.
 
 ## Starting with the Content
 
