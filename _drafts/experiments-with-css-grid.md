@@ -21,11 +21,7 @@ _Mobile_
 
 ![Mobile](/assets/images/experiments-with-css-grid/mobile.jpg)
 
-Note: the colors are actually linear gradients, and the 
-"Icon Grid" and "Icon Row" sections will contain icons for things like mail
-and social media.
-
-Also note: I'll be using SCSS for this project. It makes code more concise and easy to read
+A few notes: the colors are actually linear gradients, and the "Icon Grid" and "Icon Row" sections will contain icons for things like mail and social media. Also, I'll be using SCSS for this project. It makes code more concise and easy to read.
 
 Check out the project on [GitHub](https://github.com/andydevs/css-grid-blog-homepage-example) for more details on the coding and tools used to make this website.
 
@@ -180,7 +176,7 @@ To make a grid we use `display: grid`, then define the number of rows and column
 }
 ```
 
-The `1fr` translates to "1 fraction". `repeat(5, 1fr)` will repeat that five times. This part of the code tells CSS to divide the vertical free space into five equally spaced rows. Likewise, `grid-template-columns: repeat(8, 1fr)` will divide the horizontal free space into eight equally spaced columns. The result is a 5x8 grid of equally sized cells that we can play around in.
+`grid-template-rows: repeat(5, 1fr)` tells CSS to divide the vertical free space into five equally spaced rows. Likewise, `grid-template-columns: repeat(8, 1fr)` will divide the horizontal free space into eight equally spaced columns. The result is a 5x8 grid of equally sized cells that we can play around in.
 
 Now the real magic happens. Using `grid-template-areas`, we can assign cells on this grid into named areas. 
 
@@ -233,8 +229,6 @@ and the element will automatically fill that area!
 
 ![First Grid](/assets/images/experiments-with-css-grid/first-grid.jpg)
 
-Crazy, right? Well...
-
 ## Mobile grid
 
 First, I created a mixin for detecting mobile screens.
@@ -285,24 +279,11 @@ Then, all we need to do is change `grid-template-areas` in the `.layout` class w
 Yeah, that's it! That's all ya gotta do. You can arrange these blocks
 anywhere, and the divs will follow!
 
-A few things to note here. The `auto` means scale the row to fit the content. 
-We only want the menu to be as big as it needs to be, so `auto` takes care 
-of that.
-
-The other thing is that `1.5fr`. I wanted the main post snippet to be about 
-50% taller than the second post snippets, so setting that row to `1.5fr` does
-that for me
-
 ## Styling the post snippets
 
 Now I want the post snippet to have the header right at top, the button 
 group right at the bottom, and the remaining space to be filled with 
 the content. 
-
-I could use `display: flex` and set the `.content` div to have `flex: 1` 
-so that it could fill the-
-
-**NAHFAM&trade;**
 
 CSS Grid can take care of this as well! Here's what that looks like
 
@@ -341,109 +322,7 @@ $spacing-unit: 12pt !default;
 
 ![Post Snippet Styling 2](/assets/images/experiments-with-css-grid/post-snippets-2.jpg)
 
-And, just to make the "buttons" look nicer
-
-```scss
-// Generic button
-.button {
-    // Sizing
-    text-decoration: none;
-    padding: $spacing-unit/2 $spacing-unit;
-    border-radius: $button-border-radius;
-    
-    // Coloring
-    color: black;
-    background-color: #ccc;
-
-    // Hover effect
-    transition: background-color 0.5s;
-    &:hover {
-        background-color: #aaa;
-    }
-}
-```
-
-![Button Styling](/assets/images/experiments-with-css-grid/button-styling.jpg)
-
-## Colors!
-
-So, according to the diagram, all the post-snippets are different colors,
-and the buttons and titles follow that color scheme. I also want to have
-the background of the post snippets have a linear gradient.
-
-So, to make things easier to change and configure, I created a few variables
-which will contain the color data for the parts of the web page.
-
-```scss
-// Control background colors for menu, footer, and 
-// main, second and third post snippets
-$menu-background: #444 !default;
-$footer-background: #999 !default;
-$main-background: gold !default;
-$second-backgrounds: 
-    tomato dodgerblue mediumseagreen !default;
-$third-backgrounds: 
-    lightcoral sienna indianred orange 
-    pink lavender violet turquoise 
-    teal slateblue darkolivegreen slategray !default;
-```
-
-`$second-backgrounds` and `$third-backgrounds` are lists of color data,
-each element is separated by whitespace.
-
-I also created a mixin, which would take the given base color and style
-each of the components within a post snippet based on that color. It also
-applies the linear gradient to the background.
-
-```scss
-@mixin colored-snippet($color) {
-    // Background image
-    background-image: linear-gradient(45deg, lighten($color, 8%), $color);
-
-    // Title color
-    .title {
-        color: darken($color: $color, $amount: 25%);
-    }
-
-    // Button color (and hover color)
-    .button {
-        background-color: darken($color: $color, $amount: 20%);
-        color: white;
-        &:hover {
-            background-color: darken($color: $color, $amount: 30%);
-        }
-    }
-}
-```
-
-Now we just include this in our subcomponents. In SCSS, to select the
-n'th element in a list, you use `nth($list-variable, $n)`.
-
-```scss
-// Main post snippet
-.main {
-    grid-area: main;
-    @include colored-snippet($main-background);
-}
-
-// Loop makes second post snippets
-@for $i from 1 through $second-count {
-    .second-#{$i} {
-        grid-area: second-#{$i};
-        @include colored-snippet(nth($second-backgrounds, $i));
-    }
-}
-
-// Loop makes third post snippets
-@for $i from 1 through $third-count {
-    .third-#{$i} {
-        grid-area: third-#{$i};
-        @include colored-snippet(nth($third-backgrounds, $i));
-    }
-}
-```
-
-The fruits of my labour:
+And, just to make everything look nicer:
 
 ![Colors 1](/assets/images/experiments-with-css-grid/colors-1.jpg)
 
@@ -451,58 +330,8 @@ The fruits of my labour:
 
 ## Menu
 
-Now onto the menu. For this, I'll need some icons. I'll be using `fontawesome-free`.
-So I type `npm install --save @fortawesome/fontawesome-free` to install the library.
-Fontawesome stores SCSS files which can be imported in my main SCSS file.
-
-```scss
-@import "./node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
-@import "./node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
-@import "./node_modules/@fortawesome/fontawesome-free/scss/brands.scss";
-
-// ... Import remaining scss
-```
-
-But there's a little issue here. Fontawesome stores it's icons in font files that it
-needs to import. In order to import these files, our "web app" needs to be able to 
-serve them, which means they need to be copied over to our `_public` folder.
-
-Luckily, I already had `grunt-contrib-copy`, so I can get grunt to do this for me.
-
-In the `copy` property in my `grunt.initConfig` config, I added this extra bit of
-configuration
-
-```js
-copy: {
-    ...
-    fonts: {
-        files: [{
-            expand: true,
-            cwd: './node_modules/@fortawesome/fontawesome-free/webfonts',
-            src: '*',
-            dest: siteDirectory + '/fonts'
-        }]
-    }
-},
-```
-
-Fontawesome stores it's fonts in a directory called "webfonts". It is configured by
-default to look for fonts there. That needs to be changed, and it can be by setting
-the `$fa-font-path` variable in the main scss file.
-
-```scss
-$fa-font-path: '/fonts';
-@import "./node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
-@import "./node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
-@import "./node_modules/@fortawesome/fontawesome-free/scss/brands.scss";
-
-// ... Import remaining scss
-```
-
-### Add Content
-
-With fontawesome installed, I added the icons I was going to use, along with a
-title.
+Now onto the menu. I added the icons I was going to use, along with a
+title. I'm using fontawesome for the icons.
 
 ```html
 <div class="menu">
@@ -539,8 +368,6 @@ title.
 
 ![Menu Content](/assets/images/experiments-with-css-grid/menu-content.jpg)
 
-### Make another grid
-
 Now we're making our first nested grid. The css is as simple as always:
 
 ```scss
@@ -570,15 +397,9 @@ Now we're making our first nested grid. The css is as simple as always:
 
 ![Menu Grid](/assets/images/experiments-with-css-grid/menu-grid.jpg)
 
-### Centering the elements
-
 So now we have a problem. The elements are arranged in a grid, but they're not really centered.
 
-I could wrap each of the elements in a container grid and use `flexbox` to center the-
-
-**NAHFAM 2: Revenge of the YEET**
-
-In fact, it's even simpler than `flexbox`. All you need is one attribute.
+CSS can handle this as well, In fact, all you need is to set one attribute.
 
 ```scss
 .menu {
@@ -590,38 +411,9 @@ In fact, it's even simpler than `flexbox`. All you need is one attribute.
 
 ![Menu Centered](/assets/images/experiments-with-css-grid/menu-centered.jpg)
 
-### Styling Menu
-
-I just wanted to add the linear gradient without the remaining styling in the `colored-snippet` 
-mixin. So, I didn't use it, and I added the gradient manually. I also added a bit of spacing 
-around the menu content.
-
-```scss
-.menu {
-    grid-area: menu;
-
-    // Spacing
-    padding: $spacing-unit;
-
-    // Coloring!
-    background-image: linear-gradient(45deg, lighten($menu-background, 5%), $menu-background);
-    color: white;
-}
-```
-
-For the icons, I just made them a lot bigger and had them inherit their color. This way, I could
-use icons elsewhere in the website.
-
-```scss
-.icon {
-    color: inherit;
-    font-size: 24pt;
-}
-```
+And of course, styling...
 
 ![Menu Styled](/assets/images/experiments-with-css-grid/menu-styled.jpg)
-
-### Mobile menu grid
 
 For mobile, all you need to do is change the layout!
 
@@ -648,10 +440,12 @@ For mobile, all you need to do is change the layout!
 
 ## Changing mobile layout of post snippets
 
-To go off that, I also wanted to change the styling of the post snippets on mobile.
-Mainly, I want to center the title and have the `Read` button fill the entire bottom.
+To go off that, I also wanted to change the styling of the post 
+snippets on mobile. Mainly, I want to center the title and have 
+the `Read` button fill the entire bottom.
 
-For centering the title, I just needed `text-align: center` to be active only on mobile.
+For centering the title, I just needed `text-align: center` to 
+be active only on mobile.
 
 ```scss
 .post-snippet {
@@ -671,17 +465,18 @@ For centering the title, I just needed `text-align: center` to be active only on
 
 ![Mobile Snippets Header](/assets/images/experiments-with-css-grid/mobile-snippets-header.jpg)
 
-Now to make the read button fill the entire width of the button group.
+Now to make the read button fill the entire width of the 
+button group.
 
-I could use `flexbox` with `flex-direction: row-reverse` and set `flex: 1` 
-on the button to -
+I could use `flexbox` with `flex-direction: row-reverse` 
+and set `flex: 1` on the button to -
 
-Actually, `flexbox` would work better for this use case. I thought 
-of this section as something that could have one or more buttons 
-or even small input forms that are evenly spaced, and flex 
-automatically scales and positions those buttons accordingly. With 
-CSS Grid, I would have to change the layout to accomodate the new 
-elements.
+Actually, `flexbox` would work better for this use case. 
+I thought of this section as something that could have 
+one or more buttons or even small input forms that are 
+evenly spaced, and flex automatically scales and positions 
+those buttons accordingly. With CSS Grid, I would have to 
+change the layout to accomodate the new elements.
 
 So, I ultimately decided to use flex here.
 
