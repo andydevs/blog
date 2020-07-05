@@ -2,6 +2,7 @@
 layout: post
 title: "Experiments in CSS Grid"
 keywords: andydevs blog css-grid css grid gradient
+excerpt_separator: <!--content-->
 ---
 
 A while back, I watched a [video lecture](https://youtu.be/7kVeCqQCxlk) from 
@@ -10,6 +11,8 @@ Coding Tech where a blogger showed how he designed his entire blog website just 
 Needless to say, I was intrigued.
 
 I wanted to try it myself. So, I used CSS Grid to design a homepage for a mock blog website.
+
+<!--content-->
 
 I "drew" this layout (using google drawings)
 
@@ -21,7 +24,7 @@ _Mobile_
 
 ![Mobile](/assets/images/experiments-with-css-grid/mobile.jpg)
 
-A few notes: the colors are actually linear gradients, and the "Icon Grid" and "Icon Row" sections will contain icons for things like mail and social media. Also, I'll be using SCSS for this project. It makes code more concise and easy to read.
+I'll be using SCSS for this project, as it makes the code more concise and easy to read. This will, though, work for CSS as well, it just takes a bit more coding. The "Icon Grid" and "Icon Row" areas in the diagram will be filled with Icons that I've gotten from FontAwesome's free icon library.
 
 Check out the project on [GitHub](https://github.com/andydevs/css-grid-blog-homepage-example) for more details on the coding and tools used to make this website.
 
@@ -237,9 +240,7 @@ Let's see what our website looks like on mobile.
 
 ![Mobile Problem](/assets/images/experiments-with-css-grid/problem-mobile.png)
 
-Barely even functional. We need to restyle our page to fit mobile devices. CSS Grid can help us with that.
-
-First, I created an scss mixin for detecting mobile screens.
+Barely even functional. We obviously need to restyle our page to fit mobile devices. Thankfully, CSS Grid can help us with that. First, I created an scss mixin for detecting mobile screens. Then, all we need to do is change the grid properties in the `.main-layout` class when we're on a mobile screen.
 
 ```scss
 $responsive-mobile-size: 830px !default;
@@ -249,11 +250,7 @@ $responsive-mobile-size: 830px !default;
         @content;
     }
 }
-```
 
-Then, all we need to do is change `grid-template-areas` in the `.main-layout` class when we detect a mobile screen.
-
-```scss
 .main-layout {
     ...
 
@@ -266,7 +263,6 @@ Then, all we need to do is change `grid-template-areas` in the `.main-layout` cl
         // Grid areas
         grid-template-areas: 
             "menu     menu"
-            "main     main"
             "main     main"
             "second-1 second-1"
             "second-2 second-2"
@@ -282,13 +278,17 @@ Then, all we need to do is change `grid-template-areas` in the `.main-layout` cl
 
 ![Mobile Grid](/assets/images/experiments-with-css-grid/better-mobile-grid.png)
 
-Yeah, that's it! That's all ya gotta do. You can arrange these blocks
-anywhere, and the divs will follow!
+Yeah, that's it! That's all ya gotta do. You can arrange these blocks anywhere, and the divs will follow!
+
+A few notes on `grid-template-rows`, since there's a lot of stuff going on there. Both `grid-template-rows` and `grid-template-columns` are lists of defined row and column sizes. `auto` just scales the height of the row or width of the column to fit the content. The `fr` values scales the rows/columns evenly. `repeat` repeats a single value a given number of times. Here I have the menu be only as tall as it needs to be to fit the content. The `main` post snippet rows should be about 1.5 times as big as the `second` snippets. And, finally, the `third` snippets and the `footer` would only be as tall as they need to be.'
+
+You also may have noticed that I've created two columns for this layout when I've only needed one so far. Mobile devices still have space for the `third` snippets to be in rows of two, so that's how I have them.
+
+![Mobile Grid Bottom](/assets/images/experiments-with-css-grid/mobile-grid-bottom.png)
 
 ## Menu
 
-Now onto the menu. I added the icons I was going to use, along with a
-title. I'm using fontawesome for the icons.
+Now onto the menu. I added the icons I was going to use, along with a title.
 
 ```html
 <div class="menu menu-layout">
@@ -325,7 +325,7 @@ title. I'm using fontawesome for the icons.
 
 ![Menu Content](/assets/images/experiments-with-css-grid/menu-content.png)
 
-Now we're making our first nested grid. The css is as simple as always:
+Now we're making our first nested grid, or a gridded element within a grid. The code is as simple as always:
 
 ```scss
 .menu-layout {
@@ -358,7 +358,7 @@ Now we're making our first nested grid. The css is as simple as always:
 
 So now we have a problem. The elements are arranged in a grid, but they're not really centered.
 
-CSS grid can handle this as well, In fact, all you need is to set one attribute.
+CSS grid can handle this as well! In fact, all you need is to set one attribute.
 
 ```scss
 .menu {
@@ -401,7 +401,7 @@ When we open the webpage on a tablet, right now we'll get the desktop layout.
 
 ![Tablet Problem](/assets/images/experiments-with-css-grid/tablet-problem.png)
 
-It does work, but it doesn't work as well. Fortunately, with CSS Grid and SCSS, 
+It does work, but it doesn't work as well. It's a bit compressed horizontally. Fortunately, with CSS Grid and SCSS, 
 it's not too difficult to add another layout option for tablets.
 
 First off, I made another mixin.
@@ -421,7 +421,7 @@ They check if the screen width is _less than_ the given width in the query.
 CSS also works from top to bottom, meaning that media queries are processed 
 in the order that they are in the file.
 
-So, say you put the `on-tablet` media query underneath the `on-mobile`
+So, say I put the `on-tablet` media query underneath the `on-mobile`
 media query. On a mobile device, it will check to see if the screen
 width is less than the mobile width, which it is. So, it will style
 accordingly. Then, it will check to see if the screen width is less
@@ -482,6 +482,7 @@ Just like before, we just change the layout and the divs will follow suit!
             "icon-2 icon-3 icon-4 icon-5";
     }
 
+    // Again, mobile styling comes after.
     ...
 }
 ```
@@ -490,12 +491,11 @@ Just like before, we just change the layout and the divs will follow suit!
 
 ## Conclusion
 
-I found that CSS Grid helps if you're working on broad layouts of webpages which have to work both 
-horizontally and vertically and also change for multiple device sizes. For cases where you have one 
-or more items that are evenly spaced/scaled in one direction, like a list or a row of items, flexbox 
-might work better for that.
+I found that CSS Grid helps if you're working on broad layouts of webpages that also change for multiple device sizes. It's not a tool for every problem. There are instances where Flexbox is much more useful. For example, having a row of buttons
+where there could be one or many buttons and they are all scaled evenly in one direction. Nonetheless,
+for what it's good for, CSS Grid is incredibly useful.
 
-So yeah, I'm gonna use CSS Grid for everything now.
+So yeah, I'm gonna use it for everything now.
 
 Check out the project on [GitHub](https://github.com/andydevs/css-grid-blog-homepage-example) 
 and the actual [website](https://css-grid-blog-homepage-example.netlify.com/).
