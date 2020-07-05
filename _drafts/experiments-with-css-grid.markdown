@@ -166,7 +166,7 @@ After some css styling, here's what that looks like
 
 ## First grid
 
-To make a grid we use `display: grid`, then define the number and size of rows and columns in the grid, using `grid-template-rows` and `grid-template-columns`.
+To make a grid we use `display: grid`, then define the number and size of the rows and columns in the grid, using `grid-template-rows` and `grid-template-columns`.
 
 ```scss
 .main-layout {
