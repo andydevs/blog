@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Experiments in CSS Grid"
+title: Experiments in CSS Grid
 keywords: andydevs blog css-grid css grid gradient
-excerpt_separator: <!--content-->
+excerpt_separator: "<!--content-->"
+date: 2020-07-05 17:14 -0400
 ---
-
 A while back, I watched a [video lecture](https://youtu.be/7kVeCqQCxlk) from 
 Coding Tech where a blogger showed how he designed his entire blog website just using CSS Grid, with no help from Bootstrap or any other style library.
 
