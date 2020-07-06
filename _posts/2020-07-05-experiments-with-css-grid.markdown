@@ -500,4 +500,4 @@ for what it's good for, CSS Grid is incredibly useful.
 So yeah, I'm gonna use it for everything now.
 
 Check out the project on [GitHub](https://github.com/andydevs/css-grid-blog-homepage-example) 
-and the actual [website](https://css-grid-blog-homepage-example.netlify.com/).
+and the actual [website](https://css-grid-blog-homepage-example.netlify.app).
