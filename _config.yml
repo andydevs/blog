@@ -13,4 +13,4 @@ description: >
 github_username: andydevs
 
 # Theme
-theme: jekyll-theme-backwhite
+remote_theme: andydevs/jekyll-theme-backwhite
