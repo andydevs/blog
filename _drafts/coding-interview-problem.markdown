@@ -76,15 +76,17 @@ it takes to complete the problem is directly proportional to the size of the num
 give it. It may be quick for, say, 13, but give it a big number like 231645 and it starts
 to struggle a little bit. Do that thousands of times every second and those "little bits"
 start to add up. Realistically, code like this would be running in these high-demand 
-positions
-
+systems where every second and every byte counts. So, we need to make this faster. 
+In order to do that. We need to find the pattern.
 
 The Pattern
 -------------------------------------------------------------------------------------
 
-So, as you start doing some counting, you might notice some patterns.
+__[find a way to generate images for what I'm talking about]__
 
-For example, you reason that _Every_ number from 10 to 19 must have a 1 in it
+So, as you think about this problem, you begin to find some patterns.
+
+For example, you reason that every number from 10 to 19 must have a 1 in it
 (because, you know, 10)
 
     [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] 20 ...
@@ -98,8 +100,6 @@ It's a time saver, but it still feels a bit random. There's also that pesky 11 t
 seems to break the pattern by having two 1's in it. How do we account for that?
 
 ### The Hidden Geometry
-
-__[find a way to generate images for what I'm talking about]__
 
 The pure genius of this problem comes from something you might do to save space while
 counting to 99: arranging the numbers in a 10 by 10 grid.
@@ -204,7 +204,7 @@ public:
     int countDigitOne(int n) {
         // Declare variables
         int cOnes = 0;             // Total count of ones
-        unsigned iOrdMag, qOrdMag; // Current order of magnitude being analyzed
+        int iOrdMag, long qOrdMag; // Current order of magnitude being analyzed
         unsigned digit;            // Current digit being analyzed
         
         // Loop through each order of magnitude until we go above our number
