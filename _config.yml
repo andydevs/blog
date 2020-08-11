@@ -1,3 +1,8 @@
+# Muh website!
+#
+# Author:  Anshul Kharbanda
+# Updated: 7 - 12 - 2020
+
 # URL Settings
 url: https://andydevs.github.io
 baseurl: ''
@@ -9,8 +14,9 @@ description: >
   My website where I put updates on projects that I'm working on. I also
   write about things that I've learned and/or have interest in.
 
-# Usernames
-github_username: andydevs
+# Social
+social:
+  github: andydevs
 
 # Theme
 remote_theme: andydevs/jekyll-theme-backwhite
