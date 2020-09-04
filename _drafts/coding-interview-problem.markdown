@@ -37,6 +37,9 @@ digit in the number and increment a counter everytime we encounter a `1`.
 
 __[explain how to isolate a digit]__
 
+How to isolate a digit.
+
+
 Some nomenclature, I'm using `i` as a prefix to indicate linear increments, `q` to
 indicate logarithmic (multiplicative) increments, and `c` to indicate
 a count.

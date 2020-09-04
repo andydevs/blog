@@ -13,10 +13,13 @@ description: >
   I am a hobbyist programmer with proficiency in Python and Javascript.
   My website where I put updates on projects that I'm working on. I also
   write about things that I've learned and/or have interest in.
+copyright:
+  author: Anshul Kharbanda
+  year: 2020
 
 # Social
 social:
   github: andydevs
 
 # Theme
-remote_theme: andydevs/jekyll-theme-backwhite
+remote_theme: andydevs/jekyll-theme-simple-design
