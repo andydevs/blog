@@ -1,6 +1,9 @@
-# The Grandfather of Machine Learning
+---
+layout: post
+title: The Grandfather of Machine Learning
+---
 
-Regression is at the core of Machine Learning’s DNA. We’re gonna talk about Linear Regression
+Regression is at the core of Machine Learning’s DNA. We’re gonna talk about Linear Regression.
 
 ## Framing the Question
 
@@ -38,14 +41,94 @@ Our objective now is to find the right $a_0$ and $a_1$ values that minimize this
 
 ## Optimization
 
-Expand distance estimation
+Expand distance equation
 
+$$
+J = \sqrt{\sum_i{(y_i - a_0 - a_1x_i)^2}}
+$$
+
+Since we're only concerned with the values of $a_0$ and $a_1$ that optimize $J$, we can square both sides and simply consider $J$ as the square of our distance estimation.
+
+$$
+J = \sum_i{ (y_i - a_0 - a_1x_i)^2 }
+$$
+
+Differentiate $J$ with respect to $a_0$ and $a_1$. Optimization for $a_0$ and $a_1$ means setting both derivatives to 0.
+
+$$
+\frac{\partial{J}}{\partial{a_0}} = \sum_i{ 2(y_i - a_0 - a_1x_i) } = 0
 $$
 
 $$
+\frac{\partial{J}}{\partial{a_1}} = \sum_i{ 2x_i(y_i - a_0 - a_1x_i) } = 0
+$$
 
-Differentiate $J$ with respect to $a_0$ and $a_1$. 
+Expanding out and rearranging equations we get
 
 $$
-\frac{\partial{J}}{\partial{a_0}}
+Na_0 + (\sum{x_i})a_1 = \sum_i{y_i}
 $$
+
+$$
+(\sum{x_i})a_0 + (\sum{x_i^2})a_1 = \sum_i{x_iy_i}
+$$
+
+And what we find, in fact, is a system of linear equations! So we can rewrite it in matrix form
+
+$$
+\begin{bmatrix}
+N & \sum_i{x_i} \\
+\sum_i{x_i} & \sum_i{x_i^2}
+\end{bmatrix}
+\begin{bmatrix}
+a_0 \\
+a_1
+\end{bmatrix}
+= 
+\begin{bmatrix}
+\sum_i{y_i} \\
+\sum_i{x_iy_i}
+\end{bmatrix}
+$$
+
+Solving this equation for our input vector will get us our optimized $a_0$ and $a_1$ terms!
+
+## Doing it in code
+
+Using `numpy`
+
+Import data stored in csv.
+
+    x,y
+    0.001,0.23
+    1.03,0.54
+    .
+    .
+    .
+
+```python
+data = np.loadtxt('mydata.csv', delimeter=',')
+x = data[:,0]
+y = data[:,1]
+```
+
+Construct our constants
+
+```python
+A = np.array([
+    [ x.shape[0], x.sum()      ],
+    [ x.sum(),    (x**2).sum() ]
+])
+
+B = np.array([
+    y.sum(),
+    (y*x).sum()
+])
+```
+
+Now we find the inverse of `A` and multiply it with `B`
+
+```python
+Ainv = np.linalg.inv(A)
+a = np.matmul(Ainv, B)
+```
