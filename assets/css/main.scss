@@ -5,3 +5,11 @@ $back-color:#0d1222;
 
 // Import site theme
 @import "{{ site.theme }}";
+
+.keyword-tag {
+    margin: 0;
+    margin-right: $spacing-1;
+    color: $light-gray-color;
+    font-style: italic;
+    font-style: $small-font-size;
+}

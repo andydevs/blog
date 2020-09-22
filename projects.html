@@ -10,6 +10,13 @@ title: Projects
                 <h1 class="snip-title">
                     {{ project.name }}
                 </h1>
+                {%- if project.keywords -%}
+                    <p class="snip-subtitle keywords">
+                        {%- for keyword in project.keywords -%}
+                            <span class="keyword-tag">{{ keyword }}</span>
+                        {%- endfor -%}
+                    </p>
+                {%- endif -%}
             </div>
             <div class="snip-excerpt">
                 <p>{{ project.description }}</p>

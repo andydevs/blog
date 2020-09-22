@@ -1,5 +1,8 @@
 - name: Spacebase
   description: >
     A web app dashboard that displays information from NASA's OpenAPI.
+  keywords:
+    - angular
+    - netlify
   github: spacebase
   website: http://spacebase1.netlify.app
