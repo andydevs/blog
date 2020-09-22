@@ -1,6 +1,8 @@
 - name: Spacebase
   description: >
     A web app dashboard that displays information from NASA's OpenAPI.
+    This project was an experiment in using Angular to build a dashboard
+    style app
   keywords:
     - angular
     - netlify
