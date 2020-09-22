@@ -2,9 +2,16 @@
   description: >
     A web app dashboard that displays information from NASA's OpenAPI.
     This project was an experiment in using Angular to build a dashboard
-    style app
+    style app and using open APIs to pull information.
   keywords:
     - angular
     - netlify
   github: spacebase
-  website: http://spacebase1.netlify.app
+  website: https://spacebase1.netlify.app
+
+- name: Fourier Drawing
+  description: >
+    A visual that demos drawing paths using a fourier series. This project
+    was largely influenced by 3Blue1Brown and CodingTrain
+  github: fourier-drawing
+  website: https://fourier-drawing.netlify.app
