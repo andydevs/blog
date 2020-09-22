@@ -1,3 +1,15 @@
+- name: Tensorflow Demo 1
+  description: >
+    My first full tensorflow application. This trains a model to predict
+    wether or not a mushroom was poisonous given some properties of the
+    mushroom. The model was trained on a kaggle dataset of mushroom data.
+  keywords:
+    - tensorflow
+    - flask
+    - python
+  github: tensorflow-demo-1
+  website: https://isitpoison.herokuapp.com
+
 - name: Spacebase
   description: >
     A web app dashboard that displays information from NASA's OpenAPI.
@@ -8,6 +20,17 @@
     - netlify
   github: spacebase
   website: https://spacebase1.netlify.app
+
+- name: CUDAFractal
+  description: >
+    An ongoing project to develop a program that generates Fractal Images
+    using the Mandelbrot/Juliaset algorithm. This program uses NVidia's 
+    CUDA framework to accelerate image generation.
+  keywords:
+    - cuda
+    - visual studio
+    - fractal
+  github: cudafractal
 
 - name: Fourier Drawing
   description: >
