@@ -12,6 +12,11 @@ description: >
   I also write about things that I've learned and/or have interest in.
 copyright: 2020
 
+# Links
+links:
+  - url: /projects
+    text: Projects
+
 # Social
 social:
   github: andydevs
