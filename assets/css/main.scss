@@ -6,7 +6,11 @@
 .keyword-tag {
     margin: 0;
     margin-right: $spacing-1;
-    color: $light-gray-color;
+    color: $dark-gray-color;
     font-style: italic;
     font-style: $small-font-size;
+}
+
+.darkmode .keyword-tag {
+    color: $light-gray-color;
 }
