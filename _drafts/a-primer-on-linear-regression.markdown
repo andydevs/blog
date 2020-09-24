@@ -31,7 +31,7 @@ $$
 J = ||\textbf{y} - \hat{\textbf{y}}||
 $$
 
-If we sub in $\hat{y}$ for our original model formula
+If we sub our original model formula in for $\hat{y}$
 
 $$
 J = ||\textbf{y} - a_0 - a_1 \textbf{x}||
@@ -41,19 +41,19 @@ Our objective now is to find the right $a_0$ and $a_1$ values that minimize this
 
 ## Optimization
 
-We'll make things simpler by considering the squared distance for now
+If we expand out the distance estimation, we get this
 
 $$
-J = ||\textbf{y} - a_0 - a_1 \textbf{x}||^2
+J = \sqrt{ \sum_i{ (y_i - a_0 - a_1x_i)^2 } }
 $$
 
-Expand distance equation
+Optimization means finding where the derivative of $J$ equals 0. We can make things simpler by ignoring the square root term. Normally, the square root has two solutions, one positive, one negative. However, we know that distances are always positive (something being -20 feet away from you doesn't really make sense). We also know that the derivative of the square root function is never 0, so there isn't a minima. Therefore, if we find the minima of the inner values, we can find the minima of the entire thing. So we only really need to concern ourselves with the squared distance formula
 
 $$
-J = \sum_i{ (y_i - a_0 - a_1x_i)^2 }
+J = ||\textbf{y} - \hat{\textbf{y}}||^2 = \sum_i{ (y_i - a_0 - a_1x_i)^2 }
 $$
 
-Differentiate $J$ with respect to $a_0$ and $a_1$. Optimization for $a_0$ and $a_1$ means setting both derivatives to 0.
+Differentiate $J$ with respect to $a_0$ and $a_1$.
 
 $$
 \frac{\partial{J}}{\partial{a_0}} = \sum_i{ 2(y_i - a_0 - a_1x_i) } = 0
