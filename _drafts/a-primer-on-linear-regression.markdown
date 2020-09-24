@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The Grandfather of Machine Learning
+title: A Primer on Linear Regression
 ---
 
 Regression is at the core of Machine Learning’s DNA. We’re gonna talk about Linear Regression.
@@ -95,16 +95,7 @@ Solving this equation for our input vector will get us our optimized $a_0$ and $
 
 ## Doing it in code
 
-Using `numpy`
-
-Import data stored in csv.
-
-    x,y
-    0.001,0.23
-    1.03,0.54
-    .
-    .
-    .
+Using `numpy` and `matplotlib`
 
 ```python
 data = np.loadtxt('mydata.csv', delimeter=',')
@@ -132,60 +123,3 @@ Now we find the inverse of `A` and multiply it with `B`
 Ainv = np.linalg.inv(A)
 a = np.matmul(Ainv, B)
 ```
-
-## Multivariable Form
-
-So far we've considered $\textbf{x}$ to be a vector where each component is a single input data point. In the multivariate case, we have $\textbf{X}$ be a matrix where each row is a data point and each column is a single variable in the data.
-
-So now our function looks like
-
-$$
-\hat{y}_i = a_0 + a_1X_{i1} + a_2X_{i2} + a_3X_{i3} + \ldots + a_MX_{iM}
-$$
-
-We can actually make this simpler by adding an extra column to our matrix, $X_{i0}$ where every value is $1$.
-So now $a_0X_{i0}$ is the same as $a_0$.
-
-$$
-\hat{y}_i = a_0X_{i0} + a_1X_{i1} + a_2X_{i2} + a_3X_{i3} + ... a_MX_{iM}
-$$
-
-Which is actually a matrix-vector product that converts our input matrix into our output values!
-
-$$
-\hat{\textbf{y}} = \textbf{X}\textbf{a}
-$$
-
-So now we put this into our squared distance formula
-
-$$
-J = \sum{ ((\textbf{y} - \textbf{X}\textbf{a})_i)^2 }
-$$
-
-This syntax is a bit weird and uncommon. We actually have a linear algebra way of writing this formula
-
-$$
-J = (\textbf{y} - \textbf{X}\textbf{a})^T(\textbf{y} - \textbf{X}\textbf{a})
-$$
-
-So now we can actually do derivatives with matrices and vectors. So to negotiate this we'll need to expand this out.
-
-$$
-J = \textbf{y}^T\textbf{y} - \textbf{y}\textbf{X}\textbf{a} - \textbf{a}^T\textbf{X}^T\textbf{y} - \textbf{a}^T\textbf{X}^T\textbf{X}\textbf{a}
-$$
-
-Then differentiate and set to 0
-
-$$
-\frac{\partial J}{\partial \textbf{a}} = -2\textbf{y}^T\textbf{X} - 2\textbf{X}^T\textbf{X}\textbf{a} = 0
-$$
-
-Rearranging we get
-
-$$
-(\textbf{X}^T\textbf{X})\textbf{a} = \textbf{y}^T\textbf{X}
-$$
-
-Now we solve for $\textbf{a}$ and we get our coefficients
-
-$(\textbf{X}^T\textbf{X})$ is actually the covariance matrix of X
