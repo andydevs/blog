@@ -1,39 +1,43 @@
 ---
-layout: page
+layout: index
 title: Projects
 ---
 
-<div class="homepage-layout">
-    {%- for project in site.data.projects -%}
-        <div class="snip">
-            <div class="snip-header">
-                <h1 class="snip-title">
-                    {{ project.name }}
-                </h1>
-                {%- if project.keywords -%}
-                    <p class="snip-subtitle keywords">
-                        {%- for keyword in project.keywords -%}
-                            <span class="keyword-tag">{{ keyword }}</span>
-                        {%- endfor -%}
-                    </p>
-                {%- endif -%}
-            </div>
-            <div class="snip-excerpt">
-                <p>{{ project.description }}</p>
-            </div>
-            <div class="button-group">
-                {%- if project.website -%}
-                    <a class="button" href="{{ project.website }}">
-                        Website
+{%- for project in site.data.projects -%}
+    <div class="snip">
+        <div class="snip-header">
+            <h1 class="snip-title">
+                {{ project.name }}
+            </h1>
+            {%- if project.keywords -%}
+                <p class="snip-subtitle keywords">
+                    {%- for keyword in project.keywords -%}
+                        <span class="keyword-tag">{{ keyword }}</span>
+                    {%- endfor -%}
+                </p>
+            {%- endif -%}
+        </div>
+        <div class="snip-excerpt">
+            <p>{{ project.description }}</p>
+        </div>
+        <div class="button-group">
+            {%- if project.website -%}
+                <a class="button" href="{{ project.website }}">
+                    Website
+                </a>
+            {%- endif -%}
+
+            {%- if project.github -%}
+                {%- if project.link_releases -%}
+                    <a class="button" href="http://github.com/andydevs/{{ project.github }}/releases">
+                        Releases
                     </a>
                 {%- endif -%}
 
-                {%- if project.github -%}
-                    <a class="button" href="http://github.com/andydevs/{{ project.github }}">
-                        <span class="fab fa-github"></span> GitHub
-                    </a>
-                {%- endif -%}
-            </div>
+                <a class="button" href="http://github.com/andydevs/{{ project.github }}">
+                    <span class="fab fa-github"></span> GitHub
+                </a>
+            {%- endif -%}
         </div>
-    {%- endfor -%}
-</div>
+    </div>
+{%- endfor -%}

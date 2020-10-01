@@ -10,6 +10,18 @@
   github: tensorflow-demo-1
   website: https://isitpoison.herokuapp.com
 
+- name: Blocky's Adventure in Blockworld
+  description: >
+    Literally me just trying to make a unity game. It's an ongoing project
+    as I try to implement all of the basic game design stuff in the game (
+    at least for a 2D platformer).
+  keywords:
+    - unity
+    - game-design
+    - c#
+  github: blockys-adventure-in-blockworld
+  link_releases: true
+
 - name: Spacebase
   description: >
     A web app dashboard that displays information from NASA's OpenAPI.
@@ -28,7 +40,7 @@
     CUDA framework to accelerate image generation.
   keywords:
     - cuda
-    - visual studio
+    - visual-studio
     - fractal
   github: cudafractal
 
@@ -36,5 +48,8 @@
   description: >
     A visual that demos drawing paths using a fourier series. This project
     was largely influenced by 3Blue1Brown and CodingTrain
+  keywords:
+    - netlify
+    - htmlcanvas
   github: fourier-drawing
   website: https://fourier-drawing.netlify.app
