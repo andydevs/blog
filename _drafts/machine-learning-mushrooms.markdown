@@ -12,10 +12,21 @@ Well, you're in luck, 'cause ya boy Andy made an app that can tell you just that
 
 All you need is a smartphone, a good internet connection, a magnifying glass maybe, and a whole lot of patience.
 
-## Getting the Data
+Okay. I wanted to try out machine learning. So, I got this [dataset](https://www.kaggle.com/uciml/mushroom-classification) from kaggle on different mushroom types and I trained a Keras model on it.
+
+## The Data
+
+So I started with the dataset, and I created a `meta.yaml` file to encode the structure of the data.
+
+All my input data was categorical, which means it will all be encoded into a one-hot representation.
+
+So, the pipeline involved pulling the csv data, splitting into features and labels, and encoding the
+labels and features into one-hot representation.
 
 ## Training the Model
 
 ## Serving the Application
 
 ## Conclusion
+
+It ain't practical... not in the least. But it is insanely cool.
