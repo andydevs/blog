@@ -30,7 +30,9 @@
     so I was rushing. This was mainly a project to more familiarize myself 
     with the Stripe payment system, especially in the context of an ecommerce
     site. Again, you want memes, go to reddit... or even instagram. Never buy
-    them. It is illegal to sell memes... I think.
+    them. It is illegal to sell memes... I think. Also if the site is still
+    running (which it may not be because I'm paying for S3), I did all the
+    styling by hand... because I'm mad
   keywords:
     - stripe
     - mongodb
