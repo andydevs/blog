@@ -3,13 +3,10 @@ layout: post
 title: Observables are Actually Good
 ---
 
-Here are a few ways that I've used observables.
-
-## Reactive Animations
-
 Objective: animate box to follow mouse movement after being clicked.
 
-### The naive approach
+The Naive Approach
+----------------------------------------------------------------------------
 
 Create observable to track mouse position.
 
@@ -53,15 +50,15 @@ object which contains an unsubscribe method, so we use it to
 unsubscribe when we need to.
 
 ```js
-let mouseSub
+let boxSub
 
 box.addEventListener('click', event => {
-    if (mouseSub) {
-        mouseSub.unsubscribe()
-        mouseSub = null
+    if (boxSub) {
+        boxSub.unsubscribe()
+        boxSub = null
     }
     else {
-        mouseSub = mouseMovePos$.subscribe(pos => move(box, pos))
+        boxSub = mouseMovePos$.subscribe(pos => move(box, pos))
     }
 })
 ```
@@ -69,13 +66,35 @@ box.addEventListener('click', event => {
 To implement drag
 
 First off, the `mousemove` event only fires when the mouse moves,
-we want it to move event when we're not moving our mouse.
+we want it to move even when we're not moving our mouse.
 
 Create a second observable that fires every animation frame. We
-use a frame scheduler
+use a frame scheduler, which is provided using `observeOn`
 
 ```js
-let animationFrame$ = of(0, animationFrameScheduler)
+let animationFrame$ = of(null)
+    .pipe(
+        repeat(),
+        observeOn(animationFrameScheduler)
+    )
+```
+
+The actual value of this ovservable doesn't matter (it just emits
+null over and over again), it only matters that this fires every
+animation frame. The operators cause the animation frame to fire
+only on the next animation frame and also repeat indefinitely.
+
+Our mouse pos also only gets to fire on an animation event
+
+```js
+const mouseMovePos$ = fromEvent(document, 'mousemove')
+    .pipe(
+        map(event => ({
+            x: event.clientX,
+            y: event.clientY
+        })),
+        observeOn(animationFrameScheduler)
+    )
 ```
 
 Instead of setting our mouse pos directly, we save it to a buffer
@@ -83,17 +102,16 @@ variable and update our position on every animation frame
 
 ```js
 let mousepos
-mouseMovePos$.subscribe((pos) => {
-    mousepos = pos
-})
+mouseMovePos$.subscribe((pos) => mousepos = pos)
 
-let mouseSub = Subscription.EMPTY
+let boxSub
 box.addEventListener('click', () => {
-    if (mouseSub.closed) {
-        mouseSub = animationFrame$.subscribe(() => move(box, mousepos))
+    if (boxSub) {
+        boxSub.unsubscribe()
+        boxSub = null
     }
     else {
-        mouseSub.unsubscribe()
+        boxSub = animationFrame$.subscribe(() => move(box, mousepos))
     }
 })
 ```
@@ -118,14 +136,16 @@ let boxpos = { x: 50, y: 50 }
 
 // Mouse position
 let mousepos
-mouseMovePos$.subscribe((pos) => {
-    mousepos = pos
-})
+mouseMovePos$.subscribe((pos) => mousepos = pos)
 
 // Toggle mouse move subscribe
-let mouseSub = Subscription.EMPTY
+let mouseSub
 box.addEventListener('click', () => {
-    if (mouseSub.closed) {
+    if (mouseSub) {
+        mouseSub.unsubscribe()
+        mouseSub = null
+    }
+    else {
         mouseSub = animationFrame$.subscribe(() => {
             // Update box position
             boxpos = {
@@ -137,13 +157,11 @@ box.addEventListener('click', () => {
             move(box, boxpos)
         })
     }
-    else {
-        mouseSub.unsubscribe()
-    }
 })
 ```
 
-### Use observables to make this better
+Use observables to make this better
+----------------------------------------------------------------------------
 
 We can actually make this a bit cleaner by using `closed` and 
 `Subscription.EMPTY`, an empty subscription object provided by
@@ -154,10 +172,7 @@ let mouseSub = Subscription.EMPTY
 
 box.addEventListener('click', () => {
     if (mouseSub.closed) {
-        mouseSub = mouseMovePos$.subscribe(pos => {
-            box.style.left = pos.x + 'px'
-            box.style.top = pos.y + 'px'
-        })
+        mouseSub = mouseMovePos$.subscribe(pos => move(box, pos))
     }
     else {
         mouseSub.unsubscribe()
@@ -165,28 +180,25 @@ box.addEventListener('click', () => {
 })
 ```
 
-We can actually use an event observable for click events
+We can actually use an event observable for click events for good measure
 
 ```js
 let mouseSub = Subscription.EMPTY
 
-fromEvent(box, 'click').subscribe(() => {
-    if (mouseSub.closed) {
-        mouseSub = moveMousePos$.subscribe(pos => {
-            box.style.left = pos.x + 'px'
-            box.style.top = pos.y + 'px'
-        })
-    }
-    else {
-        mouseSub.unsubscribe()
-    }
-})
+fromEvent(box, 'click')
+    .subscribe(() => {
+        if (mouseSub.closed) {
+            mouseSub = moveMousePos$.subscribe(pos => move(box, pos))
+        }
+        else {
+            mouseSub.unsubscribe()
+        }
+    })
 ```
 
-
-We can actually combine the animation frame observable and 
-the mouse position into one observable that emits the latest
-mouse position recorded every frame
+Combine the animation frame observable and the mouse position 
+into one observable that emits the latest mouse position recorded 
+every frame
 
 ```js
 // Alpha parameter
@@ -210,9 +222,8 @@ fromEvent(box, 'click').subscribe(() => {
                 y: alpha * mousepos.y + (1 - alpha) * boxpos.y
             }
 
-            // Update box's actual position
-            box.style.left = boxpos.x + 'px'
-            box.style.top = boxpos.y + 'px'
+            // Move box to box position
+            move(box, boxpos)
         })
     }
     else {
@@ -234,6 +245,7 @@ const alpha = 0.75
 let boxPos$ = mousePos$
     .pipe(
         scan(
+            // Box position update
             (boxpos, mousepos) => ({
                 x: alpha * mousepos.x + (1 - alpha) * boxpos.x,
                 y: alpha * mousepos.y + (1 - alpha) * boxpos.y
@@ -246,11 +258,7 @@ let boxPos$ = mousePos$
 let boxSub = Subscription.EMPTY
 fromEvent(box, 'click').subscribe(() => {
     if (boxSub.closed) {
-        // Update box's position
-        boxSub = boxPos$.subscribe(boxpos => {
-            box.style.left = boxpos.x + 'px'
-            box.style.top = boxpos.y + 'px'
-        })
+        boxSub = boxPos$.subscribe(boxpos => move(box, pos))
     }
     else {
         boxSub.unsubscribe()
@@ -258,4 +266,136 @@ fromEvent(box, 'click').subscribe(() => {
 })
 ```
 
-## Rective Forms
+We can move the scan operator to a separate function,
+creating our own operator (so we can have different
+alpha values)
+
+```js
+function interpolate(alpha) {
+    return scan(
+        (pos, next) => ({
+            x: alpha * next.x + (1 - alpha) * pos.x,
+            y: alpha * next.y + (1 - alpha) * pos.y
+        }),
+        { x: 0, y: 0 }
+    )
+}
+```
+
+Create a generic subscriber that toggles another subscription
+
+```js
+function toggle(observable$, subfunc) {
+    return {
+        subscription: Subscription.EMPTY,
+        next() {
+            if (this.subscription.closed)
+                this.subscription = observable$.subscribe(subfunc)
+            else
+                this.subscription.unsubscribe()
+        },
+        error() {
+            if (!this.subscription.closed)
+                this.subscription.unsubscribe()
+        },
+        complete() {
+            if (!this.subscription.closed)
+                this.subscription.unsubscribe()
+        }
+    }
+}
+```
+
+```js
+// Toggle mouse move subscribe
+fromEvent(box, 'click')
+    .subscribe(toggle(
+        mousePos$.pipe(interpolate(0.75)),
+        pos => move(box, pos)
+    ))
+```
+
+Now we have multiple elements
+
+```js
+function clickAndDrag(id, alpha) {
+    let elem = document.getElementById(id)
+    return fromEvent(elem, 'click')
+        .subscribe(toggle(
+            interpolate(alpha)(mousePos$),
+            pos => move(elem, pos)
+        ))
+}
+
+clickAndDrag('box', 1.0)
+clickAndDrag('circle', 0.75)
+clickAndDrag('airplane', 0.25)
+```
+
+Putting it all together
+----------------------------------------------------------------------------
+
+With observables
+
+```js
+function interpolate(alpha) {
+    return scan(
+        (pos, next) => ({
+            x: alpha * next.x + (1 - alpha) * pos.x,
+            y: alpha * next.y + (1 - alpha) * pos.y
+        }),
+        { x: 0, y: 0 }
+    )
+}
+
+function toggle(observable$, subfunc) {
+    return {
+        subscription: Subscription.EMPTY,
+        next() {
+            if (this.subscription.closed)
+                this.subscription = observable$.subscribe(subfunc)
+            else
+                this.subscription.unsubscribe()
+        },
+        error() {
+            if (!this.subscription.closed)
+                this.subscription.unsubscribe()
+        },
+        complete() {
+            if (!this.subscription.closed)
+                this.subscription.unsubscribe()
+        }
+    }
+}
+
+let animationFrame$ = of(null)
+    .pipe(
+        repeat(),
+        observeOn(animationFrameScheduler)
+    )
+
+let mouseMovePos$ = fromEvent(document, 'mousemove')
+    .pipe(
+        map(event => ({
+            x: event.clientX,
+            y: event.clientY
+        })),
+        observeOn(animationFrameScheduler)
+    )
+
+let mousePos$ = combineLatest([animationFrame$, mouseMovePos$])
+    .pipe(map(([_, pos]) => pos))
+
+function clickAndDrag(id, alpha) {
+    let elem = document.getElementById(id)
+    return fromEvent(elem, 'click')
+        .subscribe(toggle(
+            interpolate(alpha)(mousePos$),
+            pos => move(elem, pos)
+        ))
+}
+
+clickAndDrag('box', 1.0)
+clickAndDrag('circle', 0.75)
+clickAndDrag('airplane', 0.25)
+```
