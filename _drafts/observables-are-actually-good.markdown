@@ -111,7 +111,6 @@ use a frame scheduler
 let animationFrames$ = of(0, animationFrameScheduler)
 ```
 
-Instead of setting our mouse pos directly, we save it to a buffer
-variable and 
+Instead of setting our mouse pos directly, we save it to a buffer variable and 
 
 ## Rective Forms
