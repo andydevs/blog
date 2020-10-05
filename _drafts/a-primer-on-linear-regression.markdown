@@ -93,4 +93,7 @@ $$
 
 Solving this equation for our input vector will get us our optimized $a_0$ and $a_1$ terms!
 
-## Doing it in code
+## Conclusion
+
+I have a corresponding [Jupyter Notebook](/notebooks/linear-regression) that shows how to 
+do this in python with the same sample data set

@@ -27,3 +27,8 @@ social:
 
 # Theme
 remote_theme: andydevs/jekyll-theme-peaceful-gates
+
+# Added collections
+collections:
+  notebooks:
+    output: true
