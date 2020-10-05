@@ -3,7 +3,7 @@ layout: post
 title: A Primer on Linear Regression
 ---
 
-Regression is at the core of Machine Learning’s DNA. We’re gonna talk about Linear Regression.
+When people think of machine learning, they usually imagine the complex neural network algorithms that can find faces in images (or even create faces...). All machine learning is, though, is finding patterns in data, and one of the simplest and oldest forms of that is linear regression.
 
 ## Framing the Question
 
@@ -94,40 +94,3 @@ $$
 Solving this equation for our input vector will get us our optimized $a_0$ and $a_1$ terms!
 
 ## Doing it in code
-
-I would use a jupyter notebook here...
-
-Using `numpy` and `matplotlib`
-
-```python
-import numpy as np
-from matplotlib import pyplot as plt
-
-data = np.loadtxt('mydata.csv', delimeter=',')
-x = data[:,0]
-y = data[:,1]
-
-plt.scatter(x, y)
-plt.show()
-```
-
-Construct our constants
-
-```python
-A = np.array([
-    [ x.shape[0], x.sum()      ],
-    [ x.sum(),    (x**2).sum() ]
-])
-
-B = np.array([
-    y.sum(),
-    (y*x).sum()
-])
-```
-
-Now we find the inverse of `A` and multiply it with `B`
-
-```python
-Ainv = np.linalg.inv(A)
-a = np.matmul(Ainv, B)
-```
