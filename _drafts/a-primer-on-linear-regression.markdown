@@ -7,9 +7,9 @@ Regression is at the core of Machine Learning’s DNA. We’re gonna talk about 
 
 ## Framing the Question
 
-Suppose we have a set of data points $(x_i, y_i)$. we want to find a linear equation $\hat{y} = a_0 + a_1 x$ that best approximates this set.
+Suppose we have a set of data points $(x_i, y_i)$. We want to find a line that passes as close to all of these points as possible. Doing so would allow us to predict $y$ by looking at where the line is at the point $x$. Mathematically, we want to find a linear equation $\hat{y} = a_0 + a_1 x$ that best approximates this set.
 
-The ideal is $\hat{y} = y$. But, of course, that’s not what we’re expecting. We frame the problem as getting $\hat{y}$ as equal to $y$ as possible. Luckily for us, we have a tool that can measure that.
+So how do we start? The ideal is $\hat{y} = y$. But, of course, we're not expecting that, or we wouldn't have to do this. We frame the problem as getting $\hat{y}$ as equal to $y$ as possible. Luckily for us, we have a tool that can measure that.
 
 ## Distance
 
@@ -47,7 +47,7 @@ $$
 J = \sqrt{ \sum_i{ (y_i - a_0 - a_1x_i)^2 } }
 $$
 
-Optimization means finding where the derivative of $J$ equals 0. We can make things simpler by ignoring the square root term. Normally, the square root has two solutions, one positive, one negative. However, we know that distances are always positive (something being -20 feet away from you doesn't really make sense). We also know that the derivative of the square root function is never 0, so there isn't a minima. Therefore, if we find the minima of the inner values, we can find the minima of the entire thing. So we only really need to concern ourselves with the squared distance formula
+That square root is gonna make the derivative pretty complicated. Fortunately, we can make things simpler by ignoring the square root term. Normally, the square root has two solutions, one positive, one negative. However, we know that distances are always positive (something being -20 feet away from you doesn't really make sense). We also know that the derivative of the square root function is never 0, so there isn't a minima. Therefore, if we find the minima of the inner values, we can find the minima of the entire thing. So we only really need to concern ourselves with the squared distance formula
 
 $$
 J = ||\textbf{y} - \hat{\textbf{y}}||^2 = \sum_i{ (y_i - a_0 - a_1x_i)^2 }
@@ -95,12 +95,20 @@ Solving this equation for our input vector will get us our optimized $a_0$ and $
 
 ## Doing it in code
 
+I would use a jupyter notebook here...
+
 Using `numpy` and `matplotlib`
 
 ```python
+import numpy as np
+from matplotlib import pyplot as plt
+
 data = np.loadtxt('mydata.csv', delimeter=',')
 x = data[:,0]
 y = data[:,1]
+
+plt.scatter(x, y)
+plt.show()
 ```
 
 Construct our constants
