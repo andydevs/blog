@@ -8,6 +8,21 @@ Objective: animate box to follow mouse movement after being clicked.
 The Naive Approach
 ----------------------------------------------------------------------------
 
+Programatically creating boxes
+
+```js
+const app = document.getElementById('app')
+
+export function createBox(color, initial={x: 0, y: 0}) {
+    let box = document.createElement('div')
+    box.classList.add('box')
+    box.style.backgroundColor = color
+    app.appendChild(box)
+    moveBox(box, initial)
+    return box
+}
+```
+
 Create observable to track mouse position.
 
 ```js
@@ -23,7 +38,7 @@ const mouseMovePos$ = fromEvent(document, 'mousemove')
 Now we can subscribe to that position and update our box
 
 ```js
-let box = document.getElementById('redbox')
+let box = createBox('red', { x: 100, y: 100 })
 
 function move(elem, pos) {
     elem.style.left = pos.x + 'px'
