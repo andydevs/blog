@@ -3,7 +3,7 @@ layout: post
 title: A Primer on Linear Regression
 ---
 
-When people think of machine learning, they usually imagine the complex neural network algorithms that can find faces in images (or even create faces...). All machine learning is, though, is finding patterns in data, and one of the simplest and oldest forms of that is linear regression.
+When people think of machine learning, they usually imagine the complex neural network algorithms that can find faces in images (or even create faces...). All machine learning is, though, is finding patterns in data, and building models of those patterns so we can make predictions. Humans do this intuitively, obviously, but computers have been able to do this for as long as they've been used for science and especially business. One of the simplest models you can make is a linear one: just a straight line through the data. The process of building one is called linear regression.
 
 ## Framing the Question
 
