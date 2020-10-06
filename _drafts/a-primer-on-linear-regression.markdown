@@ -128,9 +128,9 @@ R^2 = \frac{
 }
 $$
 
-Note that the squared distance of $\textbf{y}$ and $\bar{\textbf{y}}$ is the variance $V$. 
 To simplify this, we can replace $||\textbf{y} - \hat{\textbf{y}}||^2$ with $J$ and 
-$||\textbf{y} - \bar{\textbf{y}}||^2$ with $V$.
+$||\textbf{y} - \bar{\textbf{y}}||^2$ with $V$ (fun fact: this distance is proportional to the
+variance of the dataset $y$).
 
 $$
 R^2 = \frac{V - J}{V} = 1 - \frac{J}{V}
