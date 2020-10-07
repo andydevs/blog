@@ -16,7 +16,7 @@ copyright: 2020
 links:
   - url: /projects
     text: Projects
-  - url: /anshul-kharbanda-2020-06.pdf
+  - url: /documents/anshul-kharbanda-2020-06.pdf
     text: Resume
 
 # Social
@@ -27,8 +27,3 @@ social:
 
 # Theme
 remote_theme: andydevs/jekyll-theme-peaceful-gates
-
-# Added collections
-collections:
-  notebooks:
-    output: true

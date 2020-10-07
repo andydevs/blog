@@ -148,5 +148,5 @@ exactly. Machine learning is not concerned with being exact, but with being _as 
 Conclusion
 ---------------------------------------------------------------------------------------------------------
 
-I have a corresponding [Jupyter Notebook](/notebooks/linear-regression) that shows how to 
+I have a corresponding [Jupyter Notebook](/documents/jupyter/linear-regression.pdf) that shows how to 
 do this in python with the same sample data set
