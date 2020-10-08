@@ -43,3 +43,27 @@ The vector form is
 $$
 J = (\textbf{y} - \textbf{X}\textbf{a})^T(\textbf{y} - \textbf{X}\textbf{a})
 $$
+
+Differentiate!
+
+$$
+\begin{aligned}
+\frac{dJ}{d\textbf{a}} 
+&= \frac{d}{d\textbf{a}}(\textbf{y} - \textbf{X}\textbf{a})^T(\textbf{y} - \textbf{X}\textbf{a}) \\
+&= \frac{d}{d\textbf{a}}(\textbf{y}^T - \textbf{a}^T\textbf{X}^T)(\textbf{y} - \textbf{X}\textbf{a}) \\ 
+&= \frac{d}{d\textbf{a}}\textbf{y}^T\textbf{y} - \frac{d}{d\textbf{a}}\textbf{y}^T\textbf{X}\textbf{a} - \frac{d}{d\textbf{a}}\textbf{a}^T\textbf{X}^T\textbf{y} + \frac{d}{d\textbf{a}}\textbf{a}^T\textbf{X}^T\textbf{X}\textbf{a} \\
+&= 0 - \textbf{y}^T\textbf{X} - (\textbf{X}^T\textbf{y})^T + 2\textbf{X}^T\textbf{X}\textbf{a} \\
+\\
+\frac{dJ}{d\textbf{a}} &= 2\textbf{X}^T\textbf{X}\textbf{a} - 2\textbf{y}^T\textbf{X}
+\end{aligned}
+$$
+
+Now we set to 0
+
+$$
+\begin{aligned}
+2\textbf{X}^T\textbf{X}\textbf{a} - 2\textbf{y}^T\textbf{X} = 0 \\
+\\
+\textbf{X}^T\textbf{X}\textbf{a} = \textbf{y}^T\textbf{X}
+\end{aligned}
+$$

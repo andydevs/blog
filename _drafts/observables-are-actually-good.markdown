@@ -5,7 +5,7 @@ title: Observables are Actually Good
 
 Objective: animate box to follow mouse movement after being clicked.
 
-The Naive Approach
+Moving a Box
 ----------------------------------------------------------------------------
 
 Programatically creating boxes
@@ -78,7 +78,8 @@ box.addEventListener('click', event => {
 })
 ```
 
-To implement drag
+Implementing Drag
+----------------------------------------------------------------------------
 
 First off, the `mousemove` event only fires when the mouse moves,
 we want it to move even when we're not moving our mouse.
@@ -175,7 +176,7 @@ box.addEventListener('click', () => {
 })
 ```
 
-Use observables to make this better
+Use Observables to make This Better
 ----------------------------------------------------------------------------
 
 We can actually make this a bit cleaner by using `closed` and 
@@ -246,6 +247,8 @@ fromEvent(box, 'click').subscribe(() => {
     }
 })
 ```
+
+Create an operator `
 
 The `boxpos` is an accumulator variable that is updated with each
 new object emitted from `mousePos$`. `rxjs` actually has an operator

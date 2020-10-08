@@ -25,6 +25,12 @@ labels and features into one-hot representation.
 
 ## Training the Model
 
+Model
+
+```python
+
+```
+
 ## Serving the Application
 
 ## Conclusion
