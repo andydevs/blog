@@ -53,23 +53,16 @@ $$
 J = (\textbf{y} - \textbf{X}\textbf{a})^T(\textbf{y} - \textbf{X}\textbf{a})
 $$
 
-So now we differentiate with respect to the entire vector $\textbf{a}$ and then solve 
-for $\textbf{a}$. I'll spare you the math (mainly because it won't fit on the page), 
-but, if you use this [cheat sheet]() for vector/matrix calculus, you can verify this 
-derivative for yourself
+So now we differentiate this term with respect to our $a$ values. Writing it in this form
+allows us to take the derivative with respect to the entire vector $\textbf{a}$. We can 
+then and then set that single derivative to 0 and rearrange it to get our equation. 
+I'll spare you the math (mainly because it won't fit on the page), but, if you use this 
+[Wikipedia article](https://en.wikipedia.org/wiki/Matrix_calculus) for vector/matrix 
+calculus (it's probably correct), you can verify this derivative for yourself.
 
 $$
-\frac{dJ}{d\textbf{a}} = 2(\textbf{X}^T\textbf{X}\textbf{a} - \textbf{y}^T\textbf{X})
-$$
-
-Now we set to 0 and rearrange to get our final equation
-
-$$
-2(\textbf{X}^T\textbf{X}\textbf{a} - \textbf{y}^T\textbf{X}) = 0
-$$
-
-$$
-\textbf{X}^T\textbf{X}\textbf{a} = \textbf{y}^T\textbf{X}
+\frac{dJ}{d\textbf{a}} = 2(\textbf{X}^T\textbf{X}\textbf{a} - \textbf{X}^T\textbf{y}) = 0 \\
+\textbf{X}^T\textbf{X}\textbf{a} = \textbf{X}^T\textbf{y}
 $$
 
 Revisiting the Single Variable Example
@@ -81,35 +74,61 @@ $$
 \textbf{X} = \begin{bmatrix}
     x_0 \\
     x_1 \\
-    x_2 \\
     \vdots \\
     x_N
 \end{bmatrix}
 $$
 
-We add the column of 1's to make our matrix this
+We add the column of 1's to our matrix
 
 $$
 \textbf{X} = \begin{bmatrix}
     1 & x_0 \\
     1 & x_1 \\
-    1 & x_2 \\
     \vdots & \vdots \\
     1 & x_N
 \end{bmatrix}
 $$
 
-Next we compute $\textbf{X}^T\textbf{X}$ and $\textbf{y}^T\textbf{X}$
+Next we compute $\textbf{X}^T\textbf{X}$ and $\textbf{X}^T\textbf{y}$
 
 $$
-\textbf{X}^T\textbf{X} = \begin{bmatrix}
-    1 & 1 & 1 & ... & 1 \\
-    x_0 & x_1 & x_2 & ... & x_N
+\begin{aligned}
+\textbf{X}^T\textbf{X} &= \begin{bmatrix}
+    1 & 1 & ... & 1 \\
+    x_0 & x_1 & ... & x_N
 \end{bmatrix} \begin{bmatrix}
     1 & x_0 \\
     1 & x_1 \\
-    1 & x_2 \\
     \vdots & \vdots \\
     1 & x_N
+\end{bmatrix} \\
+\textbf{X}^T\textbf{y} &= \begin{bmatrix}
+    1 & 1 & ... & 1 \\
+    x_0 & x_1 & ... & x_N
+\end{bmatrix} \begin{bmatrix}
+    y_0 \\
+    y_1 \\
+    \vdots \\
+    y_N
 \end{bmatrix}
+\end{aligned}
 $$
+
+$$
+\begin{aligned}
+\textbf{X}^T\textbf{X} &= \begin{bmatrix}
+    N & \sum{x_i} \\
+    \sum{x_i} & \sum{x_i^2}
+\end{bmatrix} \\
+\textbf{X}^T\textbf{y} &= \begin{bmatrix}
+    \sum{y_i} \\
+    \sum{y_ix_i}
+\end{bmatrix}
+\end{aligned}
+$$
+
+You'll notice that these matrices look familiar. These are, in fact
+the matrices used in single-variable linear regression. You can say
+that linear regression with one variable is just a special case of
+linear regression with multiple variables!
