@@ -18,6 +18,9 @@ links:
     text: Projects
   - url: /documents/anshul-kharbanda-2020-06.pdf
     text: Resume
+  - url: https://andydevs.github.io/andys-notebook/
+    text: Andy's Notebook
+    direct: true
 
 # Social
 social:
