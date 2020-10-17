@@ -1,12 +1,23 @@
 ---
 layout: post
 title: How to Do Shadows Correctly
+excerpt_separator: <!--bruh-->
 ---
 
-This is a short one. Often the questions that perplex us have the simplest of
-answers.
+This is a short one, a PSA if you will. Often the questions that perplex us 
+have the simplest of answers. In these moments, I feel it is our mission, our 
+_duty_, to inform the public so that others won't make the same mistake again. 
 
-## Mistake
+Or I just want to look less stupid. That's more likely
+
+This is one of those moments, and it pertains to something so simple, something 
+we take for granted: shadow effects. All the cool websites have them. But the 
+way to do them was not as obvious to me to begin with.
+
+<!--bruh-->
+
+The Mistake
+------------------------------------------------------------------------------
 
 I was trying to make a button that floats at the bottom right for easy access
 
@@ -48,7 +59,8 @@ Wait how does bootstrap do it?
 
 I looked into it. That's when I realized that the answer was so simple
 
-## Just lower the opacity you idiot
+Just lower the opacity you idiot
+------------------------------------------------------------------------------
 
 Set the background to black and lower the opacity. That adds a bit of "black" 
 to the color directly below it, effectively darkening it.
