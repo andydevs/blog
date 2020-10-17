@@ -22,7 +22,7 @@ Now we have a model with multiple input variables, so we have multiple input dat
 Our model now becomes a weigted sum of all these inputs
 
 $$
-\hat{y_i} = a_0 + a_1 x_i + a_2 + w_i + a_3 v_i + ...
+\hat{y_i} = a_0 + a_1 x_i + a_2 w_i + a_3 v_i + ...
 $$
 
 So now we're gonna have to find the derivative of all of these input parameters separately. 
