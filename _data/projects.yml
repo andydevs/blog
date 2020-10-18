@@ -1,3 +1,20 @@
+- name: Andy's Notebook
+  description: >
+    A repository of jupyter notebooks I'm working on or have worked on
+    exploring programming, scientific computing, data science, and other
+    topics that I could make a jupyter notebook for. I've also linked it 
+    in the side panel of this website as I plan to make corresponding
+    notebooks for some blog posts. And yes I did make an entire static
+    site generator for the website.
+  keywords:
+    - python
+    - jupyter
+    - numpy
+    - pandas
+    - scipy
+  github: andys-notebook
+  website: https://andydevs.github.io/andys-notebook/
+
 - name: Tensorflow Demo 1
   description: >
     My first full tensorflow application. This trains a model to predict
@@ -42,7 +59,6 @@
     - heroku
   github: memesrus
   website: http://memesrus420.herokuapp.com
-
 
 - name: Spacebase
   description: >
