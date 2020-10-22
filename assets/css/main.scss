@@ -6,11 +6,24 @@
 .keyword-tag {
     margin: 0;
     margin-right: $spacing-1;
-    color: $dark-gray-color;
     font-style: italic;
     font-style: $small-font-size;
+
+    @include with-theme {
+        color: color-for(primary);
+    }
 }
 
-.darkmode .keyword-tag {
-    color: $light-gray-color;
+// Add the caret thing
+.menu-title:before,
+.page-title:before,
+a:before {
+    content: '>';
+}
+a {
+    text-decoration: none;
+}
+.menu-links a:before,
+.social-link:before {
+    content: '';
 }
