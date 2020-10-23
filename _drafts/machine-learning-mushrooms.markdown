@@ -57,6 +57,10 @@ features: !FeatureSet
 .
 ```
 
+By far the most extensive part of this project was the data pipeline. The data
+had to be read from the dataset, split into training and testing, and encoded
+using one hot representation.
+
 Python YAML actually has a feature that allows you to define classes that the
 YAML data is automatically converted into. So, I can define a lot of functionality
 into the YAML file.
@@ -102,7 +106,13 @@ parsing and organizing of the data is handled by `meta.yaml`.
 
 ## Training the Model
 
-Define the model
+The model was declared using Keras's framework. It was a fairly easy framework
+to use. However, it didn't have much in the way of support for feature columns,
+which helps process incoming data. So, the data pipeline had to do a whole lot 
+of the heavy lifting.
+
+Luckily, the rest of the model wasn't a problem. The following code defines the
+model:
 
 ```python
 model = tf.keras.models.Sequential([
