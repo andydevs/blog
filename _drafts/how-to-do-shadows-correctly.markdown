@@ -47,7 +47,7 @@ to a darker version of the background color.
 
 Makes sense for now, but what if the background changes?
 
-![Virgin Color Shadow](/assets/images/how-to-do-shadows-correctly/virgin-color-shadow-ugly.png)
+![Virgin Color Shadow Ugly](/assets/images/how-to-do-shadows-correctly/virgin-color-shadow-ugly.png)
 
 Now it looks ugly.
 
