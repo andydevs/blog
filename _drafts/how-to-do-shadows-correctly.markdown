@@ -51,19 +51,23 @@ Makes sense for now, but what if the background changes?
 
 Now it looks ugly.
 
-Now my immediate thought was either to find some CSS property to compute the
-color based on the background. Other than that, all I could think of was that I 
-was gonna have to do it somehow in javascript and I didn't want the headache. 
-So I just gave up and avoided the problem...
+My immediate thought was either to find some CSS property to compute the color 
+based on the background. There's probably a filter that can do the shadow effect
+on the element. There was `drop-shadow`, but that only works on images. Other than 
+that, all I could think of was that I was gonna have to do it somehow in javascript. 
+I would use javascript to find the position of the element, get all of the elements 
+that cover that position, get the exact color of the element in that spot that the 
+shadow covers and apply that to the shadow. But it would still look ugly in gradients.
+For that, I would have to calculate the gradient of the region covered by the box 
+shadow and then set the box shadow to have that gradient somehow. 
 
-I was afraid of shadows for a while, and a bit upset over it... I mean, Bootstrap
-does it just fine. They have shadows over other shadows and everything...
+Eventually, I just gave up.
 
-Wait how does bootstrap do it?
-
-I decided to look into it. I opened up a bootstrap example site and checked out 
-the CSS. That's when I realized that the answer was so simple, so unbelievably 
-simple, that I might have considered it but never thought it would be the answer.
+Then I realized something: Bootstrap does it just fine. They have shadows over 
+other shadows and everything. How does bootstrap do it? I decided to look into it. 
+I opened up a bootstrap example site and checked out the CSS in the developer view 
+to find out what kind of black magic their engineers have cooked up to make this
+effect. And I got the answer.
 
 Just lower the opacity you idiot
 -------------------------------------------------------------------------------
@@ -92,6 +96,10 @@ to the color directly below it, effectively darkening it.
 ```
 
 ![Alpha Chad Opacity Shadow](/assets/images/how-to-do-shadows-correctly/alpha-chad-opacity-shadow.png)
+
+It even works on gradients!
+
+![Alpha Chad Opacity Shadow Gradient](/assets/images/how-to-do-shadows-correctly/alpha-chad-opacity-shadow-gradient.png)
 
 Surprisingly, I didn't think to do that. Maybe because it was too simple. In
 my mind, there needed to be a smart and fresh, but still simple solution, because
