@@ -61,13 +61,14 @@ does it just fine. They have shadows over other shadows and everything...
 
 Wait how does bootstrap do it?
 
-I looked into it. That's when I realized that the answer was so simple, so
-unbelievably simple, yet so elegant and pure.
+I decided to look into it. I opened up a bootstrap example site and checked out 
+the CSS. That's when I realized that the answer was so simple, so unbelievably 
+simple, that I might have considered it but never thought it would be the answer.
 
 Just lower the opacity you idiot
-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
-Set the background to black and lower the opacity. That adds a bit of "black" 
+Set the shadow color to black and lower the opacity. That adds a bit of "black" 
 to the color directly below it, effectively darkening it.
 
 ```css
@@ -92,8 +93,12 @@ to the color directly below it, effectively darkening it.
 
 ![Alpha Chad Opacity Shadow](/assets/images/how-to-do-shadows-correctly/alpha-chad-opacity-shadow.png)
 
+Surprisingly, I didn't think to do that. Maybe because it was too simple. In
+my mind, there needed to be a smart and fresh, but still simple solution, because
+shadows are so complex and intricate. And then the answer is to lower the opacity.
+So simple and plain you don't even consider it.
+
 So yeah... that's how you do shadows correctly.
 
 I made a [Code Pen](https://codepen.io/andydevs/pen/gOMgYeX?editors=1100)... In 
-case you needed to see it for yourself or something. I would say it's self 
-explanitory but you know... I would need a code pen.
+case you needed to see it for yourself or something.
