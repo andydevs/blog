@@ -23,8 +23,6 @@ I was trying to make a button that floats with a little shadow to show that
 it's floating. So, I did the first thing that came to mind set the shadow color 
 to a darker version of the background color.
 
-![Virgin Color Shadow](/assets/images/how-to-do-shadows-correctly/virgin-color-shadow.png)
-
 ```css
 .floating-button {
     /* Spacing */
@@ -44,6 +42,8 @@ to a darker version of the background color.
     box-shadow: 0px 0px 20px 0px rgba(90,90,90,1);
 }
 ```
+
+![Virgin Color Shadow](/assets/images/how-to-do-shadows-correctly/virgin-color-shadow.png)
 
 Makes sense for now, but what if the background changes?
 
@@ -90,7 +90,7 @@ to the color directly below it, effectively darkening it.
 }
 ```
 
-![Alpha Chad Opacity Shadow](/assets/images/how-to-do-shadows-correctly/virgin-color-shadow-ugly.png)
+![Alpha Chad Opacity Shadow](/assets/images/how-to-do-shadows-correctly/alpha-chad-opacity-shadow.png)
 
 So yeah... that's how you do shadows correctly.
 
