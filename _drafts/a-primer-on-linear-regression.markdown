@@ -149,4 +149,7 @@ Conclusion
 ---------------------------------------------------------------------------------------------------------
 
 As you may have guessed, the $R^2$ value is almost always some number between these two values, but never 
-exactly. Machine learning is not concerned with being exact, but with being _as exact as possible_.
+exactly. Machine learning is not concerned with being exact, but with being _as exact as possible_. 
+Although it's not strictly speaking machine learning, this algorithm does highlights the most important
+elements of machine learning, like the concept of optimizing an error term that represents the condition
+of your system.

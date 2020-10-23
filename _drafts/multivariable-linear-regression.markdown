@@ -121,6 +121,25 @@ $$
 \textbf{X}^T\textbf{X}\textbf{a} = \textbf{X}^T\textbf{y}
 $$
 
+Evaluating the Model
+----------------------------------------------------------------------------------------
+
+We can use the same $R^2$ value from the previous post. The equation is the exact same.
+
+$$
+R^2 = 1 - \frac{J}{V}
+$$
+
+Where
+
+$$
+J = ||\textbf{y} - \textbf{X}\textbf{a}||^2
+$$
+
+$$
+V = ||\textbf{y} - \bar{\textbf{y}}||^2
+$$
+
 Revisiting the Single Variable Example
 ----------------------------------------------------------------------------------------
 
