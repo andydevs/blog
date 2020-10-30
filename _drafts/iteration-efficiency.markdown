@@ -1,4 +1,7 @@
-Iteration Efficiency
+---
+title: Iteration Efficiency
+layout: post
+---
 
 Iterating through a value and computing another value from that
 

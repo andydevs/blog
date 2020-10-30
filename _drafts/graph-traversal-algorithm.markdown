@@ -1,4 +1,9 @@
-Graph Traversal Algorithm
+---
+title: Graph Traversal Algorithm
+layout: post
+---
+
+Overview
 
 Describe problem
 
