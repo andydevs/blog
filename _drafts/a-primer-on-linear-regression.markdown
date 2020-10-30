@@ -145,11 +145,9 @@ linear model.
 
 If $R^2 < 0$ you've done something wrong.
 
-Conclusion
----------------------------------------------------------------------------------------------------------
-
 As you may have guessed, the $R^2$ value is almost always some number between these two values, but never 
-exactly. Machine learning is not concerned with being exact, but with being _as exact as possible_. 
-Although it's not strictly speaking machine learning, this algorithm does highlights the most important
-elements of machine learning, like the concept of optimizing an error term that represents the condition
-of your system.
+exactly. That's fine. Machine learning is not concerned with being exact, but with being _as exact as possible_. 
+Although this is not strictly speaking machine learning, this algorithm does highlights the most important
+elements of machine learning. The concept of optimizing an error term that represents the optimal end goal 
+of your system is the cornerstone of machine learning. I'm planning on making more posts that expand these
+concepts untill we get to the deep learning networks that everyone knows.
