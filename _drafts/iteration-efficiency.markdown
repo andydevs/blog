@@ -35,36 +35,22 @@ $$
         - \frac{\theta^7}{7!} + \dots
 $$
 
-$\sin{\theta}$ is an infinite series. So, it's kind of an understatement
-that $\sin{\theta}$ is expensive. We can do better.
+$\sin{\theta}$ is an infinite series. So, it's kind of an 
+understatement that $\sin{\theta}$ is expensive. We can do 
+better.
 
-The change in $\sin$ is actually proportional to $\cos$, and the
-change in $\cos{\theta}$ is proportional to $-\sin{\theta}$. So, if we want to 
-update $\sin{\theta}$, we just add $\cos{\theta} d\theta$, and if we want to
-update $\cos{\theta}$, we add $-\sin{\theta} d\theta$. In fact, rotations can 
-be symbolized as a matrix.
+The change in $\sin$ is actually proportional to $\cos$, and 
+the change in $\cos{\theta}$ is proportional to $-\sin{\theta}$. 
+So, if we want to update $\sin{\theta}$, we just add 
+$\cos{\theta} d\theta$, and if we want to update $\cos{\theta}$, 
+we add $-\sin{\theta} d\theta$.
 
 $$
-\begin{bmatrix}
-    \cos{(\theta + d\theta)} \\
-    \sin{(\theta + d\theta)}
-\end{bmatrix} \approx
-\begin{bmatrix}
-    \text{sin} \\
-    \text{cos}
-\end{bmatrix} +
-\begin{bmatrix}
-    \cos{d\theta} & -\sin{d\theta} \\
-    \sin{d\theta} & \cos{d\theta}
-\end{bmatrix}
-\begin{bmatrix}
-    \text{sin} \\
-    \text{cos}
-\end{bmatrix}
-d\theta
+\begin{aligned}
+    \sin{(\theta + d\theta)} &\approx \sin{\theta} &+ \cos{\theta} d\theta \\
+    \cos{(\theta + d\theta)} &\approx \cos{\theta} &- \sin{\theta} d\theta
+\end{aligned}
 $$
-
-Given change in angle, compute change in $\sin = \cos$.
 
 Track two values: $\sin$ and $\cos$. $\sin$ changes by $\cos$. 
 $\cos$ changes by $-\sin$.
