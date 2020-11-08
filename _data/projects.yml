@@ -39,27 +39,6 @@
   github: blockys-adventure-in-blockworld
   link_releases: true
 
-- name: Memes R' Us
-  description: >
-    This is not an actual retail site. First off, memes are free. Anyone who is 
-    telling you otherwise is ripping you off. Second, the site isn't really fully
-    functional, let alone clean. I made it in the better half of a week
-    so I was rushing. This was mainly a project to more familiarize myself 
-    with the Stripe payment system, especially in the context of an ecommerce
-    site. Again, you want memes, go to reddit... or even instagram. Never buy
-    them. It is illegal to sell memes... I think. Also if the site is still
-    running (which it may not be because I'm paying for S3), I did all the
-    styling by hand... because I'm mad
-  keywords:
-    - stripe
-    - mongodb
-    - express
-    - nodejs
-    - handlebars
-    - heroku
-  github: memesrus
-  website: http://memesrus420.herokuapp.com
-
 - name: Spacebase
   description: >
     A web app dashboard that displays information from NASA's OpenAPI.
@@ -91,3 +70,21 @@
     - htmlcanvas
   github: fourier-drawing
   website: https://andydevs.github.io/fourier-drawing
+  
+- name: Memes R' Us
+  description: >
+    This is not an actual retail site. First off, memes are free. Anyone who is 
+    telling you otherwise is ripping you off. Second, the site isn't really fully
+    functional, let alone clean. I made it in the better half of a week
+    so I was rushing. This was mainly a project to more familiarize myself 
+    with the Stripe payment system, especially in the context of an ecommerce
+    site. Again, you want memes, go to reddit... or even instagram. Never buy
+    them. It is illegal to sell memes... I think.
+  keywords:
+    - stripe
+    - mongodb
+    - express
+    - nodejs
+    - handlebars
+    - heroku
+  github: memesrus
