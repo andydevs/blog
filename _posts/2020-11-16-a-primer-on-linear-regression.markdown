@@ -1,8 +1,8 @@
 ---
 layout: post
 title: A Primer on Linear Regression
+date: 2020-11-16 22:22 -0500
 ---
-
 When people think of machine learning, they usually imagine the complex neural network algorithms 
 that can find faces in images (or even [create faces](http://thispersondoesnotexist.com)... view 
 at your own risk). All machine learning is, though, is finding patterns in data, and building 
