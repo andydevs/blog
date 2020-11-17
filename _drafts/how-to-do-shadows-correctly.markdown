@@ -19,69 +19,94 @@ way to do them was not as obvious to me to begin with.
 The Mistake
 ------------------------------------------------------------------------------
 
-I was trying to make a button that floats at the bottom right for easy access
-
-I set the shadow color to a darker version of the background color
-
-![Virgin Color Shadow]()
+I was trying to make a button that floats with a little shadow to show that 
+it's floating. So, I did the first thing that came to mind set the shadow color 
+to a darker version of the background color.
 
 ```css
 .floating-button {
-    /* Positioning */
-    position: fixed;
-    bottom: 50px;
-    right: 50px;
+    /* Spacing */
+    margin-right: 20pt;
     z-index: 1;
-
-    /* Shape */
-    width: 50px;
-    height: 50px;
+    
+    /* Color */
+    color: white;
+    background-color: #333;
+    
+    /* Size and Shape */
+    padding: 10pt 20pt;
+    border: none;
+    border-radius: 5pt;
 
     /* Shadow */
-    box-shadow: 0px 2px 20px 0px rgba(153,153,153,1);
+    box-shadow: 0px 0px 20px 0px rgba(90,90,90,1);
 }
 ```
 
+![Virgin Color Shadow](/assets/images/how-to-do-shadows-correctly/virgin-color-shadow.png)
+
 Makes sense for now, but what if the background changes?
 
-![Virgin Color Shadow Ugly]()
+![Virgin Color Shadow Ugly](/assets/images/how-to-do-shadows-correctly/virgin-color-shadow-ugly.png)
 
 Now it looks ugly.
 
-For a while I looked for a way to compute the color based on the background
+My immediate thought was either to find some CSS property to compute the color 
+based on the background. There's probably a filter that can do the shadow effect
+on the element. There was `drop-shadow`, but that only works on images. Other than 
+that, all I could think of was that I was gonna have to do it somehow in javascript. 
+I would use javascript to find the position of the element, get all of the elements 
+that cover that position, get the exact color of the element in that spot that the 
+shadow covers and apply that to the shadow. But it would still look ugly in gradients.
+For that, I would have to calculate the gradient of the region covered by the box 
+shadow and then set the box shadow to have that gradient somehow. 
 
-I looked at drop shadows and doing it in JavaScript and eventually I gave up.
+Eventually, I just gave up.
 
-I was afraid of shadows for a while, and a bit upset over it... I mean, Bootstrap
-does it just fine. They have shadows over other shadows and everything...
-
-Wait how does bootstrap do it?
-
-I looked into it. That's when I realized that the answer was so simple
+Then I realized something: Bootstrap does it just fine. They have shadows over 
+other shadows and everything. How does bootstrap do it? I decided to look into it. 
+I opened up a bootstrap example site and checked out the CSS in the developer view 
+to find out what kind of black magic their engineers have cooked up to make this
+effect. And I got the answer.
 
 Just lower the opacity you idiot
-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
-Set the background to black and lower the opacity. That adds a bit of "black" 
+Set the shadow color to black and lower the opacity. That adds a bit of "black" 
 to the color directly below it, effectively darkening it.
 
 ```css
 .floating-button {
-    /* Positioning */
-    position: fixed;
-    bottom: 50px;
-    right: 50px;
+    /* Spacing */
+    margin-right: 20pt;
     z-index: 1;
-
-    /* Shape */
-    width: 50px;
-    height: 50px;
+    
+    /* Color */
+    color: white;
+    background-color: #333;
+    
+    /* Size and Shape */
+    padding: 10pt 20pt;
+    border: none;
+    border-radius: 5pt;
 
     /* Shadow */
-    box-shadow: 0px 2px 20px 0px rgba(0,0,0,0.3);
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.60);
 }
 ```
 
-![Alpha Chad Opacity Shadow]()
+![Alpha Chad Opacity Shadow](/assets/images/how-to-do-shadows-correctly/alpha-chad-opacity-shadow.png)
+
+It even works on gradients!
+
+![Alpha Chad Opacity Shadow Gradient](/assets/images/how-to-do-shadows-correctly/alpha-chad-opacity-shadow-gradient.png)
+
+Surprisingly, I didn't think to do that. Maybe because it was too simple. In
+my mind, there needed to be a smart and fresh, but still simple solution, because
+shadows are so complex and intricate. And then the answer is to lower the opacity.
+So simple and plain you don't even consider it.
 
 So yeah... that's how you do shadows correctly.
+
+I made a [Code Pen](https://codepen.io/andydevs/pen/gOMgYeX?editors=1100)... In 
+case you needed to see it for yourself or something.

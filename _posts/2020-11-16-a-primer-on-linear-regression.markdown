@@ -1,8 +1,8 @@
 ---
 layout: post
 title: A Primer on Linear Regression
+date: 2020-11-16 22:22 -0500
 ---
-
 When people think of machine learning, they usually imagine the complex neural network algorithms 
 that can find faces in images (or even [create faces](http://thispersondoesnotexist.com)... view 
 at your own risk). All machine learning is, though, is finding patterns in data, and building 
@@ -10,9 +10,6 @@ models based on those patterns so we can make predictions. Humans do this intuit
 but computers have been able to do this for as long as they've been used for science and especially 
 business. One of the simplest models you can make is a linear one: your prediction is just proportional 
 to your data, shifted by some amount. The process of building one is called linear regression.
-
-I have a corresponding [Jupyter Notebook](https://andydevs.github.io/andys-notebook/linear-regression.html) 
-that shows how to do this in python with the same sample data set
 
 Framing the Question
 ---------------------------------------------------------------------------------------------------------
@@ -145,8 +142,11 @@ linear model.
 
 If $R^2 < 0$ you've done something wrong.
 
-Conclusion
----------------------------------------------------------------------------------------------------------
-
 As you may have guessed, the $R^2$ value is almost always some number between these two values, but never 
-exactly. Machine learning is not concerned with being exact, but with being _as exact as possible_.
+exactly. That's fine. Machine learning is not concerned with being exact, but with being _as exact as possible_. 
+Although this is not strictly speaking machine learning, this algorithm does involve optimizing an error term that 
+quantifies the objective of your system. This is a foundational part of machine learning. I'm planning on making 
+more posts that expand these concepts until we get to the deep learning networks that everyone knows.
+
+In the mean time, I have a corresponding [Jupyter Notebook](https://andydevs.github.io/andys-notebook/linear-regression.html) 
+that shows how to do this in code with the same sample data set.
