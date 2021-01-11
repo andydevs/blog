@@ -1,9 +1,9 @@
 ---
 layout: post
 title: How to Do Shadows Correctly
-excerpt_separator: <!--bruh-->
+excerpt_separator: "<!--bruh-->"
+date: 2021-01-10 19:15 -0500
 ---
-
 This is a short one, a PSA if you will. Often the questions that perplex us 
 have the simplest of answers. In these moments, I feel it is our mission, our 
 _duty_, to inform the public so that others won't make the same mistake again. 
