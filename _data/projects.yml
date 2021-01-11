@@ -15,17 +15,15 @@
   github: andys-notebook
   website: https://andydevs.github.io/andys-notebook/
 
-- name: Tensorflow Demo 1
+- name: Sticky App Project
   description: >
-    My first full tensorflow application. This trains a model to predict
-    wether or not a mushroom was poisonous given some properties of the
-    mushroom. The model was trained on a kaggle dataset of mushroom data.
+    A generic application that is to be implemented in multiple languages
+    and frameworks for education purposes
   keywords:
-    - tensorflow
-    - flask
-    - python
-  github: tensorflow-demo-1
-  website: https://isitpoison.herokuapp.com
+    - education
+    - app
+    - web
+  website: /sticky-app
 
 - name: Blocky's Adventure in Blockworld
   description: >
@@ -38,6 +36,18 @@
     - c#
   github: blockys-adventure-in-blockworld
   link_releases: true
+
+- name: Tensorflow Demo 1
+  description: >
+    My first full tensorflow application. This trains a model to predict
+    wether or not a mushroom was poisonous given some properties of the
+    mushroom. The model was trained on a kaggle dataset of mushroom data.
+  keywords:
+    - tensorflow
+    - flask
+    - python
+  github: tensorflow-demo-1
+  website: https://isitpoison.herokuapp.com
 
 - name: Spacebase
   description: >
