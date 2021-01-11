@@ -17,102 +17,31 @@ Well, you're in luck, 'cause ya boy Andy made an app that can tell you just that
 All you need is a smartphone, a good internet connection, a magnifying glass 
 maybe, and a whole lot of patience.
 
-Okay. I wanted to try out machine learning. So, I got this 
-[dataset](https://www.kaggle.com/uciml/mushroom-classification) from kaggle on 
-different mushroom types and I trained a Keras model on it.
+So why does this thing exist?
 
-## The Data
-
-So I started with the dataset, and I created a `meta.yaml` file to encode the 
-structure of the data. All my input data was categorical, which means it will 
-all be encoded into a one-hot representation.
-
-```yaml
---- !MetaData
-
-# Output labels and name of column
-output: !Output
-    column: class
-    labels: !CategorySet
-        categories:
-            e: edible
-            p: poisonous
-
-# Outline categories for each feature
-features: !FeatureSet
-    features:
-        bruises: !CategorySet
-            categories:
-                f: 'no'
-                t: bruises
-        cap-color: !CategorySet
-            categories:
-                b: buff
-                c: cinnamon
-                e: red
-                g: gray
-                n: brown
-.
-.
-.
-```
-
-By far the most extensive part of this project was the data pipeline. The data
-had to be read from the dataset, split into training and testing, and encoded
-using one hot representation.
-
-Python YAML actually has a feature that allows you to define classes that the
-YAML data is automatically converted into. So, I can define a lot of functionality
-into the YAML file.
-
-```python
-class MetaData(yaml.YAMLObject):
-    yaml_tag = u'!MetaData'
-
-    def __init__(self, output, features):
-        self.output = output
-        self.features = features
-
-    def __repr__(self):
-        return f'MetaData(output={self.output}, features={self.features})'
-
-    def split_dataset(self, dataset):
-        labels = dataset[self.output.column].values.reshape(-1,1)
-        features = dataset[self.features.columns].values
-        return labels, features
-
-class Output(yaml.YAMLObject):
-    yaml_tag = u'!Output'
-    
-    def __init__(self, column, labels):
-        self.column = column
-        self.labels = labels
-
-    def __repr__(self):
-        return f'Output(column={self.column}, labels={self.labels})'
-
-    @property
-    def size(self):
-        return len(self.labels)
-
-.
-.
-.
-```
-
-The pipeline involved pulling the csv data, splitting into features and labels, 
-and encoding the labels and features into one-hot representation. A lot of the 
-parsing and organizing of the data is handled by `meta.yaml`.
+For all the times i've trained a machine learning model (which would be a couple), 
+I've never really put those trained model into action. So, that's what I did. My 
+goal was simple: find a dataset, train a machine learning model on it, and use 
+that model in a web application. It was going to be as basic as possible (basic 
+to the point of being impractical). I'd be using Tensorflow and other Python 
+libraries for this project.
 
 ## Training the Model
+
+I got this [dataset](https://www.kaggle.com/uciml/mushroom-classification) 
+from kaggle on different mushroom types. All the input data was categorical, 
+which means it will all be encoded into a one-hot representation.
 
 The model was declared using Keras's framework. It was a fairly easy framework
 to use. However, it didn't have much in the way of support for feature columns,
 which helps process incoming data. So, the data pipeline had to do a whole lot 
-of the heavy lifting.
+of the heavy lifting. 
 
-Luckily, the rest of the model wasn't a problem. The following code defines the
-model:
+I'm not going to go to much into the data pipeline, since it is pretty 
+complicated (mostly due to my overengineering). I'll briefly mention the `meta` 
+object, which has information on the structure of the data.
+
+Luckily, the rest of the model wasn't a problem to write out, thanks to Keras:
 
 ```python
 model = tf.keras.models.Sequential([
@@ -129,16 +58,11 @@ model.compile(
 model.summary()
 ```
 
-The training task
+After we define the model, we have the training task. Data is first split into 
+training and testing. Then, it's passed into the data pipeline and onto the 
+training code below.
 
 ```python
-from .model import model
-from .data import prepare_train_test_data
-import config
-
-# Get training and testing data
-train_labels, train_features, test_labels, test_features = prepare_train_test_data()
-
 # Train model on training data
 print('Training...')
 model.fit(train_features, train_labels, epochs=10)
@@ -150,17 +74,60 @@ print('Accuracy:', accuracy)
 
 # Save model
 print('Saving...')
-model.save(f'{config.model_directory}/{config.model_filename}')
+model.save('saved-model.h5')
 ```
+
+The last bit of code is for saving the model. Keras has a method for saving 
+the model into a .h5 file. This file will be used to serve the trained model
+over the web.
 
 ## Serving the Application
 
-Used a flask application with a single link. Send a post request via the same link.
+Used a flask application with a single index route that handles serving and
+handling the form.
+
+```py
+# Model
+model = load_model('saved-model.h5')
+
+# Main page route
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    # Create a form
+    form = DataForm()
+    message = None
+    message_type = None
+
+    # Only if we're submitting a prediction
+    if form.validate_on_submit():
+        # Convert form data to array
+        x = [ ]
+        for name in meta.features.columns:
+            input_name = sub('-', '_', name)
+            x.append(form.data[input_name])
+
+        # Encode and predict
+        x = np.array([ x ])
+        x = feature_encoder.transform(x)
+        yHat = model.predict(x)
+        yHat = label_encoder.inverse_transform(yHat)
+        yHat = yHat[0, 0]
+
+        # Set message based on encoding
+        if yHat == 'p':
+            message = 'Looks like it\'s poisonous. Don\'t eat it!'
+            message_type = 'danger'
+        else:
+            message = 'Looks safe to eat! Hope it\'s tasty.'
+            message_type = 'success'
+
+    # Render template
+    return render_template('index.html',
+        form=form,
+        message=message,
+        message_type=message_type)
+```
 
 Used bootstrap to make it pretty... because I'm trying to be professional.
 
-![The Site](/assets/machine-learning-mushrookms/the-site.png)
-
-## Conclusion
-
-It ain't practical... not in the least. But it is insanely cool.
+![The Site](/assets/images/machine-learning-mushrooms/the-site.png)
