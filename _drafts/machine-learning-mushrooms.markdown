@@ -20,11 +20,13 @@ maybe, and a whole lot of patience.
 So why does this thing exist?
 
 For all the times i've trained a machine learning model (which would be a couple), 
-I've never really put those trained model into action. So, that's what I did. My 
+I've never really put those trained models into action. So, that's what I did. My 
 goal was simple: find a dataset, train a machine learning model on it, and use 
-that model in a web application. It was going to be as basic as possible (basic 
-to the point of being impractical). I'd be using Tensorflow and other Python 
-libraries for this project.
+that model in a web application. 
+
+It was going to be as basic as possible (basic to the point of being impractical). 
+I'd be using Tensorflow and other Python libraries for this project. I really wanted
+to do this by the books.
 
 ## Training the Model
 
@@ -131,3 +133,12 @@ def index():
 Used bootstrap to make it pretty... because I'm trying to be professional.
 
 ![The Site](/assets/images/machine-learning-mushrooms/the-site.png)
+
+The gist is you put the characteristics of the mushroom into this form, you
+click submit, and it comes back with an answer on wether it is poisionous or
+not.
+
+It's absolutely brilliant, isn't it?
+
+Of course, it wasn't meant to be practicall. But, it served as a good exercise
+in serving the machine learning models I train.
