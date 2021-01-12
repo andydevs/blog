@@ -15,17 +15,15 @@
   github: andys-notebook
   website: https://andydevs.github.io/andys-notebook/
 
-- name: Tensorflow Demo 1
+- name: Sticky App Project
   description: >
-    My first full tensorflow application. This trains a model to predict
-    wether or not a mushroom was poisonous given some properties of the
-    mushroom. The model was trained on a kaggle dataset of mushroom data.
+    A generic application that is to be implemented in multiple languages
+    and frameworks for education purposes
   keywords:
-    - tensorflow
-    - flask
-    - python
-  github: tensorflow-demo-1
-  website: https://isitpoison.herokuapp.com
+    - education
+    - app
+    - web
+  website: /sticky-app
 
 - name: Blocky's Adventure in Blockworld
   description: >
@@ -39,26 +37,17 @@
   github: blockys-adventure-in-blockworld
   link_releases: true
 
-- name: Memes R' Us
+- name: Tensorflow Demo 1
   description: >
-    This is not an actual retail site. First off, memes are free. Anyone who is 
-    telling you otherwise is ripping you off. Second, the site isn't really fully
-    functional, let alone clean. I made it in the better half of a week
-    so I was rushing. This was mainly a project to more familiarize myself 
-    with the Stripe payment system, especially in the context of an ecommerce
-    site. Again, you want memes, go to reddit... or even instagram. Never buy
-    them. It is illegal to sell memes... I think. Also if the site is still
-    running (which it may not be because I'm paying for S3), I did all the
-    styling by hand... because I'm mad
+    My first full tensorflow application. This trains a model to predict
+    wether or not a mushroom was poisonous given some properties of the
+    mushroom. The model was trained on a kaggle dataset of mushroom data.
   keywords:
-    - stripe
-    - mongodb
-    - express
-    - nodejs
-    - handlebars
-    - heroku
-  github: memesrus
-  website: http://memesrus420.herokuapp.com
+    - tensorflow
+    - flask
+    - python
+  github: tensorflow-demo-1
+  website: https://isitpoison.herokuapp.com
 
 - name: Spacebase
   description: >
@@ -90,4 +79,22 @@
     - netlify
     - htmlcanvas
   github: fourier-drawing
-  website: https://fourier-drawing.netlify.app
+  website: https://andydevs.github.io/fourier-drawing
+  
+- name: Memes R' Us
+  description: >
+    This is not an actual retail site. First off, memes are free. Anyone who is 
+    telling you otherwise is ripping you off. Second, the site isn't really fully
+    functional, let alone clean. I made it in the better half of a week
+    so I was rushing. This was mainly a project to more familiarize myself 
+    with the Stripe payment system, especially in the context of an ecommerce
+    site. Again, you want memes, go to reddit... or even instagram. Never buy
+    them. It is illegal to sell memes... I think.
+  keywords:
+    - stripe
+    - mongodb
+    - express
+    - nodejs
+    - handlebars
+    - heroku
+  github: memesrus

@@ -145,8 +145,9 @@ If $R^2 < 0$ you've done something wrong.
 As you may have guessed, the $R^2$ value is almost always some number between these two values, but never 
 exactly. That's fine. Machine learning is not concerned with being exact, but with being _as exact as possible_. 
 Although this is not strictly speaking machine learning, this algorithm does involve optimizing an error term that 
-quantifies the objective of your system. This is a foundational part of machine learning. I'm planning on making 
-more posts that expand these concepts until we get to the deep learning networks that everyone knows.
+quantifies the objective of your system. <a class='easter-egg' href="https://www.youtube.com/watch?v=IPRp_AlOIh8">This</a> 
+is a foundational part of machine learning. I'm planning on making more posts that expand these concepts until we get to 
+the deep learning networks that everyone knows.
 
 In the mean time, I have a corresponding [Jupyter Notebook](https://andydevs.github.io/andys-notebook/linear-regression.html) 
 that shows how to do this in code with the same sample data set.

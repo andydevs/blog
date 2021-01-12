@@ -27,3 +27,11 @@ a {
 .social-link:before {
     content: '';
 }
+
+// Oooohhh easter egg lmao
+a.easter-egg {
+    &:before { content: ''; }
+    @include with-theme {
+        color: color-for(text);
+    }
+}
