@@ -4,6 +4,7 @@
 @import "{{ site.theme }}";
 
 .keyword-tag {
+    display: inline-block;
     margin: 0;
     margin-right: $spacing-1;
     font-style: italic;
