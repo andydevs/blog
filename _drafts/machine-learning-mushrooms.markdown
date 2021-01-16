@@ -34,16 +34,14 @@ I got this [dataset](https://www.kaggle.com/uciml/mushroom-classification)
 from kaggle on different mushroom types. All the input data was categorical, 
 which means it will all be encoded into a one-hot representation.
 
-The model was declared using Keras's framework. It was a fairly easy framework
-to use. However, it didn't have much in the way of support for feature columns,
-which helps process incoming data. So, the data pipeline had to do a whole lot 
-of the heavy lifting. 
-
 I'm not going to go to much into the data pipeline, since it is pretty 
 complicated (mostly due to my overengineering). I'll briefly mention the `meta` 
 object, which has information on the structure of the data.
 
-Luckily, the rest of the model wasn't a problem to write out, thanks to Keras:
+Luckily, the rest of the model wasn't a problem to write out, thanks to Keras.
+It was a fairly easy framework to declare the model with. However, it didn't 
+have much in the way of support for feature columns, which helps preprocess 
+incoming data. So, the data pipeline had to do a whole lot of the heavy lifting. 
 
 ```python
 model = tf.keras.models.Sequential([
