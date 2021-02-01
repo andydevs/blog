@@ -15,16 +15,6 @@
   github: andys-notebook
   website: https://andydevs.github.io/andys-notebook/
 
-- name: Sticky App Project
-  description: >
-    A generic application that is to be implemented in multiple languages
-    and frameworks for education purposes
-  keywords:
-    - education
-    - app
-    - web
-  website: /sticky-app
-
 - name: Blocky's Adventure in Blockworld
   description: >
     Literally me just trying to make a unity game. It's an ongoing project
