@@ -36,3 +36,13 @@ a.easter-egg {
         color: color-for(text);
     }
 }
+
+.notice {
+    @include page-section;
+    @include with-theme {
+        background-color: color-for(secondary);
+        color: color-for(text-on-secondary);
+    }
+    padding: $spacing-1 $spacing-3;
+    border-radius: $spacing-2;
+}

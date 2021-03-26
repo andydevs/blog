@@ -1,3 +1,37 @@
 ---
-layout: post-index
+layout: default
 ---
+
+<div class="notice">
+    <h3 class="notice-title">Notice!</h3>
+    <p class="notice-text">
+        The andydevs blog site is being replaced with a portfolio site.
+        The blog posts will still be active at http://andydevs.github.io/blog
+        for some time after the transition.
+    </p>
+</div>
+
+<!-- Homepage Layout -->
+<div class="index-grid">
+    {%- for post in site.posts -%}
+        <div class="snip">
+            <div class="snip-header">
+                <h2 class="snip-title">
+                    {{ post.title }}
+                </h2>
+                <h4 class="snip-subtitle">
+                    {{ post.date | date_to_string: 'ordinal', 'US' }}
+                </h4>
+            </div>
+            <div class="snip-excerpt">
+                {{ post.excerpt }}
+            </div>
+            <div class="button-group">
+                <a class="button"
+                    href="{{ post.url }}">
+                    Read More
+                </a>
+            </div>
+        </div>
+    {%- endfor -%}
+</div>
